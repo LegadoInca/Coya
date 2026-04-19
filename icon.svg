@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#3D2010"/>
+      <stop offset="100%" stop-color="#1A0A04"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5C87A"/>
+      <stop offset="40%" stop-color="#C17A5C"/>
+      <stop offset="100%" stop-color="#F5C87A"/>
+    </linearGradient>
+  </defs>
+  <!-- Background rounded square -->
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <!-- Subtle inner glow ring -->
+  <rect width="512" height="512" rx="96" fill="none" stroke="rgba(193,122,92,0.18)" stroke-width="3"/>
+  <!-- Elegant C letter using path -->
+  <text
+    x="256"
+    y="340"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="320"
+    font-weight="400"
+    font-style="italic"
+    text-anchor="middle"
+    fill="url(#gold)"
+    letter-spacing="-8"
+  >C</text>
+  <!-- Small decorative dots -->
+  <circle cx="256" cy="430" r="6" fill="#C17A5C" opacity="0.6"/>
+  <circle cx="236" cy="430" r="4" fill="#C17A5C" opacity="0.35"/>
+  <circle cx="276" cy="430" r="4" fill="#C17A5C" opacity="0.35"/>
+</svg>
