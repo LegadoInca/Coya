@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 const testimonials = [
   {
@@ -44,6 +45,7 @@ const testimonials = [
 ];
 
 export default function TestimonialsSection() {
+  const { t } = useTranslation();
   const [active, setActive] = useState(0);
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState<"left" | "right">("right");
@@ -113,7 +115,7 @@ export default function TestimonialsSection() {
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="w-8 h-px" style={{ background: "#C17A5C" }} />
             <span className="text-xs font-bold tracking-widest uppercase" style={{ color: "#C17A5C" }}>
-              Voces del Mundo
+              {t("testimonials.badge")}
             </span>
             <span className="w-8 h-px" style={{ background: "#C17A5C" }} />
           </div>
@@ -121,12 +123,12 @@ export default function TestimonialsSection() {
             className="text-4xl md:text-5xl font-extrabold"
             style={{ fontFamily: "'Cormorant Garamond', serif", color: "#FFFDF9" }}
           >
-            Lo que Dicen Nuestros Clientes
+            {t("testimonials.title")}
           </h2>
         </div>
 
         {/* Carousel */}
-        <div className="relative flex items-center justify-center gap-4 md:gap-6">
+        <div className="relative flex items-center justify-center gap-2 md:gap-6">
           {/* Prev button */}
           <button
             onClick={prev}
@@ -174,9 +176,9 @@ export default function TestimonialsSection() {
 
             {/* Center active card */}
             <div
-              className="rounded-2xl p-7 flex-shrink-0"
+              className="rounded-2xl p-6 md:p-7 w-full md:flex-shrink-0"
               style={{
-                width: "340px",
+                maxWidth: "340px",
                 background: "#FFFDF9",
                 opacity: animating ? 0 : 1,
                 transform: animating
@@ -191,7 +193,7 @@ export default function TestimonialsSection() {
                   <i key={i} className="ri-star-fill text-sm" style={{ color: "#F59E0B" }} />
                 ))}
               </div>
-              <p className="text-sm leading-relaxed mb-6" style={{ color: "#3D1F10" }}>
+              <p className="text-sm leading-relaxed mb-6" style={{ color: "#3D1F10", wordBreak: "break-word" }}>
                 &ldquo;{centerCard.text}&rdquo;
               </p>
               <div className="flex items-center gap-3">

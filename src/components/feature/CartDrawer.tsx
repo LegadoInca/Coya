@@ -74,7 +74,7 @@ export default function CartDrawer({
                   <div className="flex-1 min-w-0">
                     <p className="font-semibold text-sm leading-tight" style={{ color: "#2C1810" }}>{item.name}</p>
                     <p className="text-xs mt-0.5" style={{ color: "#8B6F5E" }}>{item.producer} · {item.weight}</p>
-                    <p className="font-bold mt-1" style={{ color: "#C17A5C" }}>€{item.price.toFixed(2)}</p>
+                    <p className="font-bold mt-1" style={{ color: "#C17A5C" }}>${item.price.toFixed(2)} USD</p>
                     <div className="flex items-center gap-2 mt-2">
                       <button
                         onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
@@ -110,7 +110,7 @@ export default function CartDrawer({
             <div className="flex justify-between items-center mb-4">
               <span className="font-semibold" style={{ color: "#2C1810" }}>{t("cart.subtotal")}</span>
               <span className="text-xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif", color: "#C17A5C" }}>
-                €{total.toFixed(2)}
+                ${total.toFixed(2)} USD
               </span>
             </div>
             <button

@@ -1,10 +1,96 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { products } from "@/mocks/products";
 import { CartItem } from "@/hooks/useCart";
+import ImpactSimulator from "./ImpactSimulator";
+import ProducerTestimonials from "./ProducerTestimonials";
 
 interface CatalogSectionProps {
   onAddToCart: (item: Omit<CartItem, "quantity">) => void;
+  cartItems?: CartItem[];
+}
+
+// ── Toast ────────────────────────────────────────────────────────────────────
+interface ToastData {
+  id: number;
+  productName: string;
+  producerName: string;
+}
+
+function CartToast({ toast, onDismiss }: { toast: ToastData; onDismiss: (id: number) => void }) {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    // Animate in
+    const t1 = setTimeout(() => setVisible(true), 20);
+    // Animate out before removing
+    const t2 = setTimeout(() => setVisible(false), 3200);
+    const t3 = setTimeout(() => onDismiss(toast.id), 3600);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+  }, [toast.id, onDismiss]);
+
+  return (
+    <div
+      className="flex items-start gap-3 rounded-2xl px-5 py-4 cursor-pointer"
+      onClick={() => { setVisible(false); setTimeout(() => onDismiss(toast.id), 350); }}
+      style={{
+        background: "linear-gradient(135deg, #8B5E2A 0%, #6B3F1A 60%, #4A2A0E 100%)",
+        border: "1px solid rgba(245,200,120,0.35)",
+        minWidth: "280px",
+        maxWidth: "340px",
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateX(0) scale(1)" : "translateX(40px) scale(0.95)",
+        transition: "opacity 0.35s cubic-bezier(0.34,1.56,0.64,1), transform 0.35s cubic-bezier(0.34,1.56,0.64,1)",
+        boxShadow: "0 16px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(245,200,120,0.12)",
+      }}
+    >
+      {/* Icon */}
+      <div
+        className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center mt-0.5"
+        style={{ background: "rgba(245,200,120,0.18)", border: "1px solid rgba(245,200,120,0.3)" }}
+      >
+        <i className="ri-seedling-fill" style={{ color: "#F5C87A", fontSize: "16px" }} />
+      </div>
+
+      {/* Text */}
+      <div className="flex-1 min-w-0">
+        <p
+          className="font-bold leading-tight mb-1"
+          style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            color: "#FFFDF9",
+            fontSize: "15px",
+            letterSpacing: "0.02em",
+            textTransform: "uppercase",
+          }}
+        >
+          ¡Acabas de apoyar esta historia!
+        </p>
+        <p className="text-xs leading-relaxed" style={{ color: "#C17A5C" }}>
+          Has añadido{" "}
+          <span style={{ color: "#F5C87A", fontWeight: 600 }}>«{toast.productName}»</span>{" "}
+          a tu canasta. Tu impacto está creciendo.
+        </p>
+      </div>
+
+      {/* Close hint */}
+      <i className="ri-close-line flex-shrink-0 mt-0.5" style={{ color: "rgba(245,200,120,0.4)", fontSize: "14px" }} />
+    </div>
+  );
+}
+
+function ToastContainer({ toasts, onDismiss }: { toasts: ToastData[]; onDismiss: (id: number) => void }) {
+  if (toasts.length === 0) return null;
+  return (
+    <div
+      className="fixed z-50 flex flex-col gap-3"
+      style={{ bottom: "28px", right: "24px" }}
+    >
+      {toasts.map((t) => (
+        <CartToast key={t.id} toast={t} onDismiss={onDismiss} />
+      ))}
+    </div>
+  );
 }
 
 function useParallax(strength = 0.25) {
@@ -253,7 +339,7 @@ function ProductCard({ product, visible, refCallback, onAddToCart, addedId }: Pr
             className="text-xl font-bold"
             style={{ fontFamily: "'Cormorant Garamond', serif", color: "#C17A5C" }}
           >
-            €{product.price.toFixed(2)}
+            ${product.price.toFixed(2)} USD
           </span>
           <button
             onClick={() => onAddToCart(product)}
@@ -284,10 +370,12 @@ function ProductCard({ product, visible, refCallback, onAddToCart, addedId }: Pr
   );
 }
 
-export default function CatalogSection({ onAddToCart }: CatalogSectionProps) {
+export default function CatalogSection({ onAddToCart, cartItems = [] }: CatalogSectionProps) {
   const { t } = useTranslation();
   const [activeFilter, setActiveFilter] = useState("all");
   const [addedId, setAddedId] = useState<number | null>(null);
+  const [toasts, setToasts] = useState<ToastData[]>([]);
+  const toastCounter = useRef(0);
 
   const filters = ["all", "chocolate", "nibs", "powder", "butter"];
 
@@ -297,6 +385,10 @@ export default function CatalogSection({ onAddToCart }: CatalogSectionProps) {
 
   const { refs, visible } = useScrollReveal(filtered.length);
   const { sectionRef, offset } = useParallax(0.28);
+
+  const dismissToast = useCallback((id: number) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  }, []);
 
   const handleAdd = (product: typeof products[0]) => {
     onAddToCart({
@@ -309,107 +401,122 @@ export default function CatalogSection({ onAddToCart }: CatalogSectionProps) {
     });
     setAddedId(product.id);
     setTimeout(() => setAddedId(null), 1500);
+
+    // Show toast
+    toastCounter.current += 1;
+    const newToast: ToastData = {
+      id: toastCounter.current,
+      productName: product.name,
+      producerName: product.producer,
+    };
+    setToasts((prev) => [...prev.slice(-2), newToast]); // max 3 toasts
   };
 
   return (
-    <section ref={sectionRef} id="catalog" className="relative py-12 md:py-16 overflow-hidden" style={{ background: "transparent" }}>
-      {/* Background base color */}
-      <div className="absolute inset-0 z-0" style={{ background: "#F2E8D5" }} />
-      {/* Background texture image with parallax */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: "url('https://res.cloudinary.com/djfmngyl0/image/upload/v1775319032/pexels-pincalo-15507929_hdhn6r.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          opacity: 0.45,
-          transform: `translateY(${offset}px)`,
-          willChange: "transform",
-          top: "-10%",
-          bottom: "-10%",
-          height: "120%",
-        }}
-      />
-      {/* Warm brown tint overlay */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background: "rgba(62,32,12,0.55)",
-        }}
-      />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-3 mb-5">
-            <span className="w-12 h-px" style={{ background: "#F5C87A" }} />
-            <span
-              className="text-xs font-bold tracking-[0.25em] uppercase"
-              style={{ color: "#F5C87A", letterSpacing: "0.22em" }}
-            >
-              {t("catalog.badge")}
-            </span>
-            <span className="w-12 h-px" style={{ background: "#F5C87A" }} />
-          </div>
-          <h2
-            className="mb-5"
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              color: "#FFFDF9",
-              fontWeight: 900,
-              fontSize: "clamp(2.8rem, 5vw, 4rem)",
-              lineHeight: 1.1,
-              letterSpacing: "-0.01em",
-            }}
-          >
-            {t("catalog.title")}
-          </h2>
-          <p
-            className="text-base max-w-xl mx-auto mb-4"
-            style={{ color: "rgba(245,230,211,0.75)", fontWeight: 400, lineHeight: 1.6 }}
-          >
-            {t("catalog.subtitle")}
-          </p>
-
-          {/* Hint for story interaction — inline with subtitle */}
-          <div className="flex items-center justify-center gap-2">
-            <i className="ri-heart-fill" style={{ color: "#F5C87A", fontSize: "18px" }} />
-            <span className="text-sm font-medium" style={{ color: "rgba(245,230,211,0.65)" }}>
-              Toca la imagen de cada producto para descubrir la historia detrás
-            </span>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {filters.map((f) => (
-            <button
-              key={f}
-              onClick={() => setActiveFilter(f)}
-              className="px-5 py-2 rounded-full text-sm font-semibold cursor-pointer transition-all whitespace-nowrap"
+    <>
+      <ToastContainer toasts={toasts} onDismiss={dismissToast} />
+      <section ref={sectionRef} id="catalog" className="relative py-12 md:py-16 overflow-hidden" style={{ background: "transparent" }}>
+        {/* Background base color */}
+        <div className="absolute inset-0 z-0" style={{ background: "#F2E8D5" }} />
+        {/* Background texture image with parallax */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: "url('https://res.cloudinary.com/djfmngyl0/image/upload/v1775319032/pexels-pincalo-15507929_hdhn6r.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            opacity: 0.45,
+            transform: `translateY(${offset}px)`,
+            willChange: "transform",
+            top: "-10%",
+            bottom: "-10%",
+            height: "120%",
+          }}
+        />
+        {/* Warm brown tint overlay */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            background: "rgba(62,32,12,0.55)",
+          }}
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <span className="w-12 h-px" style={{ background: "#F5C87A" }} />
+              <span
+                className="text-xs font-bold tracking-[0.25em] uppercase"
+                style={{ color: "#F5C87A", letterSpacing: "0.22em" }}
+              >
+                {t("catalog.badge")}
+              </span>
+              <span className="w-12 h-px" style={{ background: "#F5C87A" }} />
+            </div>
+            <h2
+              className="mb-5"
               style={{
-                background: activeFilter === f ? "#C17A5C" : "rgba(255,255,255,0.08)",
-                color: activeFilter === f ? "#FFFDF9" : "rgba(245,230,211,0.75)",
-                border: activeFilter === f ? "1.5px solid #C17A5C" : "1.5px solid rgba(245,230,211,0.25)",
+                fontFamily: "'Cormorant Garamond', serif",
+                color: "#FFFDF9",
+                fontWeight: 900,
+                fontSize: "clamp(2.8rem, 5vw, 4rem)",
+                lineHeight: 1.1,
+                letterSpacing: "-0.01em",
               }}
             >
-              {t(`catalog.filters.${f}`)}
-            </button>
-          ))}
-        </div>
+              {t("catalog.title")}
+            </h2>
+            <p
+              className="text-base max-w-xl mx-auto mb-4"
+              style={{ color: "rgba(245,230,211,0.75)", fontWeight: 400, lineHeight: 1.6 }}
+            >
+              {t("catalog.subtitle")}
+            </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filtered.map((product, i) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              index={i}
-              visible={visible[i]}
-              refCallback={(el) => { refs.current[i] = el; }}
-              onAddToCart={handleAdd}
-              addedId={addedId}
-            />
-          ))}
+            {/* Hint for story interaction — inline with subtitle */}
+            <div className="flex items-center justify-center gap-2">
+              <i className="ri-heart-fill" style={{ color: "#F5C87A", fontSize: "18px" }} />
+              <span className="text-sm font-medium" style={{ color: "rgba(245,230,211,0.65)" }}>
+                Toca la imagen de cada producto para descubrir la historia detrás
+              </span>
+            </div>
+          </div>
+
+          <ImpactSimulator cartItems={cartItems} />
+          <ProducerTestimonials />
+
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            {filters.map((f) => (
+              <button
+                key={f}
+                onClick={() => setActiveFilter(f)}
+                className="px-5 py-2 rounded-full text-sm font-semibold cursor-pointer transition-all whitespace-nowrap"
+                style={{
+                  background: activeFilter === f ? "#C17A5C" : "rgba(255,255,255,0.08)",
+                  color: activeFilter === f ? "#FFFDF9" : "rgba(245,230,211,0.75)",
+                  border: activeFilter === f ? "1.5px solid #C17A5C" : "1.5px solid rgba(245,230,211,0.25)",
+                }}
+              >
+                {t(`catalog.filters.${f}`)}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {filtered.map((product, i) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                index={i}
+                visible={visible[i]}
+                refCallback={(el) => { refs.current[i] = el; }}
+                onAddToCart={handleAdd}
+                addedId={addedId}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

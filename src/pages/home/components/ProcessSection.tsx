@@ -81,7 +81,7 @@ export default function ProcessSection() {
             <i className="ri-arrow-left-s-line text-xl" style={{ color: "#C17A5C" }} />
           </button>
 
-          {/* Steps */}
+          {/* Steps — desktop: all cards visible; mobile: only active card */}
           <div className="flex items-center justify-center gap-3 flex-1 overflow-hidden">
             {steps.map((step, i) => {
               const isActive = i === active;
@@ -92,10 +92,10 @@ export default function ProcessSection() {
                 <button
                   key={i}
                   onClick={() => setActive(i)}
-                  className="relative flex-shrink-0 cursor-pointer transition-all duration-500 rounded-2xl overflow-hidden flex flex-col items-center justify-end"
+                  className={`relative flex-shrink-0 cursor-pointer transition-all duration-500 rounded-2xl overflow-hidden flex flex-col items-center justify-end ${!isActive ? "hidden md:flex" : "flex"}`}
                   style={{
-                    width: isActive ? "220px" : dist === 1 ? "160px" : "130px",
-                    height: isActive ? "280px" : dist === 1 ? "220px" : "180px",
+                    width: isActive ? "min(220px, 100%)" : dist === 1 ? "160px" : "130px",
+                    height: isActive ? "320px" : dist === 1 ? "220px" : "180px",
                     opacity,
                     border: isActive
                       ? "2px solid rgba(193,122,92,0.9)"
@@ -163,9 +163,9 @@ export default function ProcessSection() {
                   )}
 
                   {/* Text content */}
-                  <div className="relative z-10 w-full px-4 pb-4 text-center">
+                  <div className="relative z-10 w-full px-4 pb-5 text-center">
                     <h4
-                      className="font-bold mb-1"
+                      className="font-bold mb-2"
                       style={{
                         fontFamily: "'Cormorant Garamond', serif",
                         color: "#F5E6D3",
@@ -175,7 +175,7 @@ export default function ProcessSection() {
                       {step.title}
                     </h4>
                     {isActive && (
-                      <p className="text-xs leading-relaxed" style={{ color: "#B8A898" }}>
+                      <p className="text-xs leading-relaxed" style={{ color: "#B8A898", wordBreak: "break-word" }}>
                         {step.desc}
                       </p>
                     )}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface RegionStory {
   id: string;
@@ -72,7 +73,7 @@ const regions: RegionStory[] = [
         title: "La fuerza de Rosa",
         subtitle: "Rosa quedó sola con tres hijos en la selva de Junín. Convirtió el tostado artesanal en su sustento y en el orgullo de su comunidad.",
         tag: "Productora",
-        image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776560358/ee55c184022846a6fa648e52e7cfb174_1_kbkxqz.jpg",
+        image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776560919/search-image_13_lnyasf.jpg, https://res.cloudinary.com/djfmngyl0/image/upload/v1776560755/search-image_11_kf9lnh.jpg",
       },
       {
         title: "Los hijos de Rosa",
@@ -135,6 +136,7 @@ function PeruMapImage({
   popupRegion,
   activePersonIdx,
   onPersonChange,
+  familiesLabel,
 }: {
   regions: RegionStory[];
   activeId: string | null;
@@ -142,6 +144,7 @@ function PeruMapImage({
   popupRegion: RegionStory | null;
   activePersonIdx: number;
   onPersonChange: (idx: number) => void;
+  familiesLabel: string;
 }) {
   const activePerson = popupRegion ? popupRegion.people[activePersonIdx] : null;
 
@@ -363,7 +366,7 @@ function PeruMapImage({
               <i className="ri-map-pin-fill" style={{ color: "#C17A5C", fontSize: "10px" }} />
               <span style={{ color: "#C17A5C", fontSize: "10px", fontWeight: 600 }}>{r.group}</span>
               <span className="ml-auto" style={{ color: "rgba(184,168,152,0.4)", fontSize: "10px" }}>
-                {r.families} familias
+                {r.families} {familiesLabel}
               </span>
             </div>
           </div>
@@ -374,6 +377,7 @@ function PeruMapImage({
 }
 
 export default function StoriesSection() {
+  const { t } = useTranslation();
   const [activeRegionId, setActiveRegionId] = useState<string | null>("ayacucho");
   const [activePersonIdx, setActivePersonIdx] = useState(0);
 
@@ -394,7 +398,7 @@ export default function StoriesSection() {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: `url(https://res.cloudinary.com/djfmngyl0/image/upload/v1776554617/ced4244dae9f93aa0aed64a98c7aa47a_pmrxxu.jpg)`,
+          backgroundImage: `url(https://res.cloudinary.com/djfmngyl0/image/upload/v1776569758/pexels-mario-vasquez-rioja-560959392-16829779_tsgsbb.jpg)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -412,18 +416,18 @@ export default function StoriesSection() {
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-8 h-px" style={{ background: "#C17A5C" }} />
                 <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: "#C17A5C" }}>
-                  Origen
+                  {t("stories.badge")}
                 </span>
               </div>
               <h2
                 className="font-bold leading-tight whitespace-nowrap"
                 style={{ fontFamily: "'Cormorant Garamond', serif", color: "#F5E6D3", fontSize: "3rem" }}
               >
-                Cada región tiene un{" "}
-                <em style={{ color: "#C17A5C", fontStyle: "italic", fontSize: "3.3rem" }}>nombre.</em>
+                {t("stories.mapTitle")}{" "}
+                <em style={{ color: "#C17A5C", fontStyle: "italic", fontSize: "3.3rem" }}>{t("stories.mapTitleEm")}</em>
               </h2>
               <p className="text-sm leading-relaxed mt-3" style={{ color: "#B8A898" }}>
-                Cada punto del mapa es una familia real.
+                {t("stories.mapSubtitle")}
               </p>
             </div>
 
@@ -470,7 +474,7 @@ export default function StoriesSection() {
                         {r.name}
                       </p>
                       <p className="text-xs mt-0.5" style={{ color: isActive ? "#C17A5C" : "rgba(184,168,152,0.6)" }}>
-                        {r.group} · {r.families} familias activas
+                        {r.group} · {r.families} {t("stories.familiesActive")}
                       </p>
                     </div>
                   </button>
@@ -494,13 +498,14 @@ export default function StoriesSection() {
                 popupRegion={activeRegion}
                 activePersonIdx={activePersonIdx}
                 onPersonChange={setActivePersonIdx}
+                familiesLabel={t("stories.families")}
               />
             </div>
 
             {/* Hint */}
             <p className="text-xs text-center mt-4" style={{ color: "rgba(184,168,152,0.45)" }}>
               <i className="ri-cursor-line mr-1" />
-              Haz click en los puntos del mapa para conocer cada historia
+              {t("stories.mapHint")}
             </p>
           </div>
 

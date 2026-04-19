@@ -71,7 +71,7 @@ export default function ProducersSection() {
       </div>
 
       {/* Main showcase */}
-      <div className="relative flex flex-col lg:flex-row w-full z-10" style={{ minHeight: "75vh" }}>
+      <div className="relative flex flex-col lg:flex-row w-full z-10" style={{ minHeight: "70vh" }}>
 
         {/* Left: vertical nav thumbnails */}
         <div className="hidden lg:flex flex-col justify-center gap-3 px-6 xl:px-10 py-8 z-20" style={{ minWidth: "160px" }}>
@@ -138,42 +138,52 @@ export default function ProducersSection() {
 
           {/* Dark gradient overlays */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#1A0E08]/80 via-transparent to-[#1A0E08]/60" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1A0E08]/90 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1A0E08]/95 via-[#1A0E08]/30 to-transparent" />
 
-          {/* Floating badge top-right */}
+          {/* Floating badge top-right — hidden on mobile to avoid clutter */}
           <div
-            className="absolute top-6 right-6 z-10 px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase"
+            className="hidden sm:block absolute top-6 right-6 z-10 px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase"
             style={{ background: "rgba(193,122,92,0.9)", color: "#FFFDF9" }}
           >
             {producer.badge}
           </div>
 
-          {/* Floating stats — top left */}
-          <div className="absolute top-6 left-6 z-10 flex flex-col gap-2">
+          {/* Floating stats — top left, compact on mobile */}
+          <div className="absolute top-4 left-4 z-10 flex flex-col gap-1.5">
             <div
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs"
-              style={{ background: "rgba(26,14,8,0.75)", color: "#C17A5C", backdropFilter: "blur(8px)" }}
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs"
+              style={{ background: "rgba(26,14,8,0.80)", color: "#C17A5C", backdropFilter: "blur(8px)" }}
             >
-              <i className="ri-map-pin-line" />
-              <span>{producer.location}</span>
+              <i className="ri-map-pin-line text-xs" />
+              <span className="truncate max-w-[140px]">{producer.location}</span>
             </div>
             <div
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs"
-              style={{ background: "rgba(26,14,8,0.75)", color: "#C17A5C", backdropFilter: "blur(8px)" }}
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs"
+              style={{ background: "rgba(26,14,8,0.80)", color: "#C17A5C", backdropFilter: "blur(8px)" }}
             >
-              <i className="ri-time-line" />
+              <i className="ri-time-line text-xs" />
               <span>{producer.years} años cultivando</span>
             </div>
           </div>
 
           {/* Bottom content overlay */}
           <div
-            className={`absolute bottom-0 left-0 right-0 z-10 px-8 pb-10 pt-16 transition-all duration-500 ${
+            className={`absolute bottom-0 left-0 right-0 z-10 px-5 md:px-8 pb-6 md:pb-10 pt-12 transition-all duration-500 ${
               animating ? "opacity-0 translate-y-6" : "opacity-100 translate-y-0"
             }`}
           >
+            {/* Badge visible only on mobile here */}
+            <div className="flex items-center gap-2 mb-3 sm:hidden">
+              <span
+                className="text-[10px] tracking-widest uppercase px-3 py-1 rounded-full font-semibold"
+                style={{ background: "rgba(193,122,92,0.9)", color: "#FFFDF9" }}
+              >
+                {producer.badge}
+              </span>
+            </div>
+
             {/* Connector line */}
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-3">
               <div className="h-px flex-1" style={{ background: "rgba(193,122,92,0.4)" }} />
               <span className="text-xs tracking-widest uppercase" style={{ color: "#C17A5C" }}>
                 {producer.region}
@@ -182,19 +192,19 @@ export default function ProducersSection() {
             </div>
 
             <h3
-              className="text-4xl md:text-5xl font-bold mb-3"
+              className="text-3xl md:text-5xl font-bold mb-2 md:mb-3"
               style={{ fontFamily: "'Cormorant Garamond', serif", color: "#FFFDF9" }}
             >
               {producer.name}
             </h3>
-            <p className="text-sm md:text-base leading-relaxed max-w-xl" style={{ color: "#D4C4B0" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "#D4C4B0", maxWidth: "520px" }}>
               {producer.story}
             </p>
 
             {/* Impact chip */}
-            <div className="mt-5 inline-flex items-center gap-2">
+            <div className="mt-4 inline-flex items-center gap-2">
               <div
-                className="w-2 h-2 rounded-full animate-pulse"
+                className="w-2 h-2 rounded-full animate-pulse flex-shrink-0"
                 style={{ background: "#C17A5C" }}
               />
               <span className="text-sm font-semibold" style={{ color: "#C17A5C" }}>
@@ -308,23 +318,62 @@ export default function ProducersSection() {
       </div>
 
       {/* Mobile: bottom thumbnail strip */}
-      <div className="flex lg:hidden justify-center gap-3 px-6 py-6 overflow-x-auto">
-        {producers.map((p, i) => (
-          <button
-            key={p.id}
-            onClick={() => { setAutoplay(false); goTo(i); }}
-            className="flex-shrink-0 relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300"
-            style={{
-              width: i === active ? "72px" : "52px",
-              height: i === active ? "88px" : "64px",
-              border: i === active ? "2px solid #C17A5C" : "2px solid transparent",
-              opacity: i === active ? 1 : 0.5,
-            }}
+      <div className="flex lg:hidden flex-col items-center gap-4 px-5 py-5">
+        {/* Thumbnails row */}
+        <div className="flex justify-center gap-3 overflow-x-auto w-full pb-1">
+          {producers.map((p, i) => (
+            <button
+              key={p.id}
+              onClick={() => { setAutoplay(false); goTo(i); }}
+              className="flex-shrink-0 relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300"
+              style={{
+                width: i === active ? "68px" : "48px",
+                height: i === active ? "84px" : "60px",
+                border: i === active ? "2px solid #C17A5C" : "2px solid rgba(193,122,92,0.2)",
+                opacity: i === active ? 1 : 0.45,
+              }}
+            >
+              <img src={p.image} alt={p.name} className="w-full h-full object-cover object-top" />
+            </button>
+          ))}
+        </div>
+
+        {/* Active producer name + counter */}
+        <div className="flex items-center gap-3">
+          <span
+            className="text-xs tracking-widest uppercase"
+            style={{ color: "rgba(255,255,255,0.3)" }}
           >
-            <img src={p.image} alt={p.name} className="w-full h-full object-cover object-top" />
-          </button>
-        ))}
+            {String(active + 1).padStart(2, "0")} / {String(producers.length).padStart(2, "0")}
+          </span>
+          <div className="w-px h-3" style={{ background: "rgba(193,122,92,0.4)" }} />
+          <span
+            className="text-sm font-semibold"
+            style={{ fontFamily: "'Cormorant Garamond', serif", color: "#F5E6D3" }}
+          >
+            {producer.name}
+          </span>
+        </div>
+
+        {/* Dot navigation */}
+        <div className="flex gap-2 items-center">
+          {producers.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => { setAutoplay(false); goTo(i); }}
+              className="cursor-pointer transition-all duration-300 rounded-full"
+              style={{
+                height: "5px",
+                width: i === active ? "24px" : "5px",
+                background: i === active ? "#C17A5C" : "rgba(255,255,255,0.2)",
+              }}
+            />
+          ))}
+        </div>
       </div>
+
+      {/* Bottom spacing */}
+      <div className="pb-10 lg:pb-14" />
 
       {/* Progress bar */}
       {autoplay && (

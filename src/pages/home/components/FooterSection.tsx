@@ -81,7 +81,7 @@ export default function FooterSection() {
             © 2026 COYA. {t("footer.rights")}
           </p>
           <p className="text-xs" style={{ color: "#5A4A42" }}>
-            Hecho con <span style={{ color: "#C17A5C" }}>♥</span> desde Perú
+            {t("footer.madeIn")} <span style={{ color: "#C17A5C" }}>♥</span> {t("footer.madeInCountry")}
           </p>
         </div>
       </div>

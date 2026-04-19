@@ -24,7 +24,7 @@ export function useCart() {
       }
       return [...prev, { ...product, quantity: 1 }];
     });
-    setIsOpen(true);
+    // No longer auto-opens drawer — handled by AndeanBasketOverlay
   }, []);
 
   const removeItem = useCallback((id: number) => {

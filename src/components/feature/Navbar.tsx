@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import i18n from "@/i18n";
 
 const LANGUAGES = [
@@ -80,6 +81,21 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
           ))}
         </div>
 
+        {/* Empresas link */}
+        <Link
+          to="/empresas"
+          className="hidden md:flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold cursor-pointer transition-all whitespace-nowrap"
+          style={{
+            background: scrolled ? "rgba(44,24,16,0.10)" : "rgba(255,255,255,0.12)",
+            color: scrolled ? "#2C1810" : "#FFFDF9",
+            border: scrolled ? "1px solid rgba(44,24,16,0.20)" : "1px solid rgba(255,255,255,0.25)",
+            letterSpacing: "0.06em",
+          }}
+        >
+          <i className="ri-building-line" style={{ fontSize: "12px" }} />
+          EMPRESAS
+        </Link>
+
         <div className="flex items-center gap-3">
           <div className="relative">
             <button
@@ -156,6 +172,15 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
               {t(link.key)}
             </button>
           ))}
+          <Link
+            to="/empresas"
+            onClick={() => setMobileOpen(false)}
+            className="flex items-center gap-2 py-3 text-sm font-bold cursor-pointer whitespace-nowrap"
+            style={{ color: "#C17A5C" }}
+          >
+            <i className="ri-building-line" />
+            Para Empresas
+          </Link>
         </div>
       )}
     </nav>
