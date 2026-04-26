@@ -6,10 +6,10 @@ type SlideMedia =
   | { type: "image"; src: string };
 
 const SLIDES: SlideMedia[] = [
-  { type: "video", src: "https://res.cloudinary.com/djfmngyl0/video/upload/v1775324136/12000309-hd_1920_1080_30fps_d4okyu.mp4" },
-  { type: "video", src: "https://res.cloudinary.com/djfmngyl0/video/upload/v1774742813/3365440-uhd_3840_2160_30fps_mvpetn.mp4" },
-  { type: "video", src: "https://res.cloudinary.com/djfmngyl0/video/upload/v1776551667/4061791-hd_1920_1080_24fps_bcamn1.mp4" },
-  { type: "video", src: "https://res.cloudinary.com/djfmngyl0/video/upload/v1776551668/15171377_2160_3840_30fps_zpsqtg.mp4" },
+  { type: "video", src: "/Coya/videos/hero1.mp4" },
+  { type: "video", src: "/Coya/videos/hero2.mp4" },
+  { type: "video", src: "/Coya/videos/hero3.mp4" },
+  { type: "video", src: "/Coya/videos/hero4.mp4" },
 ];
 
 interface HeroSectionProps {

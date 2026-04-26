@@ -40,7 +40,7 @@ export default function ProducersSection() {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('https://res.cloudinary.com/djfmngyl0/image/upload/v1775318750/pexels-daniel-dan-47825192-7543116_nwuk2v.jpg')",
+          backgroundImage: "url('/Coya/images/producers-bg.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
