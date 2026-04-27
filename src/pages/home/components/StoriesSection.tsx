@@ -398,7 +398,7 @@ export default function StoriesSection() {
       <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
         <source src="/Coya/videos/hero1.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0" style={{ background: "rgba(18,8,3,0.32)" }} />
+      <div className="absolute inset-0" style={{ background: "rgba(18,8,3,0.48)" }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
