@@ -482,6 +482,7 @@ export default function NewsletterSection() {
                       className="relative overflow-hidden w-full px-4 py-2.5 rounded-xl font-semibold text-sm cursor-pointer whitespace-nowrap transition-all hover:opacity-90"
                       style={{ background: "#C17A5C", color: "#FFFDF9" }}
                     >
+                      {!nlLoading && <span className="catalog-btn-shimmer" />}
                       {nlLoading ? <i className="ri-loader-4-line animate-spin" /> : t("newsletter.button")}
                     </button>
                     <p className="text-xs" style={{ color: "rgba(255,253,249,0.3)" }}>{t("newsletter.privacy")}</p>
@@ -612,13 +613,14 @@ export default function NewsletterSection() {
                     style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", color: "#F5E6D3" }}
                   />
                   <button type="submit" disabled={adoptSubmitting}
-                    className="w-full py-3.5 rounded-xl font-bold cursor-pointer transition-all duration-300 whitespace-nowrap"
+                    className="relative overflow-hidden w-full py-3.5 rounded-xl font-bold cursor-pointer transition-all duration-300 whitespace-nowrap"
                     style={{
                       background: adoptSubmitting ? "rgba(193,122,92,0.5)" : "linear-gradient(135deg, #C17A5C 0%, #A85E3E 100%)",
                       color: "#FFFDF9", letterSpacing: "0.06em",
                       fontFamily: "'Cormorant Garamond', serif", fontSize: "1rem",
                     }}
                   >
+                    {!adoptSubmitting && <span className="catalog-btn-shimmer" />}
                     {adoptSubmitting ? (
                       <span className="flex items-center justify-center gap-2">
                         <i className="ri-loader-4-line" style={{ animation: "spin 1s linear infinite" }} />{t("adopt.sending")}

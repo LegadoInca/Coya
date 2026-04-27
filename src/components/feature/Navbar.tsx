@@ -74,7 +74,7 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
               key={link.key}
               onClick={() => scrollTo(link.id)}
               className="text-sm font-medium cursor-pointer transition-colors whitespace-nowrap"
-              style={{ color: scrolled ? "#2C1810" : "#FFFDF9" }}
+              style={{ color: scrolled ? "#2C1810" : "#FFFDF9", fontFamily: "'Cormorant Garamond', serif", fontSize: "16px", fontWeight: 700, letterSpacing: "0.04em" }}
             >
               {t(link.key)}
             </button>

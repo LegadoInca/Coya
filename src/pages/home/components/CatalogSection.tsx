@@ -417,12 +417,20 @@ export default function CatalogSection({ onAddToCart }: CatalogSectionProps) {
         {/* Background base color */}
         <div className="absolute inset-0 z-0" style={{ background: "transparent" }} />
         {/* Background texture image with parallax */}
-       <img
-  src="/Coya/images/fondos1.jpg"
-  alt=""
-  className="absolute inset-0 z-0 w-full h-full object-cover"
-  style={{ opacity: 0.85 }}
-/>
+        <video
+          autoPlay muted loop playsInline
+          className="absolute inset-0 z-0 w-full h-full object-cover"
+          style={{
+            opacity: 0.85,
+            transform: `translateY(${offset}px)`,
+            willChange: "transform",
+            top: "-10%",
+            bottom: "-10%",
+            height: "120%",
+          }}
+        >
+          <source src="/Coya/videos/hero3.mp4" type="video/mp4" />
+        </video>
         {/* Warm brown tint overlay */}
         <div
           className="absolute inset-0 z-0"
@@ -462,11 +470,32 @@ export default function CatalogSection({ onAddToCart }: CatalogSectionProps) {
               {t("catalog.subtitle")}
             </p>
 
-            {/* Hint for story interaction — inline with subtitle */}
-            <div className="flex items-center justify-center gap-2">
-              <i className="ri-heart-fill" style={{ color: "#F5C87A", fontSize: "18px" }} />
-              <span className="text-sm font-medium" style={{ color: "rgba(245,230,211,0.65)" }}>
-                Toca la imagen de cada producto para descubrir la historia detrás
+            {/* Hint for story interaction — golden shimmer button */}
+            <div className="flex items-center justify-center">
+              <span
+                className="relative inline-flex items-center gap-2 px-5 py-2 rounded-full overflow-hidden cursor-default select-none"
+                style={{
+                  background: "linear-gradient(90deg, #B8812A 0%, #F5C87A 40%, #D4A843 70%, #B8812A 100%)",
+                  backgroundSize: "200% 100%",
+                  border: "1px solid rgba(255,220,120,0.6)",
+                  boxShadow: "0 0 20px rgba(245,200,120,0.35), 0 2px 12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.25)",
+                  color: "#2C1810",
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "13px",
+                  fontWeight: 700,
+                  letterSpacing: "0.04em",
+                }}
+              >
+                <span
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: "linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.45) 50%, transparent 70%)",
+                    animation: "shimmerSweep 2.2s ease-in-out infinite",
+                  }}
+                />
+                <i className="ri-sparkling-2-fill relative z-10" style={{ fontSize: "14px" }} />
+                <span className="relative z-10">Toca la imagen de cada producto para descubrir la historia detrás</span>
+                <i className="ri-sparkling-fill relative z-10" style={{ fontSize: "12px" }} />
               </span>
             </div>
           </div>
