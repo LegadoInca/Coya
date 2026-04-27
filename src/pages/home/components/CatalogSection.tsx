@@ -418,7 +418,7 @@ export default function CatalogSection({ onAddToCart }: CatalogSectionProps) {
         <div className="absolute inset-0 z-0" style={{ background: "transparent" }} />
         {/* Background texture image with parallax */}
        <img
-  src="/Coya/images/product6.jpg"
+  src="/Coya/images/fondos1.jpg"
   alt=""
   className="absolute inset-0 z-0 w-full h-full object-cover"
   style={{ opacity: 0.85 }}
