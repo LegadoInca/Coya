@@ -13,7 +13,7 @@ import NewsletterSection from "./components/NewsletterSection";
 import FooterSection from "./components/FooterSection";
 import TestimonialsSection from "./components/TestimonialsSection";
 
-const BASKET_BTN_IMG = "https://res.cloudinary.com/djfmngyl0/image/upload/v1776575886/7f22ea6d149000f6efd45e2b2c2062e4_zia9of.jpg";
+const BASKET_BTN_IMG = "/Coya/images/canasta.jpeg";
 
 export default function HomePage() {
   const cart = useCart();

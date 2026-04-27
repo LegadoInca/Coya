@@ -299,7 +299,7 @@ export default function CatalogB2B({ lang }: CatalogB2BProps) {
         className="absolute inset-0 w-full h-full object-cover"
         style={{ zIndex: 0 }}
       >
-        <source src="https://res.cloudinary.com/djfmngyl0/video/upload/v1774742813/3365440-uhd_3840_2160_30fps_mvpetn.mp4" type="video/mp4" />
+        <source src="/Coya/videos/hero1.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0" style={{ background: "rgba(8,3,1,0.52)", zIndex: 1 }} />
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(44,24,16,0.25) 0%, rgba(8,3,1,0.05) 50%, rgba(44,24,16,0.25) 100%)", zIndex: 1 }} />

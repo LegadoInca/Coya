@@ -17,7 +17,7 @@ export default function HeroB2B({ lang }: HeroB2BProps) {
       {/* Background video */}
       <video
         ref={videoRef}
-        src="https://res.cloudinary.com/djfmngyl0/video/upload/v1775324136/12000309-hd_1920_1080_30fps_d4okyu.mp4"
+        src="/Coya/videos/hero2.mp4"
         muted
         loop
         playsInline

@@ -16,8 +16,8 @@ const cacaotales: Cacaotal[] = [
     region: "Cusco",
     producer: "Cooperativa Chuncho",
     hectares: 4.2, trees: 1680,
-    image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776578026/search-image_36_kact9a.jpg",
-    producerImage: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776562288/e566784c4facd4b64142124357f929e5_it041c.jpg",
+    image: "/Coya/images/empresas1.jpeg",
+    producerImage: "/Coya/images/maria.jpeg",
     story: "4.2 hectáreas de cacao Chuncho nativo en el Valle de La Convención. Una de las variedades más raras y apreciadas del mundo, en peligro de extinción. Tu adopción financia la preservación genética y el trabajo de 12 familias.",
     need: "Sistema de riego tecnificado y laboratorio de fermentación",
     progress: 42, sponsors: 8,
@@ -28,8 +28,8 @@ const cacaotales: Cacaotal[] = [
     region: "Junín",
     producer: "Asociación Mamani",
     hectares: 6.8, trees: 2720,
-    image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776578027/b014dfc01bd98300d0cedcd650616533_xbsr3z.jpg",
-    producerImage: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776560919/search-image_13_lnyasf.jpg",
+    image: "/Coya/images/empresas2.jpeg",
+    producerImage: "/Coya/images/carmen.jpeg",
     story: "6.8 hectáreas en la Selva Central de Junín. Cacao orgánico certificado con técnicas de agroforestería que preservan la biodiversidad local. 18 familias dependen directamente de este cacaotal.",
     need: "Cajones de fermentación y secadoras solares",
     progress: 28, sponsors: 5,
@@ -40,8 +40,8 @@ const cacaotales: Cacaotal[] = [
     region: "Ucayali",
     producer: "Cooperativa Carmen Flores",
     hectares: 3.5, trees: 1400,
-    image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776578027/search-image_37_femwi5.jpg",
-    producerImage: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776560358/ee55c184022846a6fa648e52e7cfb174_1_kbkxqz.jpg",
+    image: "/Coya/images/empresas3.jpeg",
+    producerImage: "/Coya/images/elias.jpeg",
     story: "3.5 hectáreas a orillas del río Ucayali. Manteca de cacao prensada en frío de calidad cosmética. La cooperativa de Carmen Flores ya llevó agua potable a su comunidad. Tu adopción financia la siguiente fase: energía solar.",
     need: "Paneles solares y prensa de frío para manteca",
     progress: 65, sponsors: 14,
@@ -82,7 +82,7 @@ function PerkPreview({ index, cacaotalName }: { index: number; cacaotalName: str
       <div className="w-60 rounded-2xl overflow-hidden" style={{ background: "linear-gradient(160deg, #1A0D06 0%, #2C1810 100%)", border: "1px solid rgba(193,122,92,0.40)" }}>
         <div className="relative" style={{ height: "130px" }}>
           <img
-            src="https://res.cloudinary.com/djfmngyl0/image/upload/v1776577674/4b98cd626c8ab8fc4d96bbd7e93ea21a_fj7xov.jpg"
+            src="/Coya/images/family-segundo.jpeg"
             alt="Visita al cacaotal"
             className="w-full h-full object-cover"
           />
@@ -272,7 +272,7 @@ function PerkPreview({ index, cacaotalName }: { index: number; cacaotalName: str
     <div className="w-60 rounded-2xl overflow-hidden" style={{ background: "linear-gradient(160deg, #1A0D06 0%, #2C1810 100%)", border: "1px solid rgba(193,122,92,0.40)" }}>
       <div className="relative" style={{ height: "130px" }}>
         <img
-          src="https://res.cloudinary.com/djfmngyl0/image/upload/v1776577677/bb529ff98f5be78c6a782069c3eabe00_nzki3j.jpg"
+          src="/Coya/images/rosa-work.jpeg"
           alt="Caja de bienvenida"
           className="w-full h-full object-cover"
         />
@@ -362,14 +362,11 @@ export default function AdoptB2B({ lang }: AdoptB2BProps) {
   return (
     <section id="adopta-b2b" className="py-16 md:py-24 relative overflow-hidden" style={{ background: "#1A0D06" }}>
       {/* Texture */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: "url(https://res.cloudinary.com/djfmngyl0/image/upload/v1776560424/search-image_3_j5xccy.jpg)",
-          backgroundSize: "cover",
-          opacity: 0.22,
-        }}
-      />
+      <video autoPlay muted loop playsInline
+        className="absolute inset-0 pointer-events-none w-full h-full object-cover"
+        style={{ opacity: 0.22 }}>
+        <source src="/Coya/videos/hero4.mp4" type="video/mp4" />
+      </video>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
         {/* Header */}

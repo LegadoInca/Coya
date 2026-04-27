@@ -11,7 +11,7 @@ export default function FooterB2B({ lang }: FooterB2BProps) {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex flex-col items-center md:items-start gap-1">
           <img
-            src="https://res.cloudinary.com/djfmngyl0/image/upload/v1776563722/04b29615-647c-4c59-ae8a-1c4332b6c9ee_czilup.png"
+            src="/Coya/images/logo.png"
             alt="COYA"
             className="h-10 object-contain"
             style={{ filter: "brightness(0.85)" }}

@@ -153,11 +153,11 @@ export default function ImpactSimulatorB2B({ lang }: ImpactSimulatorB2BProps) {
   }, [dragging, updateFromPointer]);
 
   const metrics: MetricCardB2BProps[] = [
-    { icon: "ri-group-line", value: `${displayFamilies}`, label: t.metrics.families, subtext: familiesSubtext(kg), color: "#F5C87A", image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776575902/864cbb7ad6c5b81c2255c05e0ad7fb36_llu0xk.jpg" },
-    { icon: "ri-money-dollar-circle-line", value: `$${displayRevenue.toLocaleString()}`, label: t.metrics.revenue, subtext: revenueSubtext(kg), color: "#C17A5C", image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776575917/search-image_23_svkngz.jpg" },
-    { icon: "ri-graduation-cap-line", value: `${displayChildren}`, label: t.metrics.children, subtext: childrenSubtext(kg), color: "#A8C5A0", image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776575914/search-image_24_chbptf.jpg" },
-    { icon: "ri-plant-line", value: `${displayTrees}`, label: t.metrics.trees, subtext: treesSubtext(kg), color: "#8FBC8F", image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776575907/search-image_25_bkytcr.jpg" },
-    { icon: "ri-leaf-line", value: `${displayCo2} kg`, label: t.metrics.co2, subtext: co2Subtext(kg), color: "#7EC8A0", image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776578247/search-image_38_utz0dd.jpg" },
+    { icon: "ri-group-line", value: `${displayFamilies}`, label: t.metrics.families, subtext: familiesSubtext(kg), color: "#F5C87A", image: "/Coya/images/impact1.jpeg" },
+    { icon: "ri-money-dollar-circle-line", value: `$${displayRevenue.toLocaleString()}`, label: t.metrics.revenue, subtext: revenueSubtext(kg), color: "#C17A5C", image: "/Coya/images/impact2.jpeg" },
+    { icon: "ri-graduation-cap-line", value: `${displayChildren}`, label: t.metrics.children, subtext: childrenSubtext(kg), color: "#A8C5A0", image: "/Coya/images/family-rosa.jpeg" },
+    { icon: "ri-plant-line", value: `${displayTrees}`, label: t.metrics.trees, subtext: treesSubtext(kg), color: "#8FBC8F", image: "/Coya/images/impact4.jpeg" },
+    { icon: "ri-leaf-line", value: `${displayCo2} kg`, label: t.metrics.co2, subtext: co2Subtext(kg), color: "#7EC8A0", image: "/Coya/images/impact5.jpeg" },
   ];
 
   return (
@@ -165,7 +165,7 @@ export default function ImpactSimulatorB2B({ lang }: ImpactSimulatorB2BProps) {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: "url(https://res.cloudinary.com/djfmngyl0/image/upload/v1775318750/pexels-daniel-dan-47825192-7543116_nwuk2v.jpg)",
+          backgroundImage: "url(/Coya/images/producers-bg.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
