@@ -344,12 +344,13 @@ function ProductCard({ product, visible, refCallback, onAddToCart, addedId }: Pr
           <button
             onClick={() => onAddToCart(product)}
             disabled={product.stock === 0}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold cursor-pointer transition-all whitespace-nowrap"
+            className="relative overflow-hidden flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold cursor-pointer transition-all whitespace-nowrap"
             style={{
               background: addedId === product.id ? "#4A7C59" : product.stock === 0 ? "#E8DCC8" : "#2C1810",
               color: product.stock === 0 ? "#8B6F5E" : "#FFFDF9",
             }}
           >
+                  <span className="catalog-btn-shimmer" aria-hidden="true" />
             {addedId === product.id ? (
               <>
                 <i className="ri-check-line" />
@@ -431,7 +432,7 @@ export default function CatalogSection({ onAddToCart, cartItems = [] }: CatalogS
             height: "120%",
           }}
         >
-          <source src="/Coya/videos/hero3.mp4" type="video/mp4" />
+          <source src="/Coya/videos/hero2.mp4" type="video/mp4" />
         </video>
         {/* Warm brown tint overlay */}
         <div

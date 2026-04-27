@@ -10,3 +10,31 @@
 .stock-blink {
   animation: stock-pulse 1.4s ease-in-out infinite;
 }
+/* Catalog CTA button shimmer */
+@keyframes catalog-shimmer {
+  0% { transform: translateX(-120%) skewX(-20deg); }
+  100% { transform: translateX(320%) skewX(-20deg); }
+}
+
+.catalog-btn-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 220, 150, 0.45) 50%,
+    transparent 100%
+  );
+  animation: catalog-shimmer 2.2s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+@keyframes shimmerSweep {
+  0% { transform: translateX(-100%); }
+  60% { transform: translateX(200%); }
+  100% { transform: translateX(200%); }
+}

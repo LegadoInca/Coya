@@ -161,9 +161,10 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
           </p>
           <button
             onClick={handleCta}
-            className="inline-flex items-center gap-2 px-6 md:px-7 py-3 md:py-3.5 rounded-full font-semibold text-sm cursor-pointer transition-all hover:scale-105 whitespace-nowrap"
+            className="relative overflow-hidden inline-flex items-center gap-2 px-6 md:px-7 py-3 md:py-3.5 rounded-full font-semibold text-sm cursor-pointer transition-all hover:scale-105 whitespace-nowrap"
             style={{ background: "#C17A5C", color: "#FFFDF9" }}
           >
+              <span className="catalog-btn-shimmer" aria-hidden="true" />
             {slide.cta}
             <i className="ri-arrow-right-line" />
           </button>

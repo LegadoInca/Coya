@@ -450,7 +450,7 @@ export default function ImpactSimulator({ cartItems = [] }: ImpactSimulatorProps
           {hasCartItems && isManual && (
             <button
               onClick={() => setIsManual(false)}
-              className="flex items-center gap-1 px-2.5 py-1.5 rounded-full cursor-pointer transition-all"
+              className="relative overflow-hidden flex items-center gap-1 px-2.5 py-1.5 rounded-full cursor-pointer transition-all"
               style={{ background: "rgba(168,197,160,0.15)", border: "1px solid rgba(168,197,160,0.35)" }}
             >
               <i className="ri-refresh-line" style={{ color: "#A8C5A0", fontSize: "11px" }} />

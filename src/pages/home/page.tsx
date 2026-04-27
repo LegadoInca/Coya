@@ -70,7 +70,8 @@ export default function HomePage() {
       </div>
       <StoriesSection />
       <div ref={catalogRef}>
-        <CatalogSection onAddToCart={handleAddToCart} cartItems={cart.items} />
+        <ImpactSection />
+        <CatalogSection onAddToCart={handleAddToCart} />
       </div>
       <TestimonialsSection />
       <ProcessSection />

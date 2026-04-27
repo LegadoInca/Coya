@@ -427,6 +427,37 @@ export default function StoriesSection() {
             </div>
 
             {/* Glass panel — only the region list */}
+{/* Hint button — golden shimmer */}
+            <div className="flex justify-center mb-3">
+              <span
+                className="relative inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full font-semibold cursor-default select-none overflow-hidden"
+                style={{
+                  background: "linear-gradient(90deg, rgba(193,122,92,0.18) 0%, rgba(245,200,120,0.28) 50%, rgba(193,122,92,0.18) 100%)",
+                  border: "1px solid rgba(245,200,120,0.55)",
+                  color: "#F5C87A",
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "12px",
+                  letterSpacing: "0.03em",
+                  boxShadow: "0 0 14px rgba(245,200,120,0.22), inset 0 0 10px rgba(245,200,120,0.06)",
+                }}
+              >
+                {/* Shimmer sweep */}
+                <span
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: "linear-gradient(105deg, transparent 35%, rgba(255,230,140,0.35) 50%, transparent 65%)",
+                    animation: "shimmerSweep 2.4s ease-in-out infinite",
+                  }}
+                />
+                <i className="ri-sparkling-2-fill relative z-10" style={{ fontSize: "13px", color: "#F5C87A" }} />
+                <span className="relative z-10">Toca un lugar para conocer el nombre detrás</span>
+                <i className="ri-sparkling-fill relative z-10" style={{ fontSize: "11px", color: "rgba(245,200,120,0.7)" }} />
+              </span>
+            </div>
+
+            <div
+              className="rounded-2x
+
             <div
               className="rounded-2xl px-4 py-4"
               style={{

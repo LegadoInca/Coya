@@ -479,7 +479,7 @@ export default function NewsletterSection() {
                     />
                     <button
                       type="submit" disabled={nlLoading}
-                      className="w-full px-4 py-2.5 rounded-xl font-semibold text-sm cursor-pointer whitespace-nowrap transition-all hover:opacity-90"
+                      className="relative overflow-hidden w-full px-4 py-2.5 rounded-xl font-semibold text-sm cursor-pointer whitespace-nowrap transition-all hover:opacity-90"
                       style={{ background: "#C17A5C", color: "#FFFDF9" }}
                     >
                       {nlLoading ? <i className="ri-loader-4-line animate-spin" /> : t("newsletter.button")}
