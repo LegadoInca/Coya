@@ -624,7 +624,7 @@ export default function NewsletterSection() {
                         <i className="ri-loader-4-line" style={{ animation: "spin 1s linear infinite" }} />{t("adopt.sending")}
                       </span>
                     ) : (
-                      <><i className="ri-seedling-fill mr-2" />{mode === "monthly" ? `${t("adopt.adoptBtn")} $${amount}/${t("adopt.perMonth")}` : `${t("adopt.contributeBtn")} $${amount} ${t("adopt.now")}`}</>
+                      <><i className="ri-heart-fill mr-2" style={{ color: "#FF4444" }} />GENERAR IMPACTO AHORA</>
                     )}
                   </button>
                 </form>

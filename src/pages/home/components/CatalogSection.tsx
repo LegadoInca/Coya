@@ -2,12 +2,9 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { products } from "@/mocks/products";
 import { CartItem } from "@/hooks/useCart";
-import ImpactSimulator from "./ImpactSimulator";
-import ProducerTestimonials from "./ProducerTestimonials";
 
 interface CatalogSectionProps {
   onAddToCart: (item: Omit<CartItem, "quantity">) => void;
-  cartItems?: CartItem[];
 }
 
 // ── Toast ────────────────────────────────────────────────────────────────────
@@ -371,7 +368,7 @@ function ProductCard({ product, visible, refCallback, onAddToCart, addedId }: Pr
   );
 }
 
-export default function CatalogSection({ onAddToCart, cartItems = [] }: CatalogSectionProps) {
+export default function CatalogSection({ onAddToCart }: CatalogSectionProps) {
   const { t } = useTranslation();
   const [activeFilter, setActiveFilter] = useState("all");
   const [addedId, setAddedId] = useState<number | null>(null);
@@ -482,8 +479,6 @@ export default function CatalogSection({ onAddToCart, cartItems = [] }: CatalogS
             </div>
           </div>
 
-          <ImpactSimulator cartItems={cartItems} />
-          <ProducerTestimonials />
 
           <div className="flex flex-wrap justify-center gap-2 mb-10">
             {filters.map((f) => (

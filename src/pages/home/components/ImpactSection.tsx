@@ -17,10 +17,10 @@ export default function ImpactSection({ cartItems = [] }: ImpactSectionProps) {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: `url('/Coya/images/process3.jpeg')`,
+          backgroundImage: `url('/Coya/images/products-bg.jpeg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          opacity: 0.18,
+          opacity: 0.45,
         }}
       />
       <div
