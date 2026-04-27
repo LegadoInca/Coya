@@ -456,9 +456,6 @@ export default function StoriesSection() {
             </div>
 
             <div
-              className="rounded-2x
-
-            <div
               className="rounded-2xl px-4 py-4"
               style={{
                 background: "rgba(16,7,2,0.55)",
