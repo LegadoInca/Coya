@@ -12,6 +12,7 @@ import ProcessSection from "./components/ProcessSection";
 import NewsletterSection from "./components/NewsletterSection";
 import FooterSection from "./components/FooterSection";
 import TestimonialsSection from "./components/TestimonialsSection";
+import ImpactSection from "./components/ImpactSection";
 
 const BASKET_BTN_IMG = "/Coya/images/canasta.jpeg";
 
