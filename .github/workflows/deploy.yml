@@ -25,7 +25,10 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          BASE_PATH: /Coya
+          BASE_PATH: /Coya/
+
+      - name: Fix 404
+        run: cp out/index.html out/404.html
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
