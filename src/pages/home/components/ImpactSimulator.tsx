@@ -440,11 +440,35 @@ export default function ImpactSimulator({ cartItems = [] }: ImpactSimulatorProps
           >
             Tu Impacto Real
           </h3>
-          <p className="text-xs mt-0.5" style={{ color: "rgba(245,230,211,0.55)" }}>
-            {isCartMode
-              ? "Calculado con tu canasta actual — mueve el slider para explorar"
-              : "Mueve el slider y descubre el impacto de cada producto que eliges"}
-          </p>
+          <div className="mt-1.5">
+            <span
+              className="relative inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full overflow-hidden"
+              style={{
+                background: "linear-gradient(90deg, rgba(193,122,92,0.18) 0%, rgba(245,200,120,0.28) 50%, rgba(193,122,92,0.18) 100%)",
+                border: "1px solid rgba(245,200,120,0.55)",
+                color: "#F5C87A",
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: "12px",
+                letterSpacing: "0.03em",
+                boxShadow: "0 0 14px rgba(245,200,120,0.22), inset 0 0 10px rgba(245,200,120,0.06)",
+              }}
+            >
+              <span
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: "linear-gradient(105deg, transparent 35%, rgba(255,230,140,0.35) 50%, transparent 65%)",
+                  animation: "shimmerSweep 2.4s ease-in-out infinite",
+                }}
+              />
+              <i className="ri-sparkling-2-fill relative z-10" style={{ fontSize: "13px", color: "#F5C87A" }} />
+              <span className="relative z-10">
+                {isCartMode
+                  ? "Calculado con tu canasta actual — mueve el slider para explorar"
+                  : "Mueve el slider y descubre el impacto de cada producto que eliges"}
+              </span>
+              <i className="ri-sparkling-fill relative z-10" style={{ fontSize: "11px", color: "rgba(245,200,120,0.7)" }} />
+            </span>
+          </div>
         </div>
         <div className="flex items-center gap-2">
           {hasCartItems && isManual && (
