@@ -431,7 +431,7 @@ export default function CatalogSection({ onAddToCart, cartItems = [] }: CatalogS
             height: "120%",
           }}
         >
-          <source src="/Coya/videos/hero2.mp4" type="video/mp4" />
+          <source src="/Coya/videos/hero3.mp4" type="video/mp4" />
         </video>
         {/* Warm brown tint overlay */}
         <div
