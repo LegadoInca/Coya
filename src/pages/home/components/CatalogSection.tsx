@@ -417,20 +417,12 @@ export default function CatalogSection({ onAddToCart }: CatalogSectionProps) {
         {/* Background base color */}
         <div className="absolute inset-0 z-0" style={{ background: "transparent" }} />
         {/* Background texture image with parallax */}
-        <video
-          autoPlay muted loop playsInline
-          className="absolute inset-0 z-0 w-full h-full object-cover"
-          style={{
-            opacity: 0.85,
-            transform: `translateY(${offset}px)`,
-            willChange: "transform",
-            top: "-10%",
-            bottom: "-10%",
-            height: "120%",
-          }}
-        >
-          <source src="/Coya/videos/hero3.mp4" type="video/mp4" />
-        </video>
+        <img
+  src="/Coya/images/fondos1.jpg"
+  alt=""
+  className="absolute inset-0 z-0 w-full h-full object-cover"
+  style={{ opacity: 0.85 }}
+/>
         {/* Warm brown tint overlay */}
         <div
           className="absolute inset-0 z-0"
