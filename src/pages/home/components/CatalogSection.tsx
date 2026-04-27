@@ -437,7 +437,7 @@ export default function CatalogSection({ onAddToCart, cartItems = [] }: CatalogS
         <div
           className="absolute inset-0 z-0"
           style={{
-            background: "rgba(62,32,12,0.55)",
+            background: "rgba(62,32,12,0.30)",
           }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
