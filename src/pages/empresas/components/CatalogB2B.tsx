@@ -292,16 +292,14 @@ export default function CatalogB2B({ lang }: CatalogB2BProps) {
 
   return (
     <section id="catalogo-b2b" className="relative py-16 md:py-24 overflow-hidden">
-      {/* Video background */}
-      <video
-        ref={videoRef}
-        autoPlay muted loop playsInline
-        className="absolute inset-0 w-full h-full object-cover"
+      {/* Image background */}
+      <img
+        src="/Coya/images/fondos.jpeg"
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover object-center"
         style={{ zIndex: 0 }}
-      >
-        <source src="/Coya/videos/hero1.mp4" type="video/mp4" />
-      </video>
-      <div className="absolute inset-0" style={{ background: "rgba(8,3,1,0.52)", zIndex: 1 }} />
+      />
+      <div className="absolute inset-0" style={{ background: "rgba(8,3,1,0.38)", zIndex: 1 }} />
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(44,24,16,0.25) 0%, rgba(8,3,1,0.05) 50%, rgba(44,24,16,0.25) 100%)", zIndex: 1 }} />
 
       <div className="relative max-w-7xl mx-auto px-4 md:px-8" style={{ zIndex: 2 }}>

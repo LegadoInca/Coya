@@ -417,13 +417,13 @@ export default function CatalogSection({ onAddToCart, cartItems = [] }: CatalogS
       <ToastContainer toasts={toasts} onDismiss={dismissToast} />
       <section ref={sectionRef} id="catalog" className="relative py-12 md:py-16 overflow-hidden" style={{ background: "transparent" }}>
         {/* Background base color */}
-        <div className="absolute inset-0 z-0" style={{ background: "#F2E8D5" }} />
+        <div className="absolute inset-0 z-0" style={{ background: "transparent" }} />
         {/* Background texture image with parallax */}
         <video
           autoPlay muted loop playsInline
           className="absolute inset-0 z-0 w-full h-full object-cover"
           style={{
-            opacity: 0.45,
+            opacity: 0.85,
             transform: `translateY(${offset}px)`,
             willChange: "transform",
             top: "-10%",
@@ -431,13 +431,13 @@ export default function CatalogSection({ onAddToCart, cartItems = [] }: CatalogS
             height: "120%",
           }}
         >
-          <source src="/Coya/videos/hero1.mp4" type="video/mp4" />
+          <source src="/Coya/videos/hero2.mp4" type="video/mp4" />
         </video>
         {/* Warm brown tint overlay */}
         <div
           className="absolute inset-0 z-0"
           style={{
-            background: "rgba(60,30,10,0.15)",
+            background: "rgba(60,30,10,0.05)",
           }}
         />
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
