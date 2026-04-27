@@ -29,13 +29,13 @@ const regions: RegionStory[] = [
         title: "El renacer de María",
         subtitle: "María recuperó su parcela y hoy lidera una cooperativa de mujeres cacaoteras en el Valle de La Convención.",
         tag: "Productora",
-        image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776562288/e566784c4facd4b64142124357f929e5_it041c.jpg",
+        image: "/Coya/images/maria.jpeg",
       },
       {
         title: "Los hijos de María",
         subtitle: "Sus tres hijos crecen entre cacaotales y sueñan con estudiar agronomía para mejorar la cosecha familiar.",
         tag: "Su familia",
-        image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776562290/25c37853594fb2280f9aa9681f936840_cow5ay.jpg",
+        image: "/Coya/images/family-maria.jpeg",
       },
     ],
   },
@@ -51,13 +51,13 @@ const regions: RegionStory[] = [
         title: "El nuevo comienzo de Segundo",
         subtitle: "Segundo revivió sus cacaotales abandonados y hoy exporta a Europa, dando futuro a su familia en las alturas de Ayacucho.",
         tag: "Productor",
-        image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776560755/search-image_11_kf9lnh.jpg",
+        image: "/Coya/images/segundo.jpeg",
       },
       {
         title: "La historia de Félix",
         subtitle: "Félix aprendió a fermentar el cacao a los 14 años. Hoy a los 22 dirige el proceso de secado de toda la cooperativa.",
         tag: "Su familia",
-        image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776560491/search-image_4_pqm4y3.jpg",
+        image: "/Coya/images/family-segundo.jpeg",
       },
     ],
   },
@@ -73,13 +73,13 @@ const regions: RegionStory[] = [
         title: "La fuerza de Rosa",
         subtitle: "Rosa quedó sola con tres hijos en la selva de Junín. Convirtió el tostado artesanal en su sustento y en el orgullo de su comunidad.",
         tag: "Productora",
-        image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776560919/search-image_13_lnyasf.jpg, https://res.cloudinary.com/djfmngyl0/image/upload/v1776560755/search-image_11_kf9lnh.jpg",
+        image: "/Coya/images/rosa.jpeg",
       },
       {
         title: "Los hijos de Rosa",
         subtitle: "Sus hijos ayudan en la cosecha cada fin de semana. El mayor, Andrés, ya sabe distinguir el cacao maduro solo por el olor.",
         tag: "Su familia",
-        image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776562290/25c37853594fb2280f9aa9681f936840_cow5ay.jpg",
+        image: "/Coya/images/family-rosa.jpeg",
       },
     ],
   },
@@ -95,13 +95,13 @@ const regions: RegionStory[] = [
         title: "El sueño de Elías",
         subtitle: "Elías no pudo estudiar agronomía, pero convirtió el campo en su laboratorio. Hoy exporta a Europa y financia los estudios de sus sobrinos.",
         tag: "Productor",
-        image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776560756/search-image_12_ikzaw2.jpg",
+        image: "/Coya/images/elias.jpeg",
       },
       {
         title: "La historia de Lucía",
         subtitle: "Lucía es la contadora de la cooperativa de San Martín. A sus 28 años gestiona los ingresos de 15 familias cacaoteras.",
         tag: "Su familia",
-        image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776562294/778df738557a2cda788b259a8094d1aa_ncwt2z.jpg",
+        image: "/Coya/images/family-elias.jpg",
       },
     ],
   },
@@ -117,13 +117,13 @@ const regions: RegionStory[] = [
         title: "Las manos de Carmen",
         subtitle: "Carmen fundó una cooperativa ribereña en Ucayali. Su manteca de cacao hoy llega a marcas de cosmética en Europa.",
         tag: "Productora",
-        image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776560919/search-image_13_lnyasf.jpg",
+        image: "/Coya/images/carmen.jpeg",
       },
       {
         title: "Los niños del río",
         subtitle: "Los hijos de las familias de Ucayali crecen junto al río. Gracias a la cooperativa de Carmen, su comunidad tiene agua potable.",
         tag: "Su familia",
-        image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776562290/25c37853594fb2280f9aa9681f936840_cow5ay.jpg",
+        image: "/Coya/images/family-rosa.jpeg",
       },
     ],
   },
@@ -152,7 +152,7 @@ function PeruMapImage({
     <div className="relative w-full h-full">
       {/* Peru map image — warm silhouette */}
       <img
-        src="https://res.cloudinary.com/djfmngyl0/image/upload/v1776561016/58e9ceb9-87e6-40b2-b113-c4a6305bf31e_iwupfo.png"
+        src="/Coya/images/mapa.png"
         alt="Mapa del Perú"
         className="w-full h-full object-contain"
         style={{
@@ -395,14 +395,9 @@ export default function StoriesSection() {
   return (
     <section id="story" className="relative py-2 md:py-4 overflow-hidden">
       {/* Background */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url(https://res.cloudinary.com/djfmngyl0/image/upload/v1776569758/pexels-mario-vasquez-rioja-560959392-16829779_tsgsbb.jpg)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
+      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+        <source src="/Coya/videos/hero1.mp4" type="video/mp4" />
+      </video>
       <div className="absolute inset-0" style={{ background: "rgba(18,8,3,0.32)" }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
