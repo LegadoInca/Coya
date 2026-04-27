@@ -28,7 +28,7 @@ const producers: Producer[] = [
     name: "Rosa Quispe",
     region: "Ayacucho",
     role: "Productora de cacao fino",
-    image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776563427/bf4815f8e85dba193b6a10a5167b2812_natbdl.jpg",
+    image: "/Coya/images/rosa.jpeg",
     need: "Balanza de precisión para fermentación",
     progress: 68,
     adopters: 14,
@@ -38,7 +38,7 @@ const producers: Producer[] = [
     name: "Luis Mamani",
     region: "Junín",
     role: "Maestro fermentador",
-    image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776563427/search-image_21_hqnltd.jpg",
+    image: "/Coya/images/elias.jpeg",
     need: "Cajones de madera para fermentación",
     progress: 45,
     adopters: 9,
@@ -48,7 +48,7 @@ const producers: Producer[] = [
     name: "Carmen Huallpa",
     region: "San Martín",
     role: "Líder de cooperativa",
-    image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776563430/search-image_20_lnh2rg.jpg",
+    image: "/Coya/images/carmen.jpeg",
     need: "Secadora solar para cacao",
     progress: 20,
     adopters: 4,
@@ -364,15 +364,10 @@ export default function NewsletterSection() {
 
   return (
     <section id="contact" className="relative overflow-hidden">
-      {/* Shared background image */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url(https://res.cloudinary.com/djfmngyl0/image/upload/v1776563643/search-image_22_jpesdk.jpg)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center top",
-        }}
-      />
+      {/* Shared background video */}
+      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+        <source src="/Coya/videos/hero4.mp4" type="video/mp4" />
+      </video>
       <div className="absolute inset-0" style={{ background: "rgba(20,8,2,0.78)" }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-20 md:pt-28 pb-10 md:pb-14">

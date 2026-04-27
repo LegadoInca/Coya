@@ -6,7 +6,7 @@ const testimonials = [
     id: 1,
     name: "Sophie Müller",
     location: "Berlín, Alemania",
-    avatar: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776563123/a023b09f226d986b3467f597f42dae6f_lgxd5p.jpg",
+    avatar: "/Coya/images/avatar1.jpg",
     text: "Compré una manta andina y quedé sin palabras. La calidad es extraordinaria, pero lo que más me llegó fue la historia de María. Saber que mi compra ayuda a su familia hace que el producto valga el doble.",
     stars: 5,
   },
@@ -14,7 +14,7 @@ const testimonials = [
     id: 2,
     name: "Emma Thompson",
     location: "Londres, Reino Unido",
-    avatar: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776563122/2bff1bf4d60dae695b9c40e9d7357c81_wncs21.jpg",
+    avatar: "/Coya/images/avatar3.jpg",
     text: "The earrings I bought are stunning, but what truly moved me was reading about the artisan who made them. I feel connected to a real story every time I wear them. Absolutely beautiful and meaningful.",
     stars: 5,
   },
@@ -22,7 +22,7 @@ const testimonials = [
     id: 3,
     name: "James O\'Brien",
     location: "Dublín, Irlanda",
-    avatar: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776563097/5c38c7ba39008d6bd40e141f53bd791c_dz8jdu.jpg",
+    avatar: "/Coya/images/avatar2.jpg",
     text: "I bought a friend a gift and they couldn\'t stop talking about it. The packaging, the story card, the quality — everything felt intentional and beautiful. This is what conscious shopping looks like.",
     stars: 5,
   },
@@ -30,7 +30,7 @@ const testimonials = [
     id: 4,
     name: "Fiona Hernández",
     location: "Ciudad de México, México",
-    avatar: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776563097/49c9046fe95f72b159f80d83c67d29d4_lnehtn.jpg",
+    avatar: "/Coya/images/avatar1.jpg",
     text: "El chocolate ceremonial es una experiencia espiritual. Cada sorbo me conecta con algo más profundo. Saber que viene directamente de comunidades andinas le da un sabor completamente diferente.",
     stars: 5,
   },
@@ -38,7 +38,7 @@ const testimonials = [
     id: 5,
     name: "Luca Bianchi",
     location: "Milán, Italia",
-    avatar: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776563097/9e826c618a9df4ce90d55ed97435a4f2_hepkyp.jpg",
+    avatar: "/Coya/images/avatar2.jpg",
     text: "Ho ordinato i nibs di cacao e sono rimasto senza parole. La qualità è eccezionale e sapere che ogni acquisto supporta direttamente le famiglie produttrici rende tutto ancora più speciale.",
     stars: 5,
   },
@@ -99,7 +99,7 @@ export default function TestimonialsSection() {
       {/* Video background */}
       <video
         className="absolute inset-0 w-full h-full object-cover z-0"
-        src="https://res.cloudinary.com/djfmngyl0/video/upload/v1773436299/14701095_1920_1080_30fps_amrqfg.mp4"
+        src="/Coya/videos/hero3.mp4"
         autoPlay
         loop
         muted

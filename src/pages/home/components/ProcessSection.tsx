@@ -10,11 +10,11 @@ const STEP_ICONS = [
 ];
 
 const STEP_IMAGES = [
-  "https://res.cloudinary.com/djfmngyl0/image/upload/v1776560495/search-image_5_vomacm.jpg",
-  "https://res.cloudinary.com/djfmngyl0/image/upload/v1776560424/search-image_3_j5xccy.jpg",
-  "https://res.cloudinary.com/djfmngyl0/image/upload/v1776560536/search-image_7_fnixmz.jpg",
-  "https://res.cloudinary.com/djfmngyl0/image/upload/v1776560597/search-image_9_r6omdu.jpg",
-  "https://res.cloudinary.com/djfmngyl0/image/upload/v1776562867/search-image_16_ujjvmu.jpg",
+  "/Coya/images/segundo-work.jpeg",
+  "/Coya/images/rosa-work.jpeg",
+  "/Coya/images/carmen-work.jpeg",
+  "/Coya/images/family-segundo.jpeg",
+  "/Coya/images/coya3.jpeg",
 ];
 
 export default function ProcessSection() {
@@ -33,7 +33,7 @@ export default function ProcessSection() {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('https://res.cloudinary.com/djfmngyl0/image/upload/v1775318750/pexels-daniel-dan-47825192-7543116_nwuk2v.jpg')",
+          backgroundImage: "url('/Coya/images/producers-bg.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

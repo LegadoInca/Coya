@@ -9,7 +9,7 @@ export default function FooterSection() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           <div>
             <img
-              src="https://res.cloudinary.com/djfmngyl0/image/upload/v1776563722/04b29615-647c-4c59-ae8a-1c4332b6c9ee_czilup.png"
+              src="/Coya/images/logo.png"
               alt="COYA"
               className="h-12 object-contain mb-4"
             />
@@ -68,7 +68,7 @@ export default function FooterSection() {
             </h5>
             <div className="rounded-xl overflow-hidden" style={{ height: "140px" }}>
               <img
-                src="https://res.cloudinary.com/djfmngyl0/image/upload/v1776560495/search-image_5_vomacm.jpg"
+                src="/Coya/images/maria-work.jpeg"
                 alt="COYA Cacao"
                 className="w-full h-full object-cover"
               />

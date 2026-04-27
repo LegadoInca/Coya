@@ -365,7 +365,7 @@ export default function ImpactSimulator({ cartItems = [] }: ImpactSimulatorProps
       label: "Familias productoras beneficiadas",
       subtext: familiesSubtext(units),
       color: "#F5C87A",
-      image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776575902/864cbb7ad6c5b81c2255c05e0ad7fb36_llu0xk.jpg",
+      image: "/Coya/images/impact1.jpeg",
     },
     {
       icon: "ri-money-dollar-circle-line",
@@ -373,7 +373,7 @@ export default function ImpactSimulator({ cartItems = [] }: ImpactSimulatorProps
       label: "USD directos al productor",
       subtext: revenueSubtext(units),
       color: "#C17A5C",
-      image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776575917/search-image_23_svkngz.jpg",
+      image: "/Coya/images/impact2.jpeg",
     },
     {
       icon: "ri-graduation-cap-line",
@@ -381,7 +381,7 @@ export default function ImpactSimulator({ cartItems = [] }: ImpactSimulatorProps
       label: "Niños con educación apoyada",
       subtext: childrenSubtext(units),
       color: "#A8C5A0",
-      image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776575914/search-image_24_chbptf.jpg",
+      image: "/Coya/images/family-rosa.jpeg",
     },
     {
       icon: "ri-plant-line",
@@ -389,7 +389,7 @@ export default function ImpactSimulator({ cartItems = [] }: ImpactSimulatorProps
       label: "Árboles de cacao preservados",
       subtext: treesSubtext(units),
       color: "#8FBC8F",
-      image: "https://res.cloudinary.com/djfmngyl0/image/upload/v1776575907/search-image_25_bkytcr.jpg",
+      image: "/Coya/images/impact4.jpeg",
     },
   ];
 

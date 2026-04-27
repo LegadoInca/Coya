@@ -419,13 +419,10 @@ export default function CatalogSection({ onAddToCart, cartItems = [] }: CatalogS
         {/* Background base color */}
         <div className="absolute inset-0 z-0" style={{ background: "#F2E8D5" }} />
         {/* Background texture image with parallax */}
-        <div
-          className="absolute inset-0 z-0"
+        <video
+          autoPlay muted loop playsInline
+          className="absolute inset-0 z-0 w-full h-full object-cover"
           style={{
-            backgroundImage: "url('https://res.cloudinary.com/djfmngyl0/image/upload/v1775319032/pexels-pincalo-15507929_hdhn6r.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
             opacity: 0.45,
             transform: `translateY(${offset}px)`,
             willChange: "transform",
@@ -433,7 +430,9 @@ export default function CatalogSection({ onAddToCart, cartItems = [] }: CatalogS
             bottom: "-10%",
             height: "120%",
           }}
-        />
+        >
+          <source src="/Coya/videos/hero1.mp4" type="video/mp4" />
+        </video>
         {/* Warm brown tint overlay */}
         <div
           className="absolute inset-0 z-0"
