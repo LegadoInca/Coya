@@ -510,7 +510,7 @@ export default function StoriesSection() {
             {/* Map container — matches left column height */}
             <div
               className="relative w-full"
-              style={{ maxWidth: "620px", height: "700px" }}
+              style={{ maxWidth: "500px", height: "580px" }}
             >
               <PeruMapImage
                 regions={regions}
