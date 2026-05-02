@@ -457,7 +457,7 @@ export default function StoriesSection() {
               }}
             >
             {/* Region list */}
-            <div className="flex flex-col gap-1">
+            <div className="grid grid-cols-2 gap-1">
               {regions.map((r) => {
                 const isActive = activeRegionId === r.id;
                 return (
