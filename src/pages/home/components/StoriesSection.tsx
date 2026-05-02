@@ -327,12 +327,6 @@ function PeruMapImage({
               >
                 {activePerson.title}
               </p>
-              <p
-                className="leading-relaxed"
-                style={{ color: "rgba(184,168,152,0.80)", fontSize: "10.5px" }}
-              >
-                {activePerson.subtitle}
-              </p>
             </div>
 
             {/* Tabs */}
