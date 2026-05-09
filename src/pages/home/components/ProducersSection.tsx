@@ -71,7 +71,7 @@ export default function ProducersSection() {
       </div>
 
       {/* Main showcase */}
-      <div className="relative flex flex-col lg:flex-row w-full z-10" style={{ minHeight: "70vh" }}>
+      <div className="relative flex flex-col lg:flex-row z-10" style={{ minHeight: "70vh", maxWidth: "65%" }}>
 
         {/* Left: vertical nav thumbnails */}
         <div className="hidden lg:flex flex-col justify-center gap-3 px-6 xl:px-10 py-8 z-20" style={{ minWidth: "160px" }}>
