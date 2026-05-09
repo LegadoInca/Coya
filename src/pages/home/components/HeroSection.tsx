@@ -106,67 +106,64 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
 
-      {/* Brand name centered at top */}
-      <div className="absolute top-0 left-0 right-0 flex flex-col items-center pt-8 md:pt-10 z-10 pointer-events-none">
-        <span
-          className="tracking-[0.4em] uppercase text-[10px] md:text-xs font-light mb-1"
-          style={{ color: "#C17A5C", fontFamily: "'Cormorant Garamond', serif" }}
-        >
-          ✦ &nbsp; Cacao Peruano &nbsp; ✦
-        </span>
-        <h1
-          className="text-4xl md:text-6xl font-bold"
-          style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            color: "#FFFDF9",
-            letterSpacing: "0.3em",
-            textShadow: "0 2px 24px rgba(0,0,0,0.35)",
-          }}
-        >
-          COYA
-        </h1>
-      </div>
-
-      {/* Slide content */}
+      {/* Slide content — left-aligned like Holzen */}
       <div
-        className={`absolute inset-0 flex flex-col justify-end md:justify-center px-5 md:px-16 lg:px-24 pb-20 md:pb-0 transition-all duration-500 z-10 ${
+        className={`absolute inset-0 flex flex-col justify-center px-5 md:px-16 lg:px-24 transition-all duration-500 z-10 ${
           animating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
         }`}
       >
-        <div className="max-w-2xl">
-          <div className="flex items-center gap-2 mb-4 md:mb-6">
-            <span className="w-6 md:w-8 h-px" style={{ background: "#C17A5C" }} />
-            <span className="text-xs md:text-sm font-semibold tracking-widest uppercase" style={{ color: "#C17A5C" }}>
-              {t("hero.badge")}
-            </span>
-          </div>
+        <div className="max-w-3xl">
+          {/* Eyebrow */}
+          <span
+            className="tracking-[0.4em] uppercase text-[10px] md:text-xs font-light mb-3 md:mb-4 inline-block"
+            style={{ color: "#C17A5C", fontFamily: "'Cormorant Garamond', serif" }}
+          >
+            ✦ &nbsp; Cacao Peruano &nbsp; ✦
+          </span>
 
+          {/* COYA grande */}
+          <h1
+            className="font-bold leading-none mb-4 md:mb-6"
+            style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              color: "#FFFDF9",
+              letterSpacing: "0.15em",
+              fontSize: "clamp(3.5rem, 10vw, 8rem)",
+              textShadow: "0 2px 24px rgba(0,0,0,0.4)",
+            }}
+          >
+            COYA
+          </h1>
+
+          {/* Subtítulo en 2 líneas */}
           <p
-            className="text-3xl md:text-7xl font-bold leading-tight mb-1 md:mb-2"
-            style={{ fontFamily: "'Cormorant Garamond', serif", color: "#FFFDF9" }}
+            className="font-bold leading-tight mb-1"
+            style={{ fontFamily: "'Cormorant Garamond', serif", color: "#FFFDF9", fontSize: "clamp(1.2rem, 3vw, 2.5rem)" }}
           >
             {slide.title}
           </p>
           <h2
-            className="text-2xl md:text-6xl font-light leading-tight mb-4 md:mb-6"
-            style={{ fontFamily: "'Cormorant Garamond', serif", color: "#F5E6D3", opacity: 0.9 }}
+            className="font-light leading-tight mb-5 md:mb-6"
+            style={{ fontFamily: "'Cormorant Garamond', serif", color: "#F5E6D3", opacity: 0.9, fontSize: "clamp(1rem, 2.4vw, 2rem)" }}
           >
             {slide.subtitle}
           </h2>
+
           <p
-            className="text-sm md:text-lg max-w-lg mb-6 md:mb-8 leading-relaxed"
+            className="text-sm md:text-base max-w-lg mb-6 md:mb-8 leading-relaxed"
             style={{ color: "#E8DCC8", opacity: 0.9 }}
           >
             {slide.desc}
           </p>
+
           <button
             onClick={handleCta}
-            className="relative overflow-hidden inline-flex items-center gap-2 px-6 md:px-7 py-3 md:py-3.5 rounded-full font-semibold text-sm cursor-pointer transition-all hover:scale-105 whitespace-nowrap"
-            style={{ background: "#C17A5C", color: "#FFFDF9" }}
+            className="relative overflow-hidden inline-flex items-center gap-2 px-6 md:px-7 py-3 md:py-3.5 rounded-full font-semibold text-sm cursor-pointer transition-all hover:scale-105 whitespace-nowrap group"
+            style={{ background: "#C17A5C", color: "#FFFDF9", boxShadow: "0 0 22px rgba(193,122,92,0.45)" }}
           >
-              <span className="catalog-btn-shimmer" aria-hidden="true" />
-            {slide.cta}
-            <i className="ri-arrow-right-line" />
+            <span className="relative z-10">{slide.cta}</span>
+            <i className="relative z-10 ri-arrow-right-line" />
+            <span className="absolute top-0 bottom-0 w-1/3 animate-shimmer bg-gradient-to-r from-transparent via-white/40 to-transparent" />
           </button>
         </div>
       </div>
