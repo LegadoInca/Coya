@@ -113,13 +113,25 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
         }`}
       >
         <div className="max-w-3xl">
-          {/* Eyebrow */}
-          <span
-            className="tracking-[0.4em] uppercase text-[10px] md:text-xs font-light mb-3 md:mb-4 inline-block"
-            style={{ color: "#C17A5C", fontFamily: "'Cormorant Garamond', serif" }}
-          >
-            ✦ &nbsp; Cacao Peruano &nbsp; ✦
-          </span>
+          {/* Eyebrow pill — golden with shimmer */}
+          <div className="mb-4 md:mb-5">
+            <div
+              className="relative overflow-hidden inline-flex items-center gap-2 px-5 py-1.5 rounded-full text-xs md:text-sm tracking-[0.3em] uppercase cursor-default select-none"
+              style={{
+                background: "linear-gradient(135deg, #B8864A 0%, #E0B870 50%, #B8864A 100%)",
+                color: "#1A0E08",
+                fontFamily: "'Cormorant Garamond', serif",
+                fontWeight: 700,
+                boxShadow: "0 0 22px rgba(224,184,112,0.45)",
+              }}
+            >
+              <span>✦</span>
+              <span className="relative z-10">Cacao Peruano</span>
+              <span>✦</span>
+              <span className="absolute top-0 bottom-0 w-1/3 animate-shimmer bg-gradient-to-r from-transparent via-white/45 to-transparent" />
+            </div>
+          </div>
+
 
           {/* COYA grande */}
           <h1
