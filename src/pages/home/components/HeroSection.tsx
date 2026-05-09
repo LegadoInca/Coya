@@ -127,8 +127,9 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
             style={{
               fontFamily: "'Cormorant Garamond', serif",
               color: "#FFFDF9",
-              letterSpacing: "0.15em",
-              fontSize: "clamp(3.5rem, 10vw, 8rem)",
+              letterSpacing: "0.05em",
+              fontSize: "clamp(3rem, 8.5vw, 7rem)",
+              fontWeight: 900,
               textShadow: "0 2px 24px rgba(0,0,0,0.4)",
             }}
           >
