@@ -155,7 +155,7 @@ export default function ProducersSection() {
               style={{ background: "rgba(26,14,8,0.80)", color: "#C17A5C", backdropFilter: "blur(8px)" }}
             >
               <i className="ri-map-pin-line text-xs" />
-              <span className="truncate max-w-[140px]">{producer.location}</span>
+              <span className="truncate max-w-[120px]">{producer.location}</span>
             </div>
             <div
               className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs"
@@ -197,7 +197,7 @@ export default function ProducersSection() {
             >
               {producer.name}
             </h3>
-            <p className="text-sm leading-relaxed" style={{ color: "#D4C4B0", maxWidth: "520px" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "#D4C4B0", maxWidth: "480px", overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 4, WebkitBoxOrient: "vertical" }}>
               {producer.story}
             </p>
 
