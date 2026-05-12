@@ -502,56 +502,6 @@ export default function NewsletterSection() {
                 {STATS.map((s) => <CircularStat key={s.label} stat={s} animate={statsVisible} />)}
               </div>
 
-              {/* Mode toggle */}
-              <div className="flex gap-2 mb-5">
-                {(["monthly", "once"] as const).map((m) => (
-                  <button key={m} onClick={() => {
-                    setMode(m);
-                    setAmount(m === "once" ? 200 : 40);
-                  }}
-                    className="flex-1 py-2.5 rounded-full text-sm font-semibold cursor-pointer transition-all duration-200 whitespace-nowrap"
-                    style={{
-                      background: mode === m ? "#C17A5C" : "rgba(255,255,255,0.06)",
-                      color: mode === m ? "#FFFDF9" : "rgba(255,253,249,0.5)",
-                      border: mode === m ? "none" : "1px solid rgba(255,255,255,0.10)",
-                    }}
-                  >
-                    {m === "monthly" ? t("adopt.monthly") : t("adopt.once")}
-                  </button>
-                ))}
-              </div>
-
-              {/* Amount buttons */}
-              <div className="grid grid-cols-3 gap-2 mb-4">
-                {(mode === "monthly" ? AMOUNTS_MONTHLY : AMOUNTS_ONCE).map((a) => (
-                  <button key={a} onClick={() => setAmount(a)}
-                    className="py-2.5 rounded-xl font-bold cursor-pointer transition-all duration-200 whitespace-nowrap"
-                    style={{
-                      background: amount === a ? "rgba(193,122,92,0.20)" : "rgba(255,255,255,0.05)",
-                      border: amount === a ? "1.5px solid #C17A5C" : "1.5px solid rgba(255,255,255,0.08)",
-                      color: amount === a ? "#F5C87A" : "rgba(245,230,211,0.45)",
-                      fontFamily: "'Cormorant Garamond', serif",
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    ${a}
-                  </button>
-                ))}
-              </div>
-
-              {/* Impact card */}
-              <div className="rounded-xl px-4 py-3 mb-5" style={{ background: "rgba(193,122,92,0.12)", border: "1px solid rgba(193,122,92,0.25)" }}>
-                <div className="flex items-start gap-3">
-                  <div className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center mt-0.5" style={{ background: "rgba(193,122,92,0.25)" }}>
-                    <i className="ri-seedling-line" style={{ color: "#F5C87A", fontSize: "13px" }} />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-0.5" style={{ color: "#C17A5C" }}>{t("adopt.realImpact")}</p>
-                    <p className="leading-relaxed" style={{ color: "#F5E6D3", fontFamily: "'Cormorant Garamond', serif", fontSize: "0.95rem" }}>{impact}</p>
-                  </div>
-                </div>
-              </div>
-
               {/* Certificate hover badge */}
               <div className="relative mb-4" ref={certBtnRef}>
                 <div
