@@ -96,6 +96,20 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
           EMPRESAS
         </Link>
 
+        {/* Flags — desktop */}
+        <div className="hidden md:flex items-center gap-2 animate-flag-float">
+          <img
+            src="https://flagcdn.com/w40/pe.png"
+            alt="Peru"
+            className="w-9 h-6 rounded-sm object-cover shadow-sm"
+          />
+          <img
+            src="https://flagcdn.com/w40/de.png"
+            alt="Germany"
+            className="w-9 h-6 rounded-sm object-cover shadow-sm"
+          />
+        </div>
+
         <div className="flex items-center gap-3">
           <div className="relative">
             <button
@@ -149,6 +163,20 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
               </span>
             )}
           </button>
+
+          {/* Flags — mobile, always visible */}
+          <div className="md:hidden flex items-center gap-1.5 animate-flag-float">
+            <img
+              src="https://flagcdn.com/w40/pe.png"
+              alt="Peru"
+              className="w-6 h-4 rounded-sm object-cover shadow-sm"
+            />
+            <img
+              src="https://flagcdn.com/w40/de.png"
+              alt="Germany"
+              className="w-6 h-4 rounded-sm object-cover shadow-sm"
+            />
+          </div>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
