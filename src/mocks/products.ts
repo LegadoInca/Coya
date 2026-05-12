@@ -17,6 +17,7 @@ export const products = [
     storyTitle: "El renacer de María",
     story: "María perdió su parcela en Cusco por las deudas. No se rindió: organizó a otras mujeres del valle y juntas recuperaron la tierra. Hoy su cacao alimenta a una comunidad entera.",
     producerImage: "/Coya/images/maria.jpeg",
+    rating: 4.9,
   },
   {
     id: 2,
@@ -36,6 +37,7 @@ export const products = [
     storyTitle: "El nuevo comienzo de Segundo",
     story: "Segundo volvió a Ayacucho y encontró sus cacaotales abandonados. Los revivió uno a uno. Hoy su cacao llega a Europa y sus hijos ya no tienen que irse lejos para tener un futuro digno.",
     producerImage: "/Coya/images/elias.jpeg",
+    rating: 4.8,
   },
   {
     id: 3,
@@ -55,6 +57,7 @@ export const products = [
     storyTitle: "La fuerza de Rosa",
     story: "Rosa quedó sola con tres hijos en Junín. Aprendió a tostar el cacao artesanalmente y convirtió ese proceso en su sustento. Cada bolsa es una promesa a sus hijos: el trabajo honesto siempre tiene recompensa.",
     producerImage: "/Coya/images/carmen.jpeg",
+    rating: 5.0,
   },
   {
     id: 4,
@@ -74,6 +77,7 @@ export const products = [
     storyTitle: "El sueño de Elías",
     story: "Elías no pudo estudiar agronomía, pero convirtió el campo en su laboratorio. Mejoró sus técnicas de fermentación y hoy exporta a Europa, financiando los estudios de sus sobrinos.",
     producerImage: "/Coya/images/segundo.jpeg",
+    rating: 4.9,
   },
   {
     id: 5,
@@ -93,6 +97,7 @@ export const products = [
     storyTitle: "Las manos de Carmen",
     story: "Carmen fundó una cooperativa en Ucayali que hoy lleva su manteca a marcas de cosmética en Europa. Con esas ganancias, su comunidad ribereña consiguió agua potable por primera vez.",
     producerImage: "/Coya/images/rosa.jpeg",
+    rating: 4.7,
   },
   {
     id: 6,
@@ -112,6 +117,7 @@ export const products = [
     storyTitle: "El renacer de María",
     story: "Esta tableta nació de la parcela que María recuperó junto a sus vecinas. La leche viene de vacas que pastan libres en los cerros de Cusco. Cada mordisco es el sabor de años de resistencia.",
     producerImage: "/Coya/images/maria.jpeg",
+    rating: 5.0,
   },
   {
     id: 7,
@@ -131,6 +137,7 @@ export const products = [
     storyTitle: "La edición de Rosa",
     story: "Rosa combinó sus nibs con la sal rosada de Maras y creó su producto más querido. Esta edición especial financia el acceso a internet en las escuelas rurales de su comunidad en Junín.",
     producerImage: "/Coya/images/carmen.jpeg",
+    rating: 4.8,
   },
   {
     id: 8,
@@ -150,5 +157,6 @@ export const products = [
     storyTitle: "La herencia de Segundo",
     story: "Segundo documentó la receta ceremonial que sus abuelos preparaban en Ayacucho para las fiestas de cosecha. Hoy la comparte con el mundo para que el alma de su pueblo no desaparezca.",
     producerImage: "/Coya/images/segundo.jpeg",
+    rating: 4.9,
   },
 ];

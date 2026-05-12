@@ -226,6 +226,37 @@ function ProductCard({ product, visible, refCallback, onAddToCart, addedId }: Pr
           </span>
         )}
 
+        {/* Stars rating — bottom left of image, only when product mode */}
+        {!storyOpen && (
+          <div className="absolute bottom-3 left-3 z-20 flex items-center gap-1 px-2 py-1 rounded-full" style={{ background: "rgba(20,8,2,0.7)", backdropFilter: "blur(4px)", border: "1px solid rgba(245,200,122,0.4)" }}>
+            <div className="flex items-center gap-0.5">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <i key={star} className={`ri-star-${star <= Math.round(product.rating ?? 5) ? "fill" : "line"} text-[10px]`} style={{ color: "#F5C87A" }} />
+              ))}
+            </div>
+            <span className="text-[9px] ml-1" style={{ color: "rgba(255,253,249,0.85)" }}>({(product.rating ?? 5).toFixed(1)})</span>
+          </div>
+        )}
+
+        {/* Producer circle + "Haz click aquí" — top right area, only when product mode */}
+        {!storyOpen && (
+          <div className="absolute z-20 flex flex-col items-end gap-1.5" style={{ top: "44px", right: "12px" }}>
+            <div className="relative">
+              <img
+                src={product.producerImage}
+                alt={product.producer}
+                className="w-14 h-14 rounded-full object-cover object-top shadow-lg"
+                style={{ border: "2.5px solid #C17A5C" }}
+              />
+            </div>
+            <div className="relative overflow-hidden inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[9px] font-bold tracking-widest uppercase whitespace-nowrap" style={{ background: "#C17A5C", color: "#FFFDF9", boxShadow: "0 0 12px rgba(193,122,92,0.5)" }}>
+              <i className="ri-cursor-line" style={{ fontSize: "9px" }} />
+              <span className="relative z-10">Haz click aquí</span>
+              <span className="absolute top-0 bottom-0 w-1/3 bg-gradient-to-r from-transparent via-white/40 to-transparent" style={{ animation: "shimmerSweep 2s ease-in-out infinite" }} />
+            </div>
+          </div>
+        )}
+
         {/* Overlay — always present, adapts to state */}
         <div
           className="absolute inset-0 flex flex-col justify-end p-4 z-10"
@@ -377,9 +408,10 @@ export default function CatalogSection({ onAddToCart }: CatalogSectionProps) {
 
   const filters = ["all", "chocolate", "nibs", "powder", "butter"];
 
-  const filtered = activeFilter === "all"
+  const filtered = (activeFilter === "all"
     ? products
-    : products.filter((p) => p.category === activeFilter);
+    : products.filter((p) => p.category === activeFilter)
+  ).slice(0, 6);
 
   const { refs, visible } = useScrollReveal(filtered.length);
   const { sectionRef, offset } = useParallax(0.28);
@@ -510,7 +542,7 @@ export default function CatalogSection({ onAddToCart }: CatalogSectionProps) {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((product, i) => (
               <ProductCard
                 key={product.id}
