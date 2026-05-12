@@ -149,13 +149,13 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
           {/* Subtítulo en 2 líneas */}
           <p
             className="font-serif font-black uppercase leading-tight mb-1 whitespace-pre-line"
-            style={{ color: "#FFFDF9", fontSize: "clamp(0.85rem, 2.3vw, 1.9rem)", letterSpacing: "0.08em" }}
+            style={{ color: "#FFFDF9", fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(1rem, 2.7vw, 2.3rem)", letterSpacing: "0.04em", fontWeight: 900 }}
           >
             {slide.title}
           </p>
           <h2
             className="font-serif font-black uppercase leading-tight mb-5 md:mb-6 whitespace-pre-line"
-            style={{ color: "#F5E6D3", opacity: 0.95, fontSize: "clamp(0.85rem, 2.3vw, 1.9rem)", letterSpacing: "0.08em" }}
+            style={{ color: "#F5E6D3", opacity: 0.95, fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(1rem, 2.7vw, 2.3rem)", letterSpacing: "0.04em", fontWeight: 900 }}
           >
             {slide.subtitle}
           </h2>
