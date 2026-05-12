@@ -22,10 +22,15 @@ export default function ProducersSection() {
 
   useEffect(() => {
     if (!autoplay) return;
-    const t = setInterval(() => {
+    const timer = setInterval(() => {
       goTo((active + 1) % producers.length);
     }, 5500);
-    return (
+    return () => clearInterval(timer);
+  }, [active, autoplay, goTo]);
+
+  const producer = producers[active];
+
+  return (
     <section
       id="producers"
       className="relative w-full overflow-hidden"
