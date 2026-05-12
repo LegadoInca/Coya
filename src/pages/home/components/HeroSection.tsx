@@ -148,21 +148,21 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
 
           {/* Subtítulo en 2 líneas */}
           <p
-            className="font-bold leading-tight mb-1"
-            style={{ fontFamily: "'Cormorant Garamond', serif", color: "#FFFDF9", fontSize: "clamp(1.2rem, 3vw, 2.5rem)" }}
+            className="font-serif font-black uppercase leading-tight mb-1 whitespace-pre-line"
+            style={{ color: "#FFFDF9", fontSize: "clamp(0.85rem, 2.3vw, 1.9rem)", letterSpacing: "0.08em" }}
           >
             {slide.title}
           </p>
           <h2
-            className="font-light leading-tight mb-5 md:mb-6"
-            style={{ fontFamily: "'Cormorant Garamond', serif", color: "#F5E6D3", opacity: 0.9, fontSize: "clamp(1rem, 2.4vw, 2rem)" }}
+            className="font-serif font-black uppercase leading-tight mb-5 md:mb-6 whitespace-pre-line"
+            style={{ color: "#F5E6D3", opacity: 0.95, fontSize: "clamp(0.85rem, 2.3vw, 1.9rem)", letterSpacing: "0.08em" }}
           >
             {slide.subtitle}
           </h2>
 
           <p
-            className="text-sm md:text-base max-w-lg mb-6 md:mb-8 leading-relaxed"
-            style={{ color: "#E8DCC8", opacity: 0.9 }}
+            className="max-w-lg mb-6 md:mb-8 leading-relaxed"
+            style={{ color: "#E8DCC8", opacity: 0.9, fontSize: "clamp(0.85rem, 1.2vw, 1rem)" }}
           >
             {slide.desc}
           </p>
