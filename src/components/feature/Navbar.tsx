@@ -108,6 +108,11 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
             alt="Germany"
             className="w-9 h-6 rounded-sm object-cover shadow-sm"
           />
+          <img
+            src="https://flagcdn.com/w40/cz.png"
+            alt="Czech Republic"
+            className="w-9 h-6 rounded-sm object-cover shadow-sm"
+          />
         </div>
 
         <div className="flex items-center gap-3">
@@ -174,6 +179,11 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
             <img
               src="https://flagcdn.com/w40/de.png"
               alt="Germany"
+              className="w-6 h-4 rounded-sm object-cover shadow-sm"
+            />
+            <img
+              src="https://flagcdn.com/w40/cz.png"
+              alt="Czech Republic"
               className="w-6 h-4 rounded-sm object-cover shadow-sm"
             />
           </div>
