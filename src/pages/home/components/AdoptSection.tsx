@@ -447,100 +447,6 @@ export default function AdoptSection() {
               ))}
             </div>
 
-            {/* Mode toggle */}
-            <div className="flex gap-2 mb-7">
-              {(["monthly", "once"] as const).map((m) => (
-                <button
-                  key={m}
-                  onClick={() => setMode(m)}
-                  className="flex-1 py-2.5 rounded-full text-sm font-semibold cursor-pointer transition-all duration-200 whitespace-nowrap"
-                  style={{
-                    background: mode === m ? "#C17A5C" : "rgba(255,255,255,0.05)",
-                    color: mode === m ? "#FFFDF9" : "rgba(184,168,152,0.6)",
-                    border: mode === m ? "none" : "1px solid rgba(255,255,255,0.08)",
-                  }}
-                >
-                  {m === "monthly" ? "Mensual" : "Pago único"}
-                </button>
-              ))}
-            </div>
-
-            {/* Amount selector */}
-            <p
-              className="text-xs font-semibold tracking-widest uppercase mb-4"
-              style={{ color: "rgba(193,122,92,0.7)" }}
-            >
-              Elige tu aporte (USD)
-            </p>
-            <div className="grid grid-cols-3 gap-2 mb-5">
-              {AMOUNTS.map((a) => (
-                <button
-                  key={a}
-                  onClick={() => setAmount(a)}
-                  className="py-3 rounded-xl font-bold cursor-pointer transition-all duration-200 whitespace-nowrap"
-                  style={{
-                    background: amount === a ? "rgba(193,122,92,0.18)" : "rgba(255,255,255,0.04)",
-                    border: amount === a ? "1.5px solid #C17A5C" : "1.5px solid rgba(255,255,255,0.07)",
-                    color: amount === a ? "#F5C87A" : "rgba(245,230,211,0.55)",
-                    fontFamily: "'Cormorant Garamond', serif",
-                    fontSize: "1.2rem",
-                  }}
-                >
-                  ${a}
-                </button>
-              ))}
-            </div>
-
-            {/* Custom amount */}
-            <div
-              className="flex items-center gap-2 rounded-xl px-4 py-3 mb-6"
-              style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.08)",
-              }}
-            >
-              <span style={{ color: "rgba(184,168,152,0.5)", fontSize: "0.9rem" }}>Otro monto:</span>
-              <span style={{ color: "#C17A5C", fontWeight: 700 }}>$</span>
-              <input
-                type="number"
-                min={5}
-                max={9999}
-                value={amount}
-                onChange={(e) => setAmount(Math.max(5, Number(e.target.value)))}
-                className="flex-1 bg-transparent outline-none text-sm"
-                style={{ color: "#F5E6D3" }}
-              />
-            </div>
-
-            {/* Impact card */}
-            <div
-              className="rounded-2xl px-5 py-4 mb-7"
-              style={{
-                background: "rgba(193,122,92,0.10)",
-                border: "1px solid rgba(193,122,92,0.28)",
-              }}
-            >
-              <div className="flex items-start gap-3">
-                <div
-                  className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center mt-0.5"
-                  style={{ background: "rgba(193,122,92,0.25)" }}
-                >
-                  <i className="ri-seedling-line" style={{ color: "#F5C87A", fontSize: "15px" }} />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "#C17A5C" }}>
-                    Tu impacto real
-                  </p>
-                  <p
-                    className="leading-relaxed"
-                    style={{ color: "#F5E6D3", fontFamily: "'Cormorant Garamond', serif", fontSize: "1rem" }}
-                  >
-                    {impact}
-                  </p>
-                </div>
-              </div>
-            </div>
-
             {/* Form */}
             {!submitted ? (
               <form
@@ -606,7 +512,7 @@ export default function AdoptSection() {
                   ) : (
                     <>
                       <i className="ri-seedling-fill mr-2" />
-                      {mode === "monthly" ? `Adoptar por $${amount}/mes` : `Contribuir $${amount} ahora`}
+                      {"Quiero apoyar a esta familia"}
                     </>
                   )}
                 </button>
