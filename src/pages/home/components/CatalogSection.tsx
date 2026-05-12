@@ -363,12 +363,6 @@ function ProductCard({ product, visible, refCallback, onAddToCart, addedId }: Pr
         </p>
 
         <div className="flex items-center justify-between mt-auto">
-          <span
-            className="text-xl font-bold"
-            style={{ fontFamily: "'Cormorant Garamond', serif", color: "#C17A5C" }}
-          >
-            ${product.price.toFixed(2)} USD
-          </span>
           <button
             onClick={() => onAddToCart(product)}
             disabled={product.stock === 0}
