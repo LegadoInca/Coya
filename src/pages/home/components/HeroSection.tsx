@@ -133,18 +133,37 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
           </div>
 
 
-          {/* COYA grande */}
+          {/* QANTARI grande */}
           <h1
-            className="font-serif font-black uppercase leading-none mb-4 md:mb-6"
+            className="leading-none mb-2"
             style={{
-              color: "#FFFDF9",
-              letterSpacing: "0.15em",
+              color: "#D93C00",
+              fontFamily: "'Fraunces', serif",
+              fontWeight: 900,
               fontSize: "clamp(2.5rem, 7vw, 5.5rem)",
-              textShadow: "0 2px 24px rgba(0,0,0,0.4)",
+              letterSpacing: "-0.01em",
+              textShadow: "0 2px 24px rgba(0,0,0,0.15)",
             }}
           >
-            COYA
+            Qantari
           </h1>
+
+          {/* Sublínea CACAO · PERÚ */}
+          <div className="flex items-center gap-2 mb-4 md:mb-6">
+            <span style={{ width: "10px", height: "10px", backgroundColor: "#D93C00", display: "inline-block", flexShrink: 0 }} />
+            <span
+              style={{
+                color: "#32322F",
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 600,
+                fontSize: "clamp(0.8rem, 1.4vw, 1.1rem)",
+                letterSpacing: "0.25em",
+                textTransform: "uppercase",
+              }}
+            >
+              Cacao · Perú
+            </span>
+          </div>
 
           {/* Subtítulo en 2 líneas */}
           <p
