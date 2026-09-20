@@ -116,11 +116,11 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
             }}
           >
             <svg
-              viewBox="0 0 100 120"
+              viewBox="0 0 105 125"
               style={{ height: "1.05em", width: "auto", marginRight: "0.02em", overflow: "visible", flexShrink: 0 }}
               aria-hidden="true"
             >
-              {/* Aro de la Q — círculo geométrico simple, como el de Jost */}
+              {/* Aro de la Q — círculo hueco, nada dentro */}
               <circle
                 cx="50"
                 cy="48"
@@ -129,15 +129,15 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
                 stroke="#D93C00"
                 strokeWidth="14"
               />
-              {/* Cola — barra diagonal recta que cruza el aro, como en el logo */}
+              {/* Cola — barra recta, pegada al borde exterior del aro, sin puntas redondeadas */}
               <line
-                x1="40"
-                y1="58"
-                x2="90"
-                y2="104"
+                x1="75.8"
+                y1="85.9"
+                x2="95.9"
+                y2="113.5"
                 stroke="#D93C00"
                 strokeWidth="15"
-                strokeLinecap="round"
+                strokeLinecap="butt"
               />
             </svg>
             <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 500 }}>antari</span>
