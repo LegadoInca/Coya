@@ -55,7 +55,7 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
         scrolled ? "shadow-sm" : ""
       }`}
       style={{
-        background: scrolled ? "rgba(255,253,249,0.97)" : "transparent",
+        background: scrolled ? "rgba(10,26,47,0.97)" : "transparent",
         backdropFilter: scrolled ? "blur(12px)" : "none",
       }}
     >
@@ -74,7 +74,7 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
               key={link.key}
               onClick={() => scrollTo(link.id)}
               className="text-sm font-medium cursor-pointer transition-colors whitespace-nowrap"
-              style={{ color: scrolled ? "#2C1810" : "#FFFDF9", fontFamily: "'Cormorant Garamond', serif", fontSize: "16px", fontWeight: 700, letterSpacing: "0.04em" }}
+              style={{ color: "#F5E6D3", fontFamily: "'Jost', sans-serif", fontSize: "16px", fontWeight: 500, letterSpacing: "0.04em" }}
             >
               {t(link.key)}
             </button>
@@ -86,9 +86,10 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
           to="/empresas"
           className="hidden md:flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold cursor-pointer transition-all whitespace-nowrap"
           style={{
-            background: scrolled ? "rgba(44,24,16,0.10)" : "rgba(255,255,255,0.12)",
-            color: scrolled ? "#2C1810" : "#FFFDF9",
-            border: scrolled ? "1px solid rgba(44,24,16,0.20)" : "1px solid rgba(255,255,255,0.25)",
+            background: "rgba(255,255,255,0.10)",
+            color: "#F5E6D3",
+            border: "1px solid rgba(212,175,122,0.4)",
+            fontFamily: "'Jost', sans-serif",
             letterSpacing: "0.06em",
           }}
         >
@@ -117,8 +118,9 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
               onClick={() => setLangOpen(!langOpen)}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold cursor-pointer transition-all whitespace-nowrap"
               style={{
-                background: scrolled ? "#F5E6D3" : "rgba(255,255,255,0.15)",
-                color: scrolled ? "#2C1810" : "#FFFDF9",
+                background: "rgba(255,255,255,0.12)",
+                color: "#F5E6D3",
+                fontFamily: "'Jost', sans-serif",
               }}
             >
               <span>{activeLang.flag}</span>
@@ -150,8 +152,8 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
             onClick={onCartOpen}
             className="relative w-10 h-10 flex items-center justify-center rounded-full cursor-pointer transition-all"
             style={{
-              background: scrolled ? "#F5E6D3" : "rgba(255,255,255,0.15)",
-              color: scrolled ? "#2C1810" : "#FFFDF9",
+              background: "rgba(255,255,255,0.12)",
+              color: "#F5E6D3",
             }}
           >
             <i className="ri-shopping-cart-line text-lg" />
@@ -183,7 +185,7 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="md:hidden w-10 h-10 flex items-center justify-center rounded-full cursor-pointer"
-            style={{ color: scrolled ? "#2C1810" : "#FFFDF9" }}
+            style={{ color: "#F5E6D3" }}
           >
             <i className={`text-xl ${mobileOpen ? "ri-close-line" : "ri-menu-line"}`} />
           </button>
@@ -191,13 +193,13 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden px-4 pb-4" style={{ background: "rgba(255,253,249,0.97)" }}>
+        <div className="md:hidden px-4 pb-4" style={{ background: "rgba(10,26,47,0.97)" }}>
           {navLinks.map((link) => (
             <button
               key={link.key}
               onClick={() => scrollTo(link.id)}
-              className="w-full text-left py-3 text-sm font-medium border-b cursor-pointer whitespace-nowrap"
-              style={{ color: "#2C1810", borderColor: "#E8DCC8" }}
+              className="w-full text-left py-3 text-sm cursor-pointer whitespace-nowrap"
+              style={{ color: "#F5E6D3", fontFamily: "'Jost', sans-serif", borderColor: "rgba(212,175,122,0.25)" }}
             >
               {t(link.key)}
             </button>
@@ -206,7 +208,7 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
             to="/empresas"
             onClick={() => setMobileOpen(false)}
             className="flex items-center gap-2 py-3 text-sm font-bold cursor-pointer whitespace-nowrap"
-            style={{ color: "#C17A5C" }}
+            style={{ color: "#D4AF7A", fontFamily: "'Jost', sans-serif" }}
           >
             <i className="ri-building-line" />
             Para Empresas
