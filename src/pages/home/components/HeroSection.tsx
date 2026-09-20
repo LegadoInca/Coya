@@ -138,7 +138,7 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
             className="leading-none mb-2"
             style={{
               color: "#D93C00",
-              fontFamily: "'Fraunces', serif",
+              fontFamily: "'Playfair Display', serif",
               fontWeight: 900,
               fontSize: "clamp(2.5rem, 7vw, 5.5rem)",
               letterSpacing: "-0.01em",
