@@ -233,13 +233,13 @@ export default function AdoptSection() {
           backgroundImage: `url(https://res.cloudinary.com/djfmngyl0/image/upload/v1776560424/search-image_3_j5xccy.jpg)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          opacity: 0.08,
+          opacity: 0.18,
         }}
       />
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(193,122,92,0.10) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(193,122,92,0.07) 0%, transparent 70%)",
         }}
       />
 
