@@ -40,17 +40,17 @@ export default function ProducersSection() {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('/Coya/images/producers-bg.jpg')",
+          backgroundImage: "url('/Coya/images/fondoo.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          opacity: 0.48,
+          opacity: 0.75,
         }}
       />
       {/* Golden warm overlay */}
       <div
         className="absolute inset-0 z-0"
-        style={{ background: "linear-gradient(160deg, rgba(26,14,8,0.42) 0%, rgba(42,22,8,0.32) 50%, rgba(26,14,8,0.42) 100%)" }}
+        style={{ background: "linear-gradient(160deg, rgba(26,14,8,0.25) 0%, rgba(42,22,8,0.18) 50%, rgba(26,14,8,0.25) 100%)" }}
       />
 
       {/* Section header */}

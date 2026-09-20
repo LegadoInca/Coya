@@ -370,7 +370,7 @@ export default function NewsletterSection() {
       </video>
       <div className="absolute inset-0" style={{ background: "rgba(20,8,2,0.55)" }} />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-20 md:pt-28 pb-10 md:pb-14">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-8 md:pt-12 pb-10 md:pb-14">
 
         {/* ══ TOP: ADOPT SECTION ══════════════════════════════════════════════ */}
         <div className="mb-0">
