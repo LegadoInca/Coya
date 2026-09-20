@@ -111,7 +111,7 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
             style={{
               color: "#D93C00",
               fontFamily: "'Jost', sans-serif",
-              fontWeight: 700,
+              fontWeight: 500,
               fontSize: "clamp(2.5rem, 7vw, 5.5rem)",
               letterSpacing: "-0.01em",
               textShadow: "0 2px 24px rgba(0,0,0,0.15)",
