@@ -116,25 +116,27 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
             }}
           >
             <svg
-              viewBox="0 0 100 128"
-              style={{ width: "0.78em", height: "1em", marginRight: "0.02em", overflow: "visible", flexShrink: 0 }}
+              viewBox="0 0 100 120"
+              style={{ height: "1.05em", width: "auto", marginRight: "0.02em", overflow: "visible", flexShrink: 0 }}
               aria-hidden="true"
             >
               {/* Aro de la Q — círculo geométrico simple, como el de Jost */}
               <circle
                 cx="50"
-                cy="50"
-                r="40"
+                cy="48"
+                r="38"
                 fill="none"
                 stroke="#D93C00"
                 strokeWidth="14"
               />
-              {/* Cola — curva suave hacia abajo/derecha, como en el logo */}
-              <path
-                d="M 58 76 C 66 92, 82 104, 100 108"
-                fill="none"
+              {/* Cola — barra diagonal recta que cruza el aro, como en el logo */}
+              <line
+                x1="40"
+                y1="58"
+                x2="90"
+                y2="104"
                 stroke="#D93C00"
-                strokeWidth="14"
+                strokeWidth="15"
                 strokeLinecap="round"
               />
             </svg>
