@@ -59,12 +59,12 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
         backdropFilter: scrolled ? "blur(12px)" : "none",
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 md:h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 h-12 md:h-14 flex items-center justify-between">
         <button onClick={() => scrollTo("hero")} className="cursor-pointer">
           <img
             src="/Coya/images/logo.png"
             alt="COYA"
-            className="h-10 md:h-12 object-contain"
+            className="h-8 md:h-9 object-contain"
           />
         </button>
 

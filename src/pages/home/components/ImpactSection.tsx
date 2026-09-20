@@ -17,7 +17,7 @@ export default function ImpactSection({ cartItems = [] }: ImpactSectionProps) {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: `url('/Coya/images/products-bg.jpeg')`,
+          backgroundImage: `url('/Coya/images/fondito.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           opacity: 0.45,
