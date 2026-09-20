@@ -105,19 +105,40 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
       <div className="absolute inset-0 flex flex-col justify-center px-5 md:px-16 lg:px-24 z-10">
         <div className="max-w-3xl">
 
-          {/* QANTARI grande */}
+          {/* QANTARI grande — Q como SVG (aro estilo Jost + cola del logo), resto en texto Jost */}
           <h1
-            className="leading-none mb-2"
+            className="leading-none mb-2 flex items-end"
             style={{
               color: "#D93C00",
-              fontFamily: "'Jost', sans-serif",
-              fontWeight: 500,
               fontSize: "clamp(2.5rem, 7vw, 5.5rem)",
               letterSpacing: "-0.01em",
               textShadow: "0 2px 24px rgba(0,0,0,0.15)",
             }}
           >
-            Qantari
+            <svg
+              viewBox="0 0 100 128"
+              style={{ width: "0.78em", height: "1em", marginRight: "0.02em", overflow: "visible", flexShrink: 0 }}
+              aria-hidden="true"
+            >
+              {/* Aro de la Q — círculo geométrico simple, como el de Jost */}
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                fill="none"
+                stroke="#D93C00"
+                strokeWidth="14"
+              />
+              {/* Cola — curva suave hacia abajo/derecha, como en el logo */}
+              <path
+                d="M 58 76 C 66 92, 82 104, 100 108"
+                fill="none"
+                stroke="#D93C00"
+                strokeWidth="14"
+                strokeLinecap="round"
+              />
+            </svg>
+            <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 500 }}>antari</span>
           </h1>
 
           {/* Sublínea CACAO · PERÚ */}
