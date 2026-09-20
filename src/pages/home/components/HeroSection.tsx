@@ -116,25 +116,25 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
             }}
           >
             <svg
-              viewBox="0 0 105 125"
-              style={{ height: "1.05em", width: "auto", marginRight: "0.02em", overflow: "visible", flexShrink: 0 }}
+              viewBox="0 0 100 108"
+              style={{ height: "1em", width: "auto", marginRight: "0.02em", overflow: "visible", flexShrink: 0, position: "relative", top: "0.12em" }}
               aria-hidden="true"
             >
               {/* Aro de la Q — círculo hueco, nada dentro */}
               <circle
-                cx="50"
+                cx="48"
                 cy="48"
                 r="38"
                 fill="none"
                 stroke="#D93C00"
                 strokeWidth="14"
               />
-              {/* Cola — barra recta, pegada al borde exterior del aro, sin puntas redondeadas */}
+              {/* Cola — barra corta y recta, pegada al aro (arranca dentro del grosor del trazo, no en el hueco), sin puntas redondeadas */}
               <line
-                x1="75.8"
-                y1="85.9"
-                x2="95.9"
-                y2="113.5"
+                x1="70.9"
+                y1="74"
+                x2="86.6"
+                y2="94"
                 stroke="#D93C00"
                 strokeWidth="15"
                 strokeLinecap="butt"
@@ -163,13 +163,13 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
           {/* Subtítulo en 2 líneas */}
           <p
             className="font-serif font-black uppercase leading-tight mb-1 whitespace-pre-line"
-            style={{ color: "#FFFDF9", fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(1rem, 2.7vw, 2.3rem)", letterSpacing: "0.04em", fontWeight: 900 }}
+            style={{ color: "#FFFDF9", fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(0.9rem, 2.5vw, 2.1rem)", letterSpacing: "0.04em", fontWeight: 900 }}
           >
             {slide.title}
           </p>
           <h2
             className="font-serif font-black uppercase leading-tight mb-5 md:mb-6 whitespace-pre-line"
-            style={{ color: "#F5E6D3", opacity: 0.95, fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(1rem, 2.7vw, 2.3rem)", letterSpacing: "0.04em", fontWeight: 900 }}
+            style={{ color: "#F5E6D3", opacity: 0.95, fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(0.9rem, 2.5vw, 2.1rem)", letterSpacing: "0.04em", fontWeight: 900 }}
           >
             {slide.subtitle}
           </h2>
