@@ -389,7 +389,9 @@ export default function StoriesSection() {
   return (
     <section id="story" className="relative py-2 md:py-4 overflow-hidden">
       {/* Background */}
-      <img src="/Coya/images/region.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+        <source src="/Coya/videos/hero1.mp4" type="video/mp4" />
+      </video>
       <div className="absolute inset-0" style={{ background: "rgba(30,18,8,0.74)" }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
