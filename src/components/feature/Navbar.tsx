@@ -63,7 +63,7 @@ export default function Navbar({ cartCount, onCartOpen }: NavbarProps) {
         <button onClick={() => scrollTo("hero")} className="cursor-pointer">
           <img
             src="/Coya/images/logo.png"
-            alt="COYA"
+            alt="Qantari"
             className="h-8 md:h-9 object-contain"
           />
         </button>

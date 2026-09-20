@@ -36,7 +36,7 @@ const cs = {
     ],
   },
   producers: {
-    badge: "Duše COYA",
+    badge: "Duše Qantari",
     title: "Příběhy, které mění životy",
     subtitle: "Pracujeme s venkovskými komunitami, které překonaly nepřízeň osudu. Každý producent je svědectvím síly, důstojnosti a naděje.",
     readMore: "Přečíst celý příběh",
@@ -79,7 +79,7 @@ const cs = {
     subtitle: "Dostávejte novinky o našich producentech, nových produktech a dopadu vašeho nákupu.",
     placeholder: "Vaše e-mailová adresa",
     button: "Přihlásit se",
-    success: "Děkujeme, že jste se připojili k rodině COYA!",
+    success: "Děkujeme, že jste se připojili k rodině Qantari!",
     privacy: "Respektujeme vaše soukromí. Žádný spam.",
   },
   cookies: {

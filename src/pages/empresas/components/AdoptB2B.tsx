@@ -151,7 +151,7 @@ function PerkPreview({ index, cacaotalName }: { index: number; cacaotalName: str
             </div>
             <div style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>
               <span className="text-xs font-bold tracking-[0.18em] uppercase" style={{ color: "rgba(139,94,42,0.45)", fontSize: "9px" }}>
-                COYA · Cacao Peruano
+                Qantari · Cacao Peruano
               </span>
             </div>
           </div>
@@ -163,7 +163,7 @@ function PerkPreview({ index, cacaotalName }: { index: number; cacaotalName: str
               <p className="font-bold tracking-[0.28em] uppercase" style={{ color: "#8B5E2A", fontSize: "9px", opacity: 0.75 }}>
                 Certificado de Adopción
               </p>
-              <p style={{ color: "rgba(139,94,42,0.45)", fontSize: "8px" }}>Programa Empresarial COYA</p>
+              <p style={{ color: "rgba(139,94,42,0.45)", fontSize: "8px" }}>Programa Empresarial Qantari</p>
             </div>
 
             {/* Divider */}
@@ -212,13 +212,13 @@ function PerkPreview({ index, cacaotalName }: { index: number; cacaotalName: str
                 <p style={{ color: "rgba(62,32,12,0.45)", fontSize: "8px" }}>Empresa Adoptante</p>
               </div>
 
-              {/* Signature 2 — CEO COYA */}
+              {/* Signature 2 — CEO Qantari */}
               <div className="flex flex-col items-start" style={{ minWidth: "110px" }}>
                 <div className="mb-1" style={{ height: "28px", display: "flex", alignItems: "flex-end" }}>
                   {/* blank line for CEO signature */}
                 </div>
                 <div className="w-full h-px mb-1" style={{ background: "rgba(139,94,42,0.35)" }} />
-                <p style={{ color: "rgba(139,94,42,0.55)", fontSize: "8px" }}>CEO · COYA Cacao Peruano</p>
+                <p style={{ color: "rgba(139,94,42,0.55)", fontSize: "8px" }}>CEO · Qantari Cacao Peruano</p>
               </div>
             </div>
           </div>

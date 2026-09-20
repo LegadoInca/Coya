@@ -10,7 +10,7 @@ export default function FooterSection() {
           <div>
             <img
               src="/Coya/images/logo.png"
-              alt="COYA"
+              alt="Qantari"
               className="h-12 object-contain mb-4"
             />
             <p className="text-sm leading-relaxed mb-5" style={{ color: "#8B6F5E" }}>
@@ -69,7 +69,7 @@ export default function FooterSection() {
             <div className="rounded-xl overflow-hidden" style={{ height: "140px" }}>
               <img
                 src="/Coya/images/maria-work.jpeg"
-                alt="COYA Cacao"
+                alt="Qantari Cacao"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -78,7 +78,7 @@ export default function FooterSection() {
 
         <div className="border-t pt-8 flex flex-col sm:flex-row items-center justify-between gap-4" style={{ borderColor: "#2C1810" }}>
           <p className="text-xs" style={{ color: "#5A4A42" }}>
-            © 2026 COYA. {t("footer.rights")}
+            © 2026 Qantari. {t("footer.rights")}
           </p>
           <p className="text-xs" style={{ color: "#5A4A42" }}>
             {t("footer.madeIn")} <span style={{ color: "#C17A5C" }}>♥</span> {t("footer.madeInCountry")}
@@ -96,7 +96,7 @@ export default function FooterSection() {
             lineHeight: 1,
           }}
         >
-          COYA
+          Qantari
         </p>
       </div>
     </footer>

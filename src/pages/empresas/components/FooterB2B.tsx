@@ -12,7 +12,7 @@ export default function FooterB2B({ lang }: FooterB2BProps) {
         <div className="flex flex-col items-center md:items-start gap-1">
           <img
             src="/Coya/images/logo.png"
-            alt="COYA"
+            alt="Qantari"
             className="h-10 object-contain"
             style={{ filter: "brightness(0.85)" }}
           />

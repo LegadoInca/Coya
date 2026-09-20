@@ -36,7 +36,7 @@ const es = {
     ],
   },
   producers: {
-    badge: "El Alma de COYA",
+    badge: "El Alma de Qantari",
     title: "Historias que Transforman Vidas",
     subtitle: "Trabajamos con comunidades rurales que han superado la adversidad. Cada productor es un testimonio de fortaleza, dignidad y esperanza.",
     readMore: "Leer historia completa",
@@ -79,7 +79,7 @@ const es = {
     subtitle: "Recibe noticias sobre nuestros productores, nuevos lanzamientos y el impacto de tu compra.",
     placeholder: "Tu correo electrónico",
     button: "Suscribirme",
-    success: "¡Gracias por unirte a la familia COYA!",
+    success: "¡Gracias por unirte a la familia Qantari!",
     privacy: "Respetamos tu privacidad. Sin spam.",
   },
   cookies: {

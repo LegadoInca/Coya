@@ -321,8 +321,8 @@ export const ADOPT_TEXTS: Record<B2BLang, {
 export const FOOTER_TEXTS: Record<B2BLang, {
   tagline: string; catalog: string; adopt: string; back: string; rights: string;
 }> = {
-  es: { tagline: "Cacao peruano con impacto real · Programa Empresarial", catalog: "Catálogo B2B", adopt: "Adoptar cacaotal", back: "Tienda personal", rights: "© 2025 COYA · Todos los derechos reservados" },
-  en: { tagline: "Peruvian cacao with real impact · Corporate Program", catalog: "B2B Catalog", adopt: "Adopt a farm", back: "Personal store", rights: "© 2025 COYA · All rights reserved" },
-  de: { tagline: "Peruanischer Kakao mit echter Wirkung · Unternehmensprogramm", catalog: "B2B-Katalog", adopt: "Plantage adoptieren", back: "Persönlicher Shop", rights: "© 2025 COYA · Alle Rechte vorbehalten" },
-  cs: { tagline: "Peruánské kakao se skutečným dopadem · Firemní program", catalog: "B2B Katalog", adopt: "Adoptovat farmu", back: "Osobní obchod", rights: "© 2025 COYA · Všechna práva vyhrazena" },
+  es: { tagline: "Cacao peruano con impacto real · Programa Empresarial", catalog: "Catálogo B2B", adopt: "Adoptar cacaotal", back: "Tienda personal", rights: "© 2025 Qantari · Todos los derechos reservados" },
+  en: { tagline: "Peruvian cacao with real impact · Corporate Program", catalog: "B2B Catalog", adopt: "Adopt a farm", back: "Personal store", rights: "© 2025 Qantari · All rights reserved" },
+  de: { tagline: "Peruanischer Kakao mit echter Wirkung · Unternehmensprogramm", catalog: "B2B-Katalog", adopt: "Plantage adoptieren", back: "Persönlicher Shop", rights: "© 2025 Qantari · Alle Rechte vorbehalten" },
+  cs: { tagline: "Peruánské kakao se skutečným dopadem · Firemní program", catalog: "B2B Katalog", adopt: "Adoptovat farmu", back: "Osobní obchod", rights: "© 2025 Qantari · Všechna práva vyhrazena" },
 };

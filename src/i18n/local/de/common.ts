@@ -36,7 +36,7 @@ const de = {
     ],
   },
   producers: {
-    badge: "Die Seele von COYA",
+    badge: "Die Seele von Qantari",
     title: "Geschichten, die Leben verändern",
     subtitle: "Wir arbeiten mit ländlichen Gemeinschaften, die Widrigkeiten überwunden haben. Jeder Produzent ist ein Zeugnis von Stärke, Würde und Hoffnung.",
     readMore: "Ganze Geschichte lesen",
@@ -79,7 +79,7 @@ const de = {
     subtitle: "Erhalte Neuigkeiten über unsere Produzenten, neue Produkte und die Wirkung deines Kaufs.",
     placeholder: "Deine E-Mail-Adresse",
     button: "Abonnieren",
-    success: "Danke, dass du der COYA-Familie beigetreten bist!",
+    success: "Danke, dass du der Qantari-Familie beigetreten bist!",
     privacy: "Wir respektieren deine Privatsphäre. Kein Spam.",
   },
   cookies: {

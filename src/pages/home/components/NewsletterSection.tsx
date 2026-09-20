@@ -164,7 +164,7 @@ function HorizontalCertificate({ producerName, adopterName }: { producerName: st
           </div>
           <div style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>
             <span style={{ color: "rgba(139,94,42,0.40)", fontSize: "8px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" }}>
-              COYA · Cacao Peruano
+              Qantari · Cacao Peruano
             </span>
           </div>
         </div>
@@ -175,7 +175,7 @@ function HorizontalCertificate({ producerName, adopterName }: { producerName: st
             <p style={{ color: "#8B5E2A", fontSize: "8px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", opacity: 0.75 }}>
               Certificado de Adopción
             </p>
-            <p style={{ color: "rgba(139,94,42,0.45)", fontSize: "7.5px" }}>Programa de Apadrinamiento COYA</p>
+            <p style={{ color: "rgba(139,94,42,0.45)", fontSize: "7.5px" }}>Programa de Apadrinamiento Qantari</p>
           </div>
 
           <div className="flex items-center gap-2 mb-2.5">
@@ -213,7 +213,7 @@ function HorizontalCertificate({ producerName, adopterName }: { producerName: st
                 {/* blank — CEO firma en blanco */}
               </div>
               <div style={{ width: "100%", height: "1px", background: "rgba(139,94,42,0.32)", marginBottom: "3px" }} />
-              <p style={{ color: "rgba(139,94,42,0.52)", fontSize: "7.5px" }}>CEO · COYA Cacao Peruano</p>
+              <p style={{ color: "rgba(139,94,42,0.52)", fontSize: "7.5px" }}>CEO · Qantari Cacao Peruano</p>
             </div>
           </div>
         </div>

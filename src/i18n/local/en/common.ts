@@ -36,7 +36,7 @@ const en = {
     ],
   },
   producers: {
-    badge: "The Soul of COYA",
+    badge: "The Soul of Qantari",
     title: "Stories That Transform Lives",
     subtitle: "We work with rural communities that have overcome adversity. Each producer is a testament to strength, dignity and hope.",
     readMore: "Read full story",
@@ -79,7 +79,7 @@ const en = {
     subtitle: "Receive news about our producers, new launches and the impact of your purchase.",
     placeholder: "Your email address",
     button: "Subscribe",
-    success: "Thank you for joining the COYA family!",
+    success: "Thank you for joining the Qantari family!",
     privacy: "We respect your privacy. No spam.",
   },
   cookies: {
