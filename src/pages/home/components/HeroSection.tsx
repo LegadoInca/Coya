@@ -61,7 +61,6 @@ function ImageSlide({ src, active }: { src: string; active: boolean }) {
 export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: HeroSectionProps) {
   const { t } = useTranslation();
   const [current, setCurrent] = useState(0);
-  const [animating, setAnimating] = useState(false);
 
   const slides = t("hero.slides", { returnObjects: true }) as Array<{
     title: string;
@@ -71,11 +70,7 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
   }>;
 
   const goTo = useCallback((idx: number) => {
-    setAnimating(true);
-    setTimeout(() => {
-      setCurrent(idx);
-      setAnimating(false);
-    }, 400);
+    setCurrent(idx);
   }, []);
 
   useEffect(() => {
@@ -106,39 +101,16 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
 
-      {/* Slide content — left-aligned like Holzen */}
-      <div
-        className={`absolute inset-0 flex flex-col justify-center px-5 md:px-16 lg:px-24 transition-all duration-500 z-10 ${
-          animating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
-        }`}
-      >
+      {/* Slide content — left-aligned like Holzen, static (does not fade with background) */}
+      <div className="absolute inset-0 flex flex-col justify-center px-5 md:px-16 lg:px-24 z-10">
         <div className="max-w-3xl">
-          {/* Eyebrow pill — golden with shimmer */}
-          <div className="mb-4 md:mb-5">
-            <div
-              className="relative overflow-hidden inline-flex items-center gap-2 px-5 py-1.5 rounded-full text-xs md:text-sm tracking-[0.3em] uppercase cursor-default select-none"
-              style={{
-                background: "linear-gradient(135deg, #B8864A 0%, #E0B870 50%, #B8864A 100%)",
-                color: "#1A0E08",
-                fontFamily: "'Cormorant Garamond', serif",
-                fontWeight: 700,
-                boxShadow: "0 0 22px rgba(224,184,112,0.45)",
-              }}
-            >
-              <span>✦</span>
-              <span className="relative z-10">Cacao Peruano</span>
-              <span>✦</span>
-              <span className="absolute top-0 bottom-0 w-1/3 animate-shimmer bg-gradient-to-r from-transparent via-white/45 to-transparent" />
-            </div>
-          </div>
-
 
           {/* QANTARI grande */}
           <h1
             className="leading-none mb-2"
             style={{
               color: "#D93C00",
-              fontFamily: "Georgia, 'PT Serif', serif",
+              fontFamily: "'Jost', sans-serif",
               fontWeight: 700,
               fontSize: "clamp(2.5rem, 7vw, 5.5rem)",
               letterSpacing: "-0.01em",
