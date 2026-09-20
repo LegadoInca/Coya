@@ -10,25 +10,25 @@ const cs = {
     badge: "Kakao z původu",
     slides: [
       {
-        title: "Toto není jen kakao.",
+        title: "Toto není jen kakao,",
         subtitle: "Je to živá paměť země.",
         desc: "Kakao peruánského původu, pěstovaný mezi džunglí a horami. Intenzivní, autentický a vytvořený k tomu, aby zůstal v paměti.",
         cta: "Zobrazit katalog",
       },
       {
-        title: "Toto není jen kakao.",
+        title: "Toto není jen kakao,",
         subtitle: "Je to živá paměť země.",
         desc: "Kakao peruánského původu, pěstovaný mezi džunglí a horami. Intenzivní, autentický a vytvořený k tomu, aby zůstal v paměti.",
         cta: "Zobrazit katalog",
       },
       {
-        title: "Toto není jen kakao.",
+        title: "Toto není jen kakao,",
         subtitle: "Je to živá paměť země.",
         desc: "Kakao peruánského původu, pěstovaný mezi džunglí a horami. Intenzivní, autentický a vytvořený k tomu, aby zůstal v paměti.",
         cta: "Zobrazit katalog",
       },
       {
-        title: "Toto není jen kakao.",
+        title: "Toto není jen kakao,",
         subtitle: "Je to živá paměť země.",
         desc: "Kakao peruánského původu, pěstovaný mezi džunglí a horami. Intenzivní, autentický a vytvořený k tomu, aby zůstal v paměti.",
         cta: "Zobrazit katalog",

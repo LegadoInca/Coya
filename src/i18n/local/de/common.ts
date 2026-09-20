@@ -10,25 +10,25 @@ const de = {
     badge: "Ursprungs-Kakao",
     slides: [
       {
-        title: "Das ist nicht nur Kakao.",
+        title: "Das ist nicht nur Kakao,",
         subtitle: "Es ist die lebendige Erinnerung der Erde.",
         desc: "Kakao peruanischen Ursprungs, angebaut zwischen Dschungel und Bergen. Intensiv, authentisch und gemacht, um in der Erinnerung zu bleiben.",
         cta: "Katalog ansehen",
       },
       {
-        title: "Das ist nicht nur Kakao.",
+        title: "Das ist nicht nur Kakao,",
         subtitle: "Es ist die lebendige Erinnerung der Erde.",
         desc: "Kakao peruanischen Ursprungs, angebaut zwischen Dschungel und Bergen. Intensiv, authentisch und gemacht, um in der Erinnerung zu bleiben.",
         cta: "Katalog ansehen",
       },
       {
-        title: "Das ist nicht nur Kakao.",
+        title: "Das ist nicht nur Kakao,",
         subtitle: "Es ist die lebendige Erinnerung der Erde.",
         desc: "Kakao peruanischen Ursprungs, angebaut zwischen Dschungel und Bergen. Intensiv, authentisch und gemacht, um in der Erinnerung zu bleiben.",
         cta: "Katalog ansehen",
       },
       {
-        title: "Das ist nicht nur Kakao.",
+        title: "Das ist nicht nur Kakao,",
         subtitle: "Es ist die lebendige Erinnerung der Erde.",
         desc: "Kakao peruanischen Ursprungs, angebaut zwischen Dschungel und Bergen. Intensiv, authentisch und gemacht, um in der Erinnerung zu bleiben.",
         cta: "Katalog ansehen",

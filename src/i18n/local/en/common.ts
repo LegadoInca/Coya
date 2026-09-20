@@ -10,25 +10,25 @@ const en = {
     badge: "Origin Cacao",
     slides: [
       {
-        title: "This is not just cacao.",
+        title: "This is not just cacao,",
         subtitle: "It is the living memory of the land.",
         desc: "Peruvian-origin cacao, grown between jungle and mountain. Intense, authentic, and made to stay in your memory.",
         cta: "View Catalog",
       },
       {
-        title: "This is not just cacao.",
+        title: "This is not just cacao,",
         subtitle: "It is the living memory of the land.",
         desc: "Peruvian-origin cacao, grown between jungle and mountain. Intense, authentic, and made to stay in your memory.",
         cta: "View Catalog",
       },
       {
-        title: "This is not just cacao.",
+        title: "This is not just cacao,",
         subtitle: "It is the living memory of the land.",
         desc: "Peruvian-origin cacao, grown between jungle and mountain. Intense, authentic, and made to stay in your memory.",
         cta: "View Catalog",
       },
       {
-        title: "This is not just cacao.",
+        title: "This is not just cacao,",
         subtitle: "It is the living memory of the land.",
         desc: "Peruvian-origin cacao, grown between jungle and mountain. Intense, authentic, and made to stay in your memory.",
         cta: "View Catalog",

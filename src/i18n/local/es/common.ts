@@ -10,25 +10,25 @@ const es = {
     badge: "Cacao de Origen",
     slides: [
       {
-        title: "Esto no es solo cacao.",
+        title: "Esto no es solo cacao,",
         subtitle: "Es memoria viva de la tierra.",
         desc: "Cacao de origen peruano, cultivado entre selva y montaña. Intenso, auténtico y hecho para quedarse en la memoria.",
         cta: "Ver Catálogo",
       },
       {
-        title: "Esto no es solo cacao.",
+        title: "Esto no es solo cacao,",
         subtitle: "Es memoria viva de la tierra.",
         desc: "Cacao de origen peruano, cultivado entre selva y montaña. Intenso, auténtico y hecho para quedarse en la memoria.",
         cta: "Ver Catálogo",
       },
       {
-        title: "Esto no es solo cacao.",
+        title: "Esto no es solo cacao,",
         subtitle: "Es memoria viva de la tierra.",
         desc: "Cacao de origen peruano, cultivado entre selva y montaña. Intenso, auténtico y hecho para quedarse en la memoria.",
         cta: "Ver Catálogo",
       },
       {
-        title: "Esto no es solo cacao.",
+        title: "Esto no es solo cacao,",
         subtitle: "Es memoria viva de la tierra.",
         desc: "Cacao de origen peruano, cultivado entre selva y montaña. Intenso, auténtico y hecho para quedarse en la memoria.",
         cta: "Ver Catálogo",
