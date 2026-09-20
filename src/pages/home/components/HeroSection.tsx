@@ -138,8 +138,8 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
             className="leading-none mb-2"
             style={{
               color: "#D93C00",
-              fontFamily: "'Playfair Display', serif",
-              fontWeight: 900,
+              fontFamily: "Georgia, 'PT Serif', serif",
+              fontWeight: 700,
               fontSize: "clamp(2.5rem, 7vw, 5.5rem)",
               letterSpacing: "-0.01em",
               textShadow: "0 2px 24px rgba(0,0,0,0.15)",
@@ -153,7 +153,7 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
             <span style={{ width: "10px", height: "10px", backgroundColor: "#D93C00", display: "inline-block", flexShrink: 0 }} />
             <span
               style={{
-                color: "#32322F",
+                color: "#FFFFFF",
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 600,
                 fontSize: "clamp(0.8rem, 1.4vw, 1.1rem)",
@@ -230,8 +230,6 @@ export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: 
       >
         <i className="ri-arrow-right-s-line text-xl" />
       </button>
-
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#FAF7F2] to-transparent z-10" />
     </section>
   );
 }
