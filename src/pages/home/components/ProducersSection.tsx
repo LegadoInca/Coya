@@ -47,10 +47,10 @@ export default function ProducersSection() {
           opacity: 0.75,
         }}
       />
-      {/* Golden warm overlay */}
+      {/* Overlay marrón tenue */}
       <div
         className="absolute inset-0 z-0"
-        style={{ background: "linear-gradient(160deg, rgba(26,14,8,0.25) 0%, rgba(42,22,8,0.18) 50%, rgba(26,14,8,0.25) 100%)" }}
+        style={{ background: "rgba(26,14,8,0.15)" }}
       />
 
       {/* Section header */}
