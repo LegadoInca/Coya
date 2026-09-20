@@ -50,7 +50,7 @@ export default function ProducersSection() {
       {/* Overlay marrón tenue */}
       <div
         className="absolute inset-0 z-0"
-        style={{ background: "rgba(26,14,8,0.15)" }}
+        style={{ background: "rgba(26,14,8,0.30)" }}
       />
 
       {/* Section header */}
