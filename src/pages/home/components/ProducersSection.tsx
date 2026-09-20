@@ -44,13 +44,13 @@ export default function ProducersSection() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          opacity: 0.32,
+          opacity: 0.48,
         }}
       />
       {/* Golden warm overlay */}
       <div
         className="absolute inset-0 z-0"
-        style={{ background: "linear-gradient(160deg, rgba(26,14,8,0.55) 0%, rgba(42,22,8,0.45) 50%, rgba(26,14,8,0.55) 100%)" }}
+        style={{ background: "linear-gradient(160deg, rgba(26,14,8,0.42) 0%, rgba(42,22,8,0.32) 50%, rgba(26,14,8,0.42) 100%)" }}
       />
 
       {/* Section header */}

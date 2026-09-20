@@ -164,7 +164,7 @@ function HorizontalCertificate({ producerName, adopterName }: { producerName: st
           </div>
           <div style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>
             <span style={{ color: "rgba(139,94,42,0.40)", fontSize: "8px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" }}>
-              Qantari · Cacao Peruano
+              COYA · Cacao Peruano
             </span>
           </div>
         </div>
@@ -175,7 +175,7 @@ function HorizontalCertificate({ producerName, adopterName }: { producerName: st
             <p style={{ color: "#8B5E2A", fontSize: "8px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", opacity: 0.75 }}>
               Certificado de Adopción
             </p>
-            <p style={{ color: "rgba(139,94,42,0.45)", fontSize: "7.5px" }}>Programa de Apadrinamiento Qantari</p>
+            <p style={{ color: "rgba(139,94,42,0.45)", fontSize: "7.5px" }}>Programa de Apadrinamiento COYA</p>
           </div>
 
           <div className="flex items-center gap-2 mb-2.5">
@@ -213,7 +213,7 @@ function HorizontalCertificate({ producerName, adopterName }: { producerName: st
                 {/* blank — CEO firma en blanco */}
               </div>
               <div style={{ width: "100%", height: "1px", background: "rgba(139,94,42,0.32)", marginBottom: "3px" }} />
-              <p style={{ color: "rgba(139,94,42,0.52)", fontSize: "7.5px" }}>CEO · Qantari Cacao Peruano</p>
+              <p style={{ color: "rgba(139,94,42,0.52)", fontSize: "7.5px" }}>CEO · COYA Cacao Peruano</p>
             </div>
           </div>
         </div>
@@ -368,7 +368,7 @@ export default function NewsletterSection() {
       <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
         <source src="/Coya/videos/hero4.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0" style={{ background: "rgba(20,8,2,0.78)" }} />
+      <div className="absolute inset-0" style={{ background: "rgba(20,8,2,0.55)" }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pt-20 md:pt-28 pb-10 md:pb-14">
 
