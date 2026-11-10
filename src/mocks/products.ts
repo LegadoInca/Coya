@@ -16,7 +16,7 @@ export const products = [
     impactIcon: "ri-plant-line",
     storyTitle: "El renacer de María",
     story: "María perdió su parcela en Cusco por las deudas. No se rindió: organizó a otras mujeres del valle y juntas recuperaron la tierra. Hoy su cacao alimenta a una comunidad entera.",
-    producerImage: "/Coya/images/maria.jpeg",
+    producerImage: "/Coya/images/maria.png",
     rating: 4.9,
   },
   {
@@ -76,7 +76,7 @@ export const products = [
     impactIcon: "ri-graduation-cap-line",
     storyTitle: "El sueño de Elías",
     story: "Elías no pudo estudiar agronomía, pero convirtió el campo en su laboratorio. Mejoró sus técnicas de fermentación y hoy exporta a Europa, financiando los estudios de sus sobrinos.",
-    producerImage: "/Coya/images/segundo.jpeg",
+    producerImage: "/Coya/images/segundo.png",
     rating: 4.9,
   },
   {
@@ -116,7 +116,7 @@ export const products = [
     impactIcon: "ri-plant-line",
     storyTitle: "El renacer de María",
     story: "Esta tableta nació de la parcela que María recuperó junto a sus vecinas. La leche viene de vacas que pastan libres en los cerros de Cusco. Cada mordisco es el sabor de años de resistencia.",
-    producerImage: "/Coya/images/maria.jpeg",
+    producerImage: "/Coya/images/maria.png",
     rating: 5.0,
   },
   {
@@ -156,7 +156,7 @@ export const products = [
     impactIcon: "ri-ancient-gate-line",
     storyTitle: "La herencia de Segundo",
     story: "Segundo documentó la receta ceremonial que sus abuelos preparaban en Ayacucho para las fiestas de cosecha. Hoy la comparte con el mundo para que el alma de su pueblo no desaparezca.",
-    producerImage: "/Coya/images/segundo.jpeg",
+    producerImage: "/Coya/images/segundo.png",
     rating: 4.9,
   },
 ];

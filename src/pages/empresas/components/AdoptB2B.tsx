@@ -17,7 +17,7 @@ const cacaotales: Cacaotal[] = [
     producer: "Cooperativa Chuncho",
     hectares: 4.2, trees: 1680,
     image: "/Coya/images/empresas1.jpeg",
-    producerImage: "/Coya/images/maria.jpeg",
+    producerImage: "/Coya/images/maria.png",
     story: "4.2 hectáreas de cacao Chuncho nativo en el Valle de La Convención. Una de las variedades más raras y apreciadas del mundo, en peligro de extinción. Tu adopción financia la preservación genética y el trabajo de 12 familias.",
     need: "Sistema de riego tecnificado y laboratorio de fermentación",
     progress: 42, sponsors: 8,

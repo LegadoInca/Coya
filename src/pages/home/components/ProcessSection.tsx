@@ -22,47 +22,52 @@ export default function ProcessSection() {
   const steps = t("process.steps", { returnObjects: true }) as Array<{ title: string; desc: string }>;
   const [active, setActive] = useState(2);
 
+  // Título: sans ligera y la última palabra en serif cursiva
+  const titleWords = String(t("process.title")).split(" ");
+  const titleTail = titleWords.length > 1 ? titleWords[titleWords.length - 1] : "";
+  const titleHead = titleWords.length > 1 ? titleWords.slice(0, -1).join(" ") : titleWords[0];
+
   const prev = useCallback(() => setActive((a) => (a - 1 + steps.length) % steps.length), [steps.length]);
   const next = useCallback(() => setActive((a) => (a + 1) % steps.length), [steps.length]);
 
   return (
-    <section className="relative py-16 md:py-20 overflow-hidden">
-      {/* Background base dark */}
-      <div className="absolute inset-0 z-0" style={{ background: "#1C1008" }} />
-      {/* Background texture image */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: "url('/Coya/images/producers-bg.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          opacity: 0.38,
-        }}
-      />
-      {/* Dark golden overlay */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background: "linear-gradient(160deg, rgba(30,16,4,0.72) 0%, rgba(90,50,10,0.45) 50%, rgba(25,12,2,0.70) 100%)",
-        }}
-      />
-
+    <section
+      className="relative py-16 md:py-20 overflow-hidden"
+      style={{ background: "#FAF7F2", borderTop: "1px solid rgba(42,24,16,0.06)" }}
+    >
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <span className="w-10 h-px" style={{ background: "#C17A5C" }} />
-            <span className="text-xs font-semibold tracking-[0.35em] uppercase" style={{ color: "#C17A5C" }}>
+            <span className="w-10 h-px" style={{ background: "rgba(176,100,74,0.5)" }} />
+            <span className="text-[11px] tracking-[0.3em] uppercase" style={{ color: "#B0644A", fontFamily: "'Inter', sans-serif", fontWeight: 600 }}>
               {t("process.badge")}
             </span>
-            <span className="w-10 h-px" style={{ background: "#C17A5C" }} />
+            <span className="w-10 h-px" style={{ background: "rgba(176,100,74,0.5)" }} />
           </div>
           <h2
-            className="text-4xl md:text-5xl font-bold"
-            style={{ fontFamily: "'Cormorant Garamond', serif", color: "#F5E6D3" }}
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 300,
+              color: "#2A1810",
+              fontSize: "clamp(2rem, 4.2vw, 3.6rem)",
+              letterSpacing: "-0.025em",
+              lineHeight: 1.05,
+            }}
           >
-            {t("process.title")}
+            {titleHead}{" "}
+            <em
+              style={{
+                fontFamily: "'Instrument Serif', 'Cormorant Garamond', Georgia, serif",
+                fontStyle: "italic",
+                fontWeight: 400,
+                color: "#B0644A",
+                letterSpacing: "-0.01em",
+                fontSize: "1.06em",
+              }}
+            >
+              {titleTail}
+            </em>
           </h2>
         </div>
 
@@ -74,35 +79,34 @@ export default function ProcessSection() {
             onClick={prev}
             className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer transition-all duration-200 hover:scale-110 mr-4"
             style={{
-              background: "rgba(193,122,92,0.15)",
-              border: "1.5px solid rgba(193,122,92,0.5)",
+              background: "#FFFFFF",
+              border: "1.5px solid rgba(42,24,16,0.14)",
+              boxShadow: "0 6px 16px rgba(42,24,16,0.08)",
             }}
           >
-            <i className="ri-arrow-left-s-line text-xl" style={{ color: "#C17A5C" }} />
+            <i className="ri-arrow-left-s-line text-xl" style={{ color: "#2A1810" }} />
           </button>
 
           {/* Steps — desktop: all cards visible; mobile: only active card */}
-          <div className="flex items-center justify-center gap-3 flex-1 overflow-hidden">
+          <div className="flex items-center justify-center gap-3 flex-1 overflow-hidden py-10">
             {steps.map((step, i) => {
               const isActive = i === active;
               const dist = Math.abs(i - active);
-              const opacity = dist === 0 ? 1 : dist === 1 ? 0.65 : 0.35;
+              const opacity = dist === 0 ? 1 : dist === 1 ? 0.88 : 0.62;
 
               return (
                 <button
                   key={i}
                   onClick={() => setActive(i)}
-                  className={`relative flex-shrink-0 cursor-pointer transition-all duration-500 rounded-2xl overflow-hidden flex flex-col items-center justify-end ${!isActive ? "hidden md:flex" : "flex"}`}
+                  className={`relative flex-shrink-0 cursor-pointer transition-all duration-500 overflow-hidden flex flex-col items-center justify-end ${!isActive ? "hidden md:flex" : "flex"}`}
                   style={{
                     width: isActive ? "min(220px, 100%)" : dist === 1 ? "160px" : "130px",
                     height: isActive ? "320px" : dist === 1 ? "220px" : "180px",
                     opacity,
-                    border: isActive
-                      ? "2px solid rgba(193,122,92,0.9)"
-                      : "2px solid rgba(193,122,92,0.2)",
+                    borderRadius: "22px",
                     boxShadow: isActive
-                      ? "0 0 32px rgba(193,122,92,0.25), inset 0 0 0 1px rgba(193,122,92,0.15)"
-                      : "none",
+                      ? "0 18px 34px rgba(42,24,16,0.28)"
+                      : "0 10px 26px rgba(42,24,16,0.12)",
                     background: "#1C1008",
                   }}
                 >
@@ -165,17 +169,19 @@ export default function ProcessSection() {
                   {/* Text content */}
                   <div className="relative z-10 w-full px-4 pb-5 text-center">
                     <h4
-                      className="font-bold mb-2"
+                      className="mb-2"
                       style={{
-                        fontFamily: "'Cormorant Garamond', serif",
-                        color: "#F5E6D3",
+                        fontFamily: "'Inter', sans-serif",
+                        fontWeight: 600,
+                        letterSpacing: "-0.01em",
+                        color: "#FFFFFF",
                         fontSize: isActive ? "18px" : "14px",
                       }}
                     >
                       {step.title}
                     </h4>
                     {isActive && (
-                      <p className="text-xs leading-relaxed" style={{ color: "#B8A898", wordBreak: "break-word" }}>
+                      <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.82)", fontFamily: "'Inter', sans-serif", wordBreak: "break-word" }}>
                         {step.desc}
                       </p>
                     )}
@@ -190,11 +196,12 @@ export default function ProcessSection() {
             onClick={next}
             className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full cursor-pointer transition-all duration-200 hover:scale-110 ml-4"
             style={{
-              background: "rgba(193,122,92,0.15)",
-              border: "1.5px solid rgba(193,122,92,0.5)",
+              background: "#FFFFFF",
+              border: "1.5px solid rgba(42,24,16,0.14)",
+              boxShadow: "0 6px 16px rgba(42,24,16,0.08)",
             }}
           >
-            <i className="ri-arrow-right-s-line text-xl" style={{ color: "#C17A5C" }} />
+            <i className="ri-arrow-right-s-line text-xl" style={{ color: "#2A1810" }} />
           </button>
         </div>
 
@@ -208,7 +215,7 @@ export default function ProcessSection() {
               style={{
                 width: i === active ? "24px" : "7px",
                 height: "7px",
-                background: i === active ? "#C17A5C" : "rgba(193,122,92,0.3)",
+                background: i === active ? "#C17A5C" : "rgba(42,24,16,0.18)",
               }}
             />
           ))}

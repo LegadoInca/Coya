@@ -98,10 +98,6 @@ export default function HeroSection({ onScrollToCatalog }: HeroSectionProps) {
         }}
       />
 
-      {/* Dos líneas verticales muy tenues (detalle de la referencia) */}
-      <div className="hidden md:block absolute top-0 bottom-0" style={{ left: "34%", width: 1, background: "rgba(255,255,255,0.14)" }} />
-      <div className="hidden md:block absolute top-0 bottom-0" style={{ left: "69%", width: 1, background: "rgba(255,255,255,0.14)" }} />
-
       {/* Contenido */}
       <div
         className="absolute inset-0 z-10 flex flex-col justify-center px-5 md:px-16 lg:px-24"

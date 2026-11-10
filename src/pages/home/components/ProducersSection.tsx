@@ -2,38 +2,37 @@ import { useState, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { producers } from "@/mocks/producers";
 
+const SERIF = "'Instrument Serif', 'Cormorant Garamond', Georgia, serif";
+const INK = "#2A1810";
+const TERRA = "#C17A5C";
+const TERRA_TEXT = "#B0644A";
+
 export default function ProducersSection() {
   const { t } = useTranslation();
   const [active, setActive] = useState(0);
-  const [animating, setAnimating] = useState(false);
   const [autoplay, setAutoplay] = useState(true);
+  const total = producers.length;
 
-  const goTo = useCallback(
-    (idx: number) => {
-      if (idx === active) return;
-      setAnimating(true);
-      setTimeout(() => {
-        setActive(idx);
-        setAnimating(false);
-      }, 350);
-    },
-    [active]
-  );
-
+  // Pasa solo (hasta que el usuario toca algo)
   useEffect(() => {
     if (!autoplay) return;
-    const timer = setInterval(() => {
-      goTo((active + 1) % producers.length);
-    }, 5500);
+    const timer = setInterval(() => setActive((a) => (a + 1) % total), 5500);
     return () => clearInterval(timer);
-  }, [active, autoplay, goTo]);
+  }, [autoplay, active, total]);
+
+  const choose = (idx: number) => {
+    setAutoplay(false);
+    setActive(((idx % total) + total) % total);
+  };
 
   const producer = producers[active];
 
-  // Título: todo en sans ligera y la última palabra en serif cursiva
+  // Título: sans y la última palabra en serif cursiva
   const titleWords = String(t("producers.title")).split(" ");
   const titleTail = titleWords.length > 1 ? titleWords[titleWords.length - 1] : "";
   const titleHead = titleWords.length > 1 ? titleWords.slice(0, -1).join(" ") : titleWords[0];
+
+  const scrollToStory = () => document.getElementById("story")?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <section
@@ -41,272 +40,235 @@ export default function ProducersSection() {
       className="relative w-full overflow-hidden"
       style={{ background: "#FAF7F2", borderTop: "1px solid rgba(42,24,16,0.06)" }}
     >
-      {/* Section header */}
-      <div className="relative z-10 text-center pt-16 pb-8 px-6">
-        <span
-          className="inline-flex items-center gap-2 text-[11px] tracking-[0.3em] uppercase mb-4"
-          style={{ color: "#B0644A", fontFamily: "'Inter', sans-serif", fontWeight: 600 }}
-        >
-          <span style={{ width: "8px", height: "8px", background: "#C17A5C", display: "inline-block" }} />
-          {t("producers.badge")}
-        </span>
-        <h2
-          className="mb-9"
+      <div className="max-w-7xl mx-auto px-4 md:px-8 pt-14 md:pt-20 pb-14 md:pb-20">
+        {/* ── Encabezado: etiqueta + título + botón · párrafo + flechas ── */}
+        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-start mb-8 md:mb-10">
+          <div>
+            <span
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs mb-5"
+              style={{
+                background: "rgba(255,255,255,0.9)",
+                border: "1px solid rgba(42,24,16,0.08)",
+                boxShadow: "0 4px 14px rgba(42,24,16,0.06)",
+                color: INK,
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 500,
+              }}
+            >
+              <i className="ri-arrow-right-up-line" style={{ color: TERRA }} />
+              {t("producers.badge")}
+            </span>
+            <h2
+              className="mb-6"
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 600,
+                color: INK,
+                fontSize: "clamp(2rem, 3.8vw, 3.2rem)",
+                letterSpacing: "-0.03em",
+                lineHeight: 1.05,
+                maxWidth: "560px",
+              }}
+            >
+              {titleHead}{" "}
+              <em
+                style={{
+                  fontFamily: SERIF,
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                  letterSpacing: "-0.01em",
+                  fontSize: "1.06em",
+                }}
+              >
+                {titleTail}
+              </em>
+            </h2>
+            <button
+              onClick={scrollToStory}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full cursor-pointer transition-all hover:bg-[#2A1810] hover:text-white"
+              style={{
+                border: `1.5px solid ${INK}`,
+                color: INK,
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 600,
+                fontSize: "13px",
+              }}
+            >
+              {t("producers.readMore")}
+              <i className="ri-arrow-right-line" />
+            </button>
+          </div>
+
+          <div className="md:ml-auto md:max-w-sm">
+            <p
+              className="leading-relaxed"
+              style={{ color: "rgba(42,24,16,0.7)", fontFamily: "'Inter', sans-serif", fontSize: "14px" }}
+            >
+              {t("producers.subtitle")}
+            </p>
+            <div className="flex gap-3 mt-6 md:justify-end">
+              <button
+                onClick={() => choose(active - 1)}
+                aria-label="Anterior"
+                className="w-11 h-11 rounded-full flex items-center justify-center cursor-pointer transition-all hover:scale-105"
+                style={{ background: "rgba(42,24,16,0.12)", color: INK }}
+              >
+                <i className="ri-arrow-left-s-line text-xl" />
+              </button>
+              <button
+                onClick={() => choose(active + 1)}
+                aria-label="Siguiente"
+                className="w-11 h-11 rounded-full flex items-center justify-center cursor-pointer transition-all hover:scale-105"
+                style={{ background: "rgba(42,24,16,0.12)", color: INK }}
+              >
+                <i className="ri-arrow-right-s-line text-xl" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Tarjetas verticales (la elegida crece) ── */}
+        <div className="q-noscroll flex gap-3 md:gap-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory py-6 -mx-4 px-4 md:mx-0 md:px-0">
+          {producers.map((p, i) => {
+            const selected = i === active;
+            return (
+              <button
+                key={p.id}
+                onClick={() => choose(i)}
+                aria-pressed={selected}
+                className="relative flex-shrink-0 w-[68%] sm:w-[44%] md:w-auto md:flex-1 snap-center text-left cursor-pointer"
+                style={{
+                  height: "clamp(340px, 33vw, 430px)",
+                  borderRadius: "22px",
+                  transform: selected ? "scale(1.07) translateY(-6px)" : "scale(1)",
+                  zIndex: selected ? 10 : 1,
+                  boxShadow: selected ? "0 26px 56px rgba(42,24,16,0.30)" : "0 10px 26px rgba(42,24,16,0.10)",
+                  transition: "transform 0.45s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.45s ease",
+                }}
+              >
+                <div className="absolute inset-0 overflow-hidden" style={{ borderRadius: "22px" }}>
+                  <img src={p.image} alt={p.name} className="w-full h-full object-cover object-top" />
+                  <div
+                    className="absolute inset-0"
+                    style={{ background: "linear-gradient(180deg, rgba(20,10,6,0) 42%, rgba(20,10,6,0.88) 100%)" }}
+                  />
+                </div>
+                <div className="absolute left-0 right-0 bottom-0 p-4 md:p-5">
+                  <p
+                    className="leading-snug mb-3"
+                    style={{
+                      color: "#FFFFFF",
+                      fontFamily: "'Inter', sans-serif",
+                      fontWeight: 600,
+                      fontSize: "clamp(0.85rem, 1.15vw, 1rem)",
+                      overflow: "hidden",
+                      display: "-webkit-box",
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: "vertical",
+                    }}
+                  >
+                    {p.impact}
+                  </p>
+                  <p style={{ color: "#FFFFFF", fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: "13px" }}>{p.name}</p>
+                  <p style={{ color: "rgba(255,255,255,0.65)", fontFamily: "'Inter', sans-serif", fontSize: "11.5px" }}>{p.badge}</p>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* ── Detalle del productor elegido ── */}
+        <div
+          key={active}
+          className="mt-4 md:mt-6 rounded-3xl p-5 md:p-8 grid md:grid-cols-[170px_1fr_auto] gap-6 md:gap-10 items-center"
           style={{
-            fontFamily: "'Inter', sans-serif",
-            fontWeight: 300,
-            color: "#2A1810",
-            fontSize: "clamp(2rem, 4.2vw, 3.6rem)",
-            letterSpacing: "-0.025em",
-            lineHeight: 1.05,
+            background: "#FFFFFF",
+            border: "1px solid rgba(42,24,16,0.08)",
+            boxShadow: "0 18px 50px rgba(42,24,16,0.07)",
+            animation: "qFadeUp 0.5s ease",
           }}
         >
-          {titleHead}{" "}
-          <em
+          <div
+            className="relative overflow-hidden mx-auto md:mx-0"
             style={{
-              fontFamily: "'Instrument Serif', 'Cormorant Garamond', Georgia, serif",
-              fontStyle: "italic",
-              fontWeight: 400,
-              letterSpacing: "-0.01em",
+              width: "150px",
+              height: "190px",
+              borderRadius: "75px 75px 20px 20px",
+              border: `2px solid rgba(193,122,92,0.45)`,
             }}
           >
-            {titleTail}
-          </em>
-        </h2>
-
-        {/* Horizontal thumbnail strip */}
-        <div className="flex justify-center gap-4 flex-wrap">
-          {producers.map((p, i) => (
-            <button
-              key={p.id}
-              onClick={() => { setAutoplay(false); goTo(i); }}
-              className="flex flex-col items-center gap-2 cursor-pointer transition-all duration-300"
+            <img src={producer.workImage} alt={`${producer.name} trabajando`} className="w-full h-full object-cover object-top" />
+            <span
+              className="absolute bottom-2 left-1/2 -translate-x-1/2 text-[10px] tracking-widest uppercase px-2 py-0.5 rounded-full whitespace-nowrap"
+              style={{ background: "rgba(26,14,8,0.75)", color: "#E8A98C", fontFamily: "'Inter', sans-serif" }}
             >
-              <div
-                className="relative overflow-hidden transition-all duration-300"
-                style={{
-                  width: i === active ? "80px" : "58px",
-                  height: i === active ? "96px" : "72px",
-                  borderRadius: i === active ? "40px 40px 14px 14px" : "29px 29px 12px 12px",
-                  border: i === active ? "2.5px solid #C17A5C" : "2px solid rgba(193,122,92,0.2)",
-                  opacity: i === active ? 1 : 0.55,
-                  boxShadow: i === active ? "0 0 18px rgba(193,122,92,0.5)" : "none",
-                  transition: "all 0.3s ease",
-                }}
-              >
-                <img src={p.image} alt={p.name} className="w-full h-full object-cover object-top" />
-                {i === active && (
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(26,14,8,0.6), transparent)" }} />
-                )}
-              </div>
-              <span
-                className="text-xs font-medium leading-tight text-center"
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: i === active ? 600 : 500,
-                  color: i === active ? "#2A1810" : "rgba(42,24,16,0.45)",
-                  maxWidth: "88px",
-                  fontSize: i === active ? "12.5px" : "11px",
-                  transition: "all 0.3s ease",
-                }}
-              >
-                {p.name}
+              En campo
+            </span>
+          </div>
+
+          <div>
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-[11px] tracking-[0.25em] uppercase" style={{ color: TERRA_TEXT, fontFamily: "'Inter', sans-serif", fontWeight: 600 }}>
+                {producer.region}
               </span>
-              {/* Active dot */}
-              <div
-                className="w-1.5 h-1.5 rounded-full transition-all duration-300"
-                style={{ background: i === active ? "#C17A5C" : "transparent" }}
-              />
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Main content: left info + right map */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pb-14">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
-
-          {/* LEFT: producer info card */}
-          <div
-            className={`flex-1 rounded-2xl overflow-hidden relative transition-all duration-500 ${
-              animating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
-            }`}
-            style={{ minHeight: "460px" }}
-          >
-            {/* Background work image */}
-            {producers.map((p, i) => (
-              <div
-                key={p.id}
-                className="absolute inset-0 transition-opacity duration-700"
-                style={{ opacity: i === active ? 1 : 0 }}
-              >
-                <img src={p.workImage} alt={p.name} className="w-full h-full object-cover object-top" />
-              </div>
-            ))}
-            {/* Gradients */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#1A0E08]/85 via-transparent to-[#1A0E08]/50" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1A0E08]/98 via-[#1A0E08]/30 to-transparent" />
-
-            {/* Floating stats */}
-            <div className="absolute top-4 left-4 z-10 flex flex-col gap-1.5">
-              <div
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs"
-                style={{ background: "rgba(26,14,8,0.85)", color: "#C17A5C", backdropFilter: "blur(8px)" }}
-              >
-                <i className="ri-map-pin-line text-xs" />
-                <span className="truncate max-w-[130px]">{producer.location}</span>
-              </div>
-              <div
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs"
-                style={{ background: "rgba(26,14,8,0.85)", color: "#C17A5C", backdropFilter: "blur(8px)" }}
-              >
-                <i className="ri-time-line text-xs" />
-                <span>{producer.years} años cultivando</span>
-              </div>
+              <span className="h-px flex-1" style={{ background: "rgba(176,100,74,0.25)" }} />
             </div>
-
-            {/* Badge top-right */}
-            <div
-              className="absolute top-4 right-4 z-10 px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase"
-              style={{ background: "rgba(193,122,92,0.9)", color: "#FFFDF9" }}
+            <h3
+              className="mb-3"
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 300,
+                color: INK,
+                fontSize: "clamp(1.8rem, 3vw, 2.6rem)",
+                letterSpacing: "-0.025em",
+                lineHeight: 1.05,
+              }}
             >
-              {producer.badge}
-            </div>
-
-            {/* Bottom overlay content */}
-            <div className="absolute bottom-0 left-0 right-0 z-10 px-6 pb-8 pt-16">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="h-px flex-1" style={{ background: "rgba(193,122,92,0.4)" }} />
-                <span className="text-xs tracking-widest uppercase" style={{ color: "#C17A5C" }}>
-                  {producer.region}
-                </span>
-                <div className="h-px w-8" style={{ background: "rgba(193,122,92,0.4)" }} />
-              </div>
-              <h3
-                className="text-3xl md:text-5xl mb-2"
-                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, letterSpacing: "-0.025em", color: "#FFFDF9" }}
-              >
-                {producer.name}
-              </h3>
-              <p
-                className="text-sm leading-relaxed mb-4"
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  color: "#E4D6C4",
-                  maxWidth: "480px",
-                  overflow: "hidden",
-                  display: "-webkit-box",
-                  WebkitLineClamp: 3,
-                  WebkitBoxOrient: "vertical",
-                }}
-              >
-                {producer.story}
-              </p>
-              <div className="inline-flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full animate-pulse flex-shrink-0" style={{ background: "#C17A5C" }} />
-                <span className="text-sm font-semibold" style={{ color: "#C17A5C" }}>
-                  {producer.impact}
-                </span>
-              </div>
-            </div>
-
-            {/* Dot nav + counter at bottom center */}
-            <div className="absolute bottom-3 right-6 z-10 flex items-center gap-3">
-              <div className="flex gap-1.5">
-                {producers.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => { setAutoplay(false); goTo(i); }}
-                    className="cursor-pointer transition-all duration-300 rounded-full"
-                    style={{
-                      height: "5px",
-                      width: i === active ? "22px" : "5px",
-                      background: i === active ? "#C17A5C" : "rgba(255,255,255,0.2)",
-                    }}
-                  />
-                ))}
-              </div>
-              <span className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
-                {String(active + 1).padStart(2, "0")} / {String(producers.length).padStart(2, "0")}
-              </span>
+              {producer.name}
+            </h3>
+            <p className="leading-relaxed mb-4" style={{ color: "rgba(42,24,16,0.72)", fontFamily: "'Inter', sans-serif", fontSize: "14.5px", maxWidth: "560px" }}>
+              {producer.story}
+            </p>
+            <div className="inline-flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full animate-pulse flex-shrink-0" style={{ background: TERRA }} />
+              <span style={{ color: TERRA_TEXT, fontFamily: "'Inter', sans-serif", fontWeight: 600, fontSize: "14px" }}>{producer.impact}</span>
             </div>
           </div>
 
-          {/* RIGHT: portrait + work image pair */}
-          <div
-            className={`hidden lg:flex flex-col justify-center items-center gap-5 transition-all duration-500 ${
-              animating ? "opacity-0 scale-95" : "opacity-100 scale-100"
-            }`}
-            style={{ minWidth: "360px" }}
-          >
-            <div className="flex flex-row gap-3">
-              {/* Portrait */}
-              <div
-                className="relative overflow-hidden"
-                style={{ width: "168px", height: "220px", borderRadius: "84px 84px 20px 20px", border: "2px solid rgba(193,122,92,0.6)" }}
-              >
-                <img src={producer.image} alt={producer.name} className="w-full h-full object-cover object-top" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                <div className="absolute bottom-2 left-0 right-0 flex justify-center">
-                  <span
-                    className="text-[10px] tracking-widest uppercase px-2 py-0.5 rounded-full"
-                    style={{ background: "rgba(26,14,8,0.75)", color: "#C17A5C", backdropFilter: "blur(6px)" }}
-                  >
-                    Productor
-                  </span>
-                </div>
-              </div>
-
-              {/* Divider */}
-              <div className="flex flex-col items-center justify-center gap-1 px-1">
-                <div className="h-8 w-px" style={{ background: "rgba(193,122,92,0.25)" }} />
-                <div
-                  className="w-6 h-6 rounded-full flex items-center justify-center"
-                  style={{ background: "rgba(193,122,92,0.15)", border: "1px solid rgba(193,122,92,0.4)" }}
-                >
-                  <i className="ri-leaf-line text-[11px]" style={{ color: "#C17A5C" }} />
-                </div>
-                <div className="h-8 w-px" style={{ background: "rgba(193,122,92,0.25)" }} />
-              </div>
-
-              {/* Work image */}
-              <div
-                className="relative overflow-hidden"
-                style={{ width: "168px", height: "220px", borderRadius: "84px 84px 20px 20px", border: "2px solid rgba(193,122,92,0.3)" }}
-              >
-                <img src={producer.workImage} alt={`${producer.name} trabajando`} className="w-full h-full object-cover object-top" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                <div className="absolute bottom-2 left-0 right-0 flex justify-center">
-                  <span
-                    className="text-[10px] tracking-widest uppercase px-2 py-0.5 rounded-full"
-                    style={{ background: "rgba(26,14,8,0.75)", color: "#C17A5C", backdropFilter: "blur(6px)" }}
-                  >
-                    En campo
-                  </span>
-                </div>
-              </div>
-            </div>
+          <div className="flex md:flex-col gap-2 md:items-end flex-wrap">
+            <span
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs whitespace-nowrap"
+              style={{ background: "rgba(193,122,92,0.10)", color: TERRA_TEXT, fontFamily: "'Inter', sans-serif", fontWeight: 500 }}
+            >
+              <i className="ri-map-pin-line" />
+              {producer.location}
+            </span>
+            <span
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs whitespace-nowrap"
+              style={{ background: "rgba(193,122,92,0.10)", color: TERRA_TEXT, fontFamily: "'Inter', sans-serif", fontWeight: 500 }}
+            >
+              <i className="ri-time-line" />
+              {producer.years} años cultivando
+            </span>
+            <span className="text-xs md:mt-2" style={{ color: "rgba(42,24,16,0.4)", fontFamily: "'Inter', sans-serif" }}>
+              {String(active + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+            </span>
           </div>
-
         </div>
       </div>
 
-      {/* Progress bar */}
+      {/* Barra de progreso del paso automático */}
       {autoplay && (
         <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ background: "rgba(42,24,16,0.08)" }}>
-          <div
-            key={active}
-            className="h-full"
-            style={{ background: "#C17A5C", animation: "progressBar 5.5s linear forwards" }}
-          />
+          <div key={active} className="h-full" style={{ background: TERRA, animation: "progressBar 5.5s linear forwards" }} />
         </div>
       )}
 
       <style>{`
-        @keyframes progressBar {
-          from { width: 0%; }
-          to { width: 100%; }
-        }
+        @keyframes progressBar { from { width: 0%; } to { width: 100%; } }
+        @keyframes qFadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .q-noscroll { scrollbar-width: none; }
+        .q-noscroll::-webkit-scrollbar { display: none; }
       `}</style>
     </section>
   );

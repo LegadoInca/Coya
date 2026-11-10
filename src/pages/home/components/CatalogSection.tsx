@@ -3,6 +3,13 @@ import { useTranslation } from "react-i18next";
 import { products } from "@/mocks/products";
 import { CartItem } from "@/hooks/useCart";
 
+// Serif cursiva (misma del titular del hero)
+const SERIF = "'Instrument Serif', 'Cormorant Garamond', Georgia, serif";
+
+// Cuántos productos se muestran (por ahora 3) y si se muestran los filtros por categoría
+const VISIBLE_COUNT = 3;
+const SHOW_FILTERS = false;
+
 interface CatalogSectionProps {
   onAddToCart: (item: Omit<CartItem, "quantity">) => void;
 }
@@ -54,7 +61,7 @@ function CartToast({ toast, onDismiss }: { toast: ToastData; onDismiss: (id: num
         <p
           className="font-bold leading-tight mb-1"
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "'Inter', sans-serif",
             color: "#FFFDF9",
             fontSize: "15px",
             letterSpacing: "0.02em",
@@ -171,7 +178,9 @@ function ProductCard({ product, visible, refCallback, onAddToCart, addedId }: Pr
       ref={refCallback}
       className="rounded-2xl overflow-hidden flex flex-col"
       style={{
-        background: "#FFFDF9",
+        background: "#FFFFFF",
+        border: "1px solid rgba(42,24,16,0.08)",
+        boxShadow: "0 14px 40px rgba(42,24,16,0.07)",
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(36px)",
         transition: "opacity 0.55s ease, transform 0.55s ease",
@@ -272,7 +281,7 @@ function ProductCard({ product, visible, refCallback, onAddToCart, addedId }: Pr
           <div
             style={{
               position: "absolute",
-              bottom: "14px",
+              bottom: "44px",
               left: "14px",
               right: "14px",
               opacity: storyOpen ? 0 : 1,
@@ -287,8 +296,10 @@ function ProductCard({ product, visible, refCallback, onAddToCart, addedId }: Pr
                 className="font-bold leading-tight"
                 style={{
                   color: "#F5C87A",
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "15px",
+                  fontFamily: SERIF,
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                  fontSize: "18px",
                   textShadow: "0 1px 6px rgba(0,0,0,0.7)",
                 }}
               >
@@ -311,8 +322,10 @@ function ProductCard({ product, visible, refCallback, onAddToCart, addedId }: Pr
               className="font-extrabold mb-2 leading-tight"
               style={{
                 color: "#F5C87A",
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "17px",
+                fontFamily: SERIF,
+                fontStyle: "italic",
+                fontWeight: 400,
+                fontSize: "20px",
                 textShadow: "0 1px 6px rgba(0,0,0,0.7)",
               }}
             >
@@ -352,7 +365,7 @@ function ProductCard({ product, visible, refCallback, onAddToCart, addedId }: Pr
           <i className="ri-map-pin-line mr-1" />
           {product.origin}
         </p>
-        <h3 className="font-bold text-base mb-1 leading-tight" style={{ color: "#2C1810" }}>
+        <h3 className="text-base mb-1 leading-tight" style={{ color: "#2C1810", fontFamily: "'Inter', sans-serif", fontWeight: 600, letterSpacing: "-0.01em" }}>
           {product.name}
         </h3>
         <p className="text-xs mb-3" style={{ color: "#8B6F5E" }}>
@@ -402,13 +415,17 @@ export default function CatalogSection({ onAddToCart }: CatalogSectionProps) {
 
   const filters = ["all", "chocolate", "nibs", "powder", "butter"];
 
+  const titleWords = String(t("catalog.title")).split(" ");
+  const titleTail = titleWords.length > 1 ? titleWords[titleWords.length - 1] : "";
+  const titleHead = titleWords.length > 1 ? titleWords.slice(0, -1).join(" ") : titleWords[0];
+
   const filtered = (activeFilter === "all"
     ? products
     : products.filter((p) => p.category === activeFilter)
-  ).slice(0, 6);
+  ).slice(0, VISIBLE_COUNT);
 
   const { refs, visible } = useScrollReveal(filtered.length);
-  const { sectionRef, offset } = useParallax(0.28);
+  const { sectionRef } = useParallax(0.28);
 
   const dismissToast = useCallback((id: number) => {
     setToasts((prev) => prev.filter((t) => t.id !== id));
@@ -439,102 +456,101 @@ export default function CatalogSection({ onAddToCart }: CatalogSectionProps) {
   return (
     <>
       <ToastContainer toasts={toasts} onDismiss={dismissToast} />
-      <section ref={sectionRef} id="catalog" className="relative py-12 md:py-16 overflow-hidden" style={{ background: "transparent" }}>
-        {/* Background base color */}
-        <div className="absolute inset-0 z-0" style={{ background: "transparent" }} />
-        {/* Background texture image with parallax */}
-        <img
-  src="/Coya/images/fondos1.jpg"
-  alt=""
-  className="absolute inset-0 z-0 w-full h-full object-cover"
-  style={{ opacity: 0.85 }}
-/>
-        {/* Warm brown tint overlay */}
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            background: "rgba(60,30,10,0.05)",
-          }}
-        />
+      <section
+        ref={sectionRef}
+        id="catalog"
+        className="relative py-12 md:py-16 overflow-hidden"
+        style={{ background: "#F5EFE4", borderTop: "1px solid rgba(42,24,16,0.06)" }}
+      >
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-5">
-              <span className="w-12 h-px" style={{ background: "#F5C87A" }} />
+              <span className="w-12 h-px" style={{ background: "rgba(176,100,74,0.5)" }} />
               <span
-                className="text-xs font-bold tracking-[0.25em] uppercase"
-                style={{ color: "#F5C87A", letterSpacing: "0.22em" }}
+                className="text-[11px] tracking-[0.3em] uppercase"
+                style={{ color: "#B0644A", fontFamily: "'Inter', sans-serif", fontWeight: 600 }}
               >
                 {t("catalog.badge")}
               </span>
-              <span className="w-12 h-px" style={{ background: "#F5C87A" }} />
+              <span className="w-12 h-px" style={{ background: "rgba(176,100,74,0.5)" }} />
             </div>
             <h2
               className="mb-5"
               style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                color: "#FFFDF9",
-                fontWeight: 900,
-                fontSize: "clamp(2.8rem, 5vw, 4rem)",
-                lineHeight: 1.1,
-                letterSpacing: "-0.01em",
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 300,
+                color: "#2A1810",
+                fontSize: "clamp(2rem, 4.2vw, 3.6rem)",
+                letterSpacing: "-0.025em",
+                lineHeight: 1.05,
               }}
             >
-              {t("catalog.title")}
+              {titleHead}{" "}
+              <em
+                style={{
+                  fontFamily: SERIF,
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                  color: "#B0644A",
+                  letterSpacing: "-0.01em",
+                  fontSize: "1.06em",
+                }}
+              >
+                {titleTail}
+              </em>
             </h2>
             <p
-              className="text-base max-w-xl mx-auto mb-4"
-              style={{ color: "rgba(245,230,211,0.75)", fontWeight: 400, lineHeight: 1.6 }}
+              className="text-base max-w-xl mx-auto mb-5"
+              style={{ color: "rgba(42,24,16,0.65)", fontFamily: "'Inter', sans-serif", fontWeight: 400, lineHeight: 1.6 }}
             >
               {t("catalog.subtitle")}
             </p>
 
-            {/* Hint for story interaction — golden shimmer button */}
+            {/* Pista para tocar la imagen */}
             <div className="flex items-center justify-center">
               <span
                 className="relative inline-flex items-center gap-2 px-5 py-2 rounded-full overflow-hidden cursor-default select-none"
                 style={{
-                  background: "linear-gradient(90deg, #B8812A 0%, #F5C87A 40%, #D4A843 70%, #B8812A 100%)",
-                  backgroundSize: "200% 100%",
-                  border: "1px solid rgba(255,220,120,0.6)",
-                  boxShadow: "0 0 20px rgba(245,200,120,0.35), 0 2px 12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.25)",
-                  color: "#2C1810",
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: "13px",
-                  fontWeight: 700,
-                  letterSpacing: "0.04em",
+                  background: "rgba(193,122,92,0.10)",
+                  border: "1px solid rgba(193,122,92,0.45)",
+                  color: "#B0644A",
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: "12.5px",
+                  fontWeight: 500,
                 }}
               >
                 <span
                   className="absolute inset-0 pointer-events-none"
                   style={{
-                    background: "linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.45) 50%, transparent 70%)",
+                    background: "linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.55) 50%, transparent 70%)",
                     animation: "shimmerSweep 2.2s ease-in-out infinite",
                   }}
                 />
-                <i className="ri-sparkling-2-fill relative z-10" style={{ fontSize: "14px" }} />
+                <i className="ri-sparkling-2-fill relative z-10" style={{ fontSize: "14px", color: "#C17A5C" }} />
                 <span className="relative z-10">Toca la imagen de cada producto para descubrir la historia detrás</span>
-                <i className="ri-sparkling-fill relative z-10" style={{ fontSize: "12px" }} />
+                <i className="ri-sparkling-fill relative z-10" style={{ fontSize: "12px", color: "rgba(193,122,92,0.7)" }} />
               </span>
             </div>
           </div>
 
-
+          {SHOW_FILTERS && (
           <div className="flex flex-wrap justify-center gap-2 mb-10">
             {filters.map((f) => (
               <button
                 key={f}
                 onClick={() => setActiveFilter(f)}
-                className="px-5 py-2 rounded-full text-sm font-semibold cursor-pointer transition-all whitespace-nowrap"
+                className="px-5 py-2 rounded-full text-sm font-semibold cursor-pointer transition-all whitespace-nowrap" 
                 style={{
-                  background: activeFilter === f ? "#C17A5C" : "rgba(255,255,255,0.08)",
-                  color: activeFilter === f ? "#FFFDF9" : "rgba(245,230,211,0.75)",
-                  border: activeFilter === f ? "1.5px solid #C17A5C" : "1.5px solid rgba(245,230,211,0.25)",
+                  background: activeFilter === f ? "#C17A5C" : "#FFFFFF",
+                  color: activeFilter === f ? "#FFFDF9" : "#2A1810",
+                  border: activeFilter === f ? "1.5px solid #C17A5C" : "1.5px solid rgba(42,24,16,0.14)",
                 }}
               >
                 {t(`catalog.filters.${f}`)}
               </button>
             ))}
           </div>
+          )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((product, i) => (

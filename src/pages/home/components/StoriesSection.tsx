@@ -32,7 +32,7 @@ const regions: RegionStory[] = [
         title: "El renacer de María",
         subtitle: "María recuperó su parcela y hoy lidera una cooperativa de mujeres cacaoteras en el Valle de La Convención.",
         tag: "Productora",
-        image: "/Coya/images/maria.jpeg",
+        image: "/Coya/images/maria.png",
       },
       {
         title: "Los hijos de María",
@@ -54,7 +54,7 @@ const regions: RegionStory[] = [
         title: "El nuevo comienzo de Segundo",
         subtitle: "Segundo revivió sus cacaotales abandonados y hoy exporta a Europa, dando futuro a su familia en las alturas de Ayacucho.",
         tag: "Productor",
-        image: "/Coya/images/segundo.jpeg",
+        image: "/Coya/images/segundo.png",
       },
       {
         title: "La historia de Félix",
