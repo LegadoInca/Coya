@@ -30,42 +30,48 @@ export default function ProducersSection() {
 
   const producer = producers[active];
 
+  // Título: todo en sans ligera y la última palabra en serif cursiva
+  const titleWords = String(t("producers.title")).split(" ");
+  const titleTail = titleWords.length > 1 ? titleWords[titleWords.length - 1] : "";
+  const titleHead = titleWords.length > 1 ? titleWords.slice(0, -1).join(" ") : titleWords[0];
+
   return (
     <section
       id="producers"
       className="relative w-full overflow-hidden"
-      style={{ background: "#1A0E08" }}
+      style={{ background: "#FAF7F2", borderTop: "1px solid rgba(42,24,16,0.06)" }}
     >
-      {/* Background texture image */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: "url('/Coya/images/fondoo.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          opacity: 0.75,
-        }}
-      />
-      {/* Overlay marrón tenue */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{ background: "rgba(26,14,8,0.30)" }}
-      />
-
       {/* Section header */}
       <div className="relative z-10 text-center pt-16 pb-8 px-6">
         <span
-          className="text-xs tracking-[0.4em] uppercase font-light mb-3 block"
-          style={{ color: "#C17A5C" }}
+          className="inline-flex items-center gap-2 text-[11px] tracking-[0.3em] uppercase mb-4"
+          style={{ color: "#B0644A", fontFamily: "'Inter', sans-serif", fontWeight: 600 }}
         >
+          <span style={{ width: "8px", height: "8px", background: "#C17A5C", display: "inline-block" }} />
           {t("producers.badge")}
         </span>
         <h2
-          className="text-4xl md:text-5xl font-bold mb-8"
-          style={{ fontFamily: "'Cormorant Garamond', serif", color: "#F5E6D3" }}
+          className="mb-9"
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontWeight: 300,
+            color: "#2A1810",
+            fontSize: "clamp(2rem, 4.2vw, 3.6rem)",
+            letterSpacing: "-0.025em",
+            lineHeight: 1.05,
+          }}
         >
-          {t("producers.title")}
+          {titleHead}{" "}
+          <em
+            style={{
+              fontFamily: "'Instrument Serif', 'Cormorant Garamond', Georgia, serif",
+              fontStyle: "italic",
+              fontWeight: 400,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            {titleTail}
+          </em>
         </h2>
 
         {/* Horizontal thumbnail strip */}
@@ -77,10 +83,11 @@ export default function ProducersSection() {
               className="flex flex-col items-center gap-2 cursor-pointer transition-all duration-300"
             >
               <div
-                className="relative overflow-hidden rounded-xl transition-all duration-300"
+                className="relative overflow-hidden transition-all duration-300"
                 style={{
                   width: i === active ? "80px" : "58px",
                   height: i === active ? "96px" : "72px",
+                  borderRadius: i === active ? "40px 40px 14px 14px" : "29px 29px 12px 12px",
                   border: i === active ? "2.5px solid #C17A5C" : "2px solid rgba(193,122,92,0.2)",
                   opacity: i === active ? 1 : 0.55,
                   boxShadow: i === active ? "0 0 18px rgba(193,122,92,0.5)" : "none",
@@ -95,10 +102,11 @@ export default function ProducersSection() {
               <span
                 className="text-xs font-medium leading-tight text-center"
                 style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  color: i === active ? "#F5E6D3" : "rgba(245,230,211,0.4)",
-                  maxWidth: "80px",
-                  fontSize: i === active ? "13px" : "11px",
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: i === active ? 600 : 500,
+                  color: i === active ? "#2A1810" : "rgba(42,24,16,0.45)",
+                  maxWidth: "88px",
+                  fontSize: i === active ? "12.5px" : "11px",
                   transition: "all 0.3s ease",
                 }}
               >
@@ -175,15 +183,16 @@ export default function ProducersSection() {
                 <div className="h-px w-8" style={{ background: "rgba(193,122,92,0.4)" }} />
               </div>
               <h3
-                className="text-3xl md:text-5xl font-bold mb-2"
-                style={{ fontFamily: "'Cormorant Garamond', serif", color: "#FFFDF9" }}
+                className="text-3xl md:text-5xl mb-2"
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, letterSpacing: "-0.025em", color: "#FFFDF9" }}
               >
                 {producer.name}
               </h3>
               <p
                 className="text-sm leading-relaxed mb-4"
                 style={{
-                  color: "#D4C4B0",
+                  fontFamily: "'Inter', sans-serif",
+                  color: "#E4D6C4",
                   maxWidth: "480px",
                   overflow: "hidden",
                   display: "-webkit-box",
@@ -233,8 +242,8 @@ export default function ProducersSection() {
             <div className="flex flex-row gap-3">
               {/* Portrait */}
               <div
-                className="relative overflow-hidden rounded-2xl"
-                style={{ width: "168px", height: "220px", border: "2px solid rgba(193,122,92,0.6)" }}
+                className="relative overflow-hidden"
+                style={{ width: "168px", height: "220px", borderRadius: "84px 84px 20px 20px", border: "2px solid rgba(193,122,92,0.6)" }}
               >
                 <img src={producer.image} alt={producer.name} className="w-full h-full object-cover object-top" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -262,8 +271,8 @@ export default function ProducersSection() {
 
               {/* Work image */}
               <div
-                className="relative overflow-hidden rounded-2xl"
-                style={{ width: "168px", height: "220px", border: "2px solid rgba(193,122,92,0.3)" }}
+                className="relative overflow-hidden"
+                style={{ width: "168px", height: "220px", borderRadius: "84px 84px 20px 20px", border: "2px solid rgba(193,122,92,0.3)" }}
               >
                 <img src={producer.workImage} alt={`${producer.name} trabajando`} className="w-full h-full object-cover object-top" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -284,7 +293,7 @@ export default function ProducersSection() {
 
       {/* Progress bar */}
       {autoplay && (
-        <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ background: "rgba(255,255,255,0.08)" }}>
+        <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ background: "rgba(42,24,16,0.08)" }}>
           <div
             key={active}
             className="h-full"
