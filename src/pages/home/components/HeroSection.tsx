@@ -1,230 +1,181 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-
-type SlideMedia =
-  | { type: "video"; src: string }
-  | { type: "image"; src: string };
-
-const SLIDES: SlideMedia[] = [
-  { type: "video", src: "/Coya/videos/hero1.mp4" },
-  { type: "video", src: "/Coya/videos/hero2.mp4" },
-  { type: "video", src: "/Coya/videos/hero3.mp4" },
-  { type: "video", src: "/Coya/videos/hero4.mp4" },
-];
+import { producers } from "@/mocks/producers";
 
 interface HeroSectionProps {
   onScrollToProducers: () => void;
   onScrollToCatalog: () => void;
 }
 
-function VideoSlide({ src, active }: { src: string; active: boolean }) {
-  const ref = useRef<HTMLVideoElement>(null);
+// Un solo video de fondo
+const HERO_VIDEO = "/Coya/videos/hero1.mp4";
 
-  useEffect(() => {
-    if (!ref.current) return;
-    if (active) {
-      ref.current.currentTime = 0;
-      ref.current.play().catch(() => {});
-    } else {
-      ref.current.pause();
-    }
-  }, [active]);
+// Logo del hero: "Qantari" en rojo y "Cacao" en blanco
+const LOGO = "/Coya/images/logo-qantari-cacao-blanco.png";
+const SERIF_ITALIC = "'Instrument Serif', 'Cormorant Garamond', Georgia, serif";
 
+// Fotos de los arcos: retrato y foto de trabajo de cada productor, intercaladas para no repetir caras seguidas
+const ARCH_PHOTOS: string[] = (() => {
+  const first = producers.map((p, i) => (i % 2 === 0 ? p.image : p.workImage));
+  const second = producers.map((p, i) => (i % 2 === 0 ? p.workImage : p.image));
+  return [...first, ...second];
+})();
+
+function Arch({ src }: { src: string }) {
   return (
     <div
-      className="absolute inset-0 transition-opacity duration-1000"
-      style={{ opacity: active ? 1 : 0 }}
+      className="relative flex-shrink-0 overflow-hidden transition-transform duration-500 hover:-translate-y-2"
+      style={{
+        width: "var(--arch-w)",
+        height: "calc(var(--arch-w) * 1.2)",
+        borderRadius: "calc(var(--arch-w) / 2) calc(var(--arch-w) / 2) 26px 26px",
+        border: "1px solid rgba(255,255,255,0.28)",
+        boxShadow: "0 14px 34px rgba(0,0,0,0.28)",
+      }}
     >
-      <video
-        ref={ref}
-        src={src}
-        muted
-        loop
-        playsInline
-        className="w-full h-full object-cover object-center"
+      <img src={src} alt="" loading="lazy" className="w-full h-full object-cover object-top" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.10), rgba(0,0,0,0.08))" }}
       />
     </div>
   );
 }
 
-function ImageSlide({ src, active }: { src: string; active: boolean }) {
-  return (
-    <div
-      className="absolute inset-0 transition-opacity duration-1000"
-      style={{ opacity: active ? 1 : 0 }}
-    >
-      <img src={src} alt="" className="w-full h-full object-cover object-top" />
-    </div>
-  );
-}
-
-export default function HeroSection({ onScrollToProducers, onScrollToCatalog }: HeroSectionProps) {
+export default function HeroSection({ onScrollToCatalog }: HeroSectionProps) {
   const { t } = useTranslation();
-  const [current, setCurrent] = useState(0);
 
+  // Tipografía serif cursiva del titular (se carga una sola vez)
+  useEffect(() => {
+    const id = "qantari-instrument-serif";
+    if (document.getElementById(id)) return;
+    const link = document.createElement("link");
+    link.id = id;
+    link.rel = "stylesheet";
+    link.href = "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap";
+    document.head.appendChild(link);
+  }, []);
+
+  // Los 4 textos antiguos eran idénticos: usamos el primero
   const slides = t("hero.slides", { returnObjects: true }) as Array<{
     title: string;
     subtitle: string;
     desc: string;
     cta: string;
   }>;
-
-  const goTo = useCallback((idx: number) => {
-    setCurrent(idx);
-  }, []);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      goTo((current + 1) % SLIDES.length);
-    }, 7000);
-    return () => clearInterval(timer);
-  }, [current, goTo]);
-
-  const slide = slides[current] || slides[0];
-
-  const handleCta = () => {
-    if (current === 0) onScrollToProducers();
-    else onScrollToCatalog();
-  };
+  const slide = (Array.isArray(slides) && slides[0]) || { title: "", subtitle: "", desc: "", cta: "" };
 
   return (
-    <section id="hero" className="relative w-full h-screen min-h-[600px] overflow-hidden">
-      {/* Media slides */}
-      {SLIDES.map((s, i) =>
-        s.type === "video" ? (
-          <VideoSlide key={i} src={s.src} active={i === current} />
-        ) : (
-          <ImageSlide key={i} src={s.src} active={i === current} />
-        )
-      )}
+    <section
+      id="hero"
+      className="relative w-full h-screen min-h-[660px] overflow-hidden"
+      style={{ ["--arch-w" as string]: "clamp(92px, 12.2vw, 176px)" } as React.CSSProperties}
+    >
+      {/* Video único */}
+      <video
+        src={HERO_VIDEO}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
+      {/* Sombras para que el texto blanco se lea (más fuerte a la izquierda) */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(20,10,6,0.74) 0%, rgba(20,10,6,0.46) 38%, rgba(20,10,6,0.12) 70%, rgba(20,10,6,0.26) 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0) 24%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 100%)",
+        }}
+      />
 
-      {/* Slide content — left-aligned like Holzen, static (does not fade with background) */}
-      <div className="absolute inset-0 flex flex-col justify-center px-5 md:px-16 lg:px-24 z-10">
-        <div className="max-w-3xl">
+      {/* Dos líneas verticales muy tenues (detalle de la referencia) */}
+      <div className="hidden md:block absolute top-0 bottom-0" style={{ left: "34%", width: 1, background: "rgba(255,255,255,0.14)" }} />
+      <div className="hidden md:block absolute top-0 bottom-0" style={{ left: "69%", width: 1, background: "rgba(255,255,255,0.14)" }} />
 
-          {/* QANTARI grande — Q como SVG (aro estilo Jost + cola del logo), resto en texto Jost */}
-          <h1
-            className="leading-none mb-2 flex items-end"
+      {/* Contenido */}
+      <div
+        className="absolute inset-0 z-10 flex flex-col justify-center px-5 md:px-16 lg:px-24"
+        style={{ paddingTop: "84px", paddingBottom: "calc(var(--arch-w) * 0.95 + 20px)" }}
+      >
+        <div className="max-w-4xl">
+          {/* Logo Qantari Cacao (imagen tal cual) */}
+          <img
+            src={LOGO}
+            alt="Qantari Cacao"
+            className="block mb-5 md:mb-7"
+            style={{ height: "clamp(84px, 10vw, 140px)", width: "auto" }}
+          />
+
+          {/* Titular: línea 1 sans ligera + línea 2 serif cursiva */}
+          <h2
             style={{
-              color: "#D93C00",
-              fontSize: "clamp(2.5rem, 7vw, 5.5rem)",
-              letterSpacing: "-0.01em",
-              textShadow: "0 2px 24px rgba(0,0,0,0.15)",
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 300,
+              color: "#FFFFFF",
+              fontSize: "clamp(1.8rem, 4.1vw, 3.7rem)",
+              letterSpacing: "-0.025em",
+              lineHeight: 1.04,
             }}
           >
-            <svg
-              viewBox="0 0 100 108"
-              style={{ height: "1em", width: "auto", marginRight: "0.02em", overflow: "visible", flexShrink: 0, position: "relative", top: "0.12em" }}
-              aria-hidden="true"
-            >
-              {/* Aro de la Q — círculo hueco, nada dentro */}
-              <circle
-                cx="48"
-                cy="48"
-                r="38"
-                fill="none"
-                stroke="#D93C00"
-                strokeWidth="14"
-              />
-              {/* Cola — barra corta y recta, pegada al aro (arranca dentro del grosor del trazo, no en el hueco), sin puntas redondeadas */}
-              <line
-                x1="70.9"
-                y1="74"
-                x2="86.6"
-                y2="94"
-                stroke="#D93C00"
-                strokeWidth="15"
-                strokeLinecap="butt"
-              />
-            </svg>
-            <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 500 }}>antari</span>
-          </h1>
-
-          {/* Sublínea CACAO · PERÚ */}
-          <div className="flex items-center gap-2 mb-4 md:mb-6">
-            <span style={{ width: "10px", height: "10px", backgroundColor: "#D93C00", display: "inline-block", flexShrink: 0 }} />
-            <span
-              style={{
-                color: "#FFFFFF",
-                fontFamily: "'Inter', sans-serif",
-                fontWeight: 600,
-                fontSize: "clamp(0.8rem, 1.4vw, 1.1rem)",
-                letterSpacing: "0.25em",
-                textTransform: "uppercase",
-              }}
-            >
-              Cacao · Perú
-            </span>
-          </div>
-
-          {/* Subtítulo en 2 líneas */}
-          <p
-            className="font-serif font-black uppercase leading-tight mb-1 whitespace-pre-line"
-            style={{ color: "#FFFDF9", fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(0.9rem, 2.5vw, 2.1rem)", letterSpacing: "0.04em", fontWeight: 900 }}
-          >
             {slide.title}
-          </p>
-          <h2
-            className="font-serif font-black uppercase leading-tight mb-5 md:mb-6 whitespace-pre-line"
-            style={{ color: "#F5E6D3", opacity: 0.95, fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(0.9rem, 2.5vw, 2.1rem)", letterSpacing: "0.04em", fontWeight: 900 }}
+          </h2>
+          <p
+            style={{
+              fontFamily: SERIF_ITALIC,
+              fontStyle: "italic",
+              fontWeight: 400,
+              color: "#FFFFFF",
+              fontSize: "clamp(2rem, 4.4vw, 4rem)",
+              letterSpacing: "-0.01em",
+              lineHeight: 1.02,
+              marginTop: "0.08em",
+            }}
           >
             {slide.subtitle}
-          </h2>
+          </p>
 
           <p
-            className="max-w-lg mb-6 md:mb-8 leading-relaxed"
-            style={{ color: "#E8DCC8", opacity: 0.9, fontSize: "clamp(0.85rem, 1.2vw, 1rem)" }}
+            className="max-w-md mt-5 md:mt-6 mb-6 md:mb-8 leading-relaxed"
+            style={{ color: "rgba(255,255,255,0.82)", fontFamily: "'Inter', sans-serif", fontSize: "clamp(0.85rem, 1.15vw, 0.98rem)" }}
           >
             {slide.desc}
           </p>
 
+          {/* Botón blanco con círculo y flecha */}
           <button
-            onClick={handleCta}
-            className="relative overflow-hidden inline-flex items-center gap-2 px-6 md:px-7 py-3 md:py-3.5 rounded-full font-semibold text-sm cursor-pointer transition-all hover:scale-105 whitespace-nowrap group"
-            style={{ background: "#C17A5C", color: "#FFFDF9", boxShadow: "0 0 22px rgba(193,122,92,0.45)" }}
+            onClick={onScrollToCatalog}
+            className="group inline-flex items-center gap-4 pl-6 pr-2 py-2 rounded-full cursor-pointer transition-transform hover:scale-[1.03] whitespace-nowrap"
+            style={{ background: "rgba(255,255,255,0.96)", color: "#3A2A22", fontFamily: "'Inter', sans-serif", fontWeight: 500, fontSize: "0.95rem" }}
           >
-            <span className="relative z-10">{slide.cta}</span>
-            <i className="relative z-10 ri-arrow-right-line" />
-            <span className="absolute top-0 bottom-0 w-1/3 animate-shimmer bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+            {slide.cta}
+            <span
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              style={{ background: "#7A4A38", color: "#FFFFFF" }}
+            >
+              <i className="ri-arrow-right-up-line text-lg" />
+            </span>
           </button>
         </div>
       </div>
 
-      {/* Dots */}
-      <div className="absolute bottom-10 md:bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-10">
-        {SLIDES.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i)}
-            className="cursor-pointer transition-all duration-300"
-            style={{
-              width: i === current ? "28px" : "7px",
-              height: "4px",
-              borderRadius: "2px",
-              background: i === current ? "#C17A5C" : "rgba(255,255,255,0.4)",
-            }}
-          />
-        ))}
+      {/* Fila de arcos con las fotos de los productores (primer y último se cortan en los bordes) */}
+      <div className="absolute left-0 right-0 bottom-0 z-10" style={{ transform: "translateY(26%)" }}>
+        <div className="flex items-end gap-5 md:gap-[26px]" style={{ marginLeft: "-70px" }}>
+          {ARCH_PHOTOS.map((src, i) => (
+            <Arch key={`${src}-${i}`} src={src} />
+          ))}
+        </div>
       </div>
-
-      {/* Arrows — hidden on mobile to keep content clean */}
-      <button
-        onClick={() => goTo((current - 1 + SLIDES.length) % SLIDES.length)}
-        className="hidden md:flex absolute left-8 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full cursor-pointer transition-all hover:scale-110 z-10"
-        style={{ background: "rgba(255,255,255,0.15)", color: "#FFFDF9" }}
-      >
-        <i className="ri-arrow-left-s-line text-xl" />
-      </button>
-      <button
-        onClick={() => goTo((current + 1) % SLIDES.length)}
-        className="hidden md:flex absolute right-8 top-1/2 -translate-y-1/2 w-10 h-10 items-center justify-center rounded-full cursor-pointer transition-all hover:scale-110 z-10"
-        style={{ background: "rgba(255,255,255,0.15)", color: "#FFFDF9" }}
-      >
-        <i className="ri-arrow-right-s-line text-xl" />
-      </button>
     </section>
   );
 }
