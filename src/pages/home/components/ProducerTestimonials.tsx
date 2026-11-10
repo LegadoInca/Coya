@@ -1,5 +1,17 @@
 import { useState, useEffect, useRef } from "react";
 
+// Serif cursiva (misma del titular del hero)
+const SERIF = "'Instrument Serif', 'Cormorant Garamond', Georgia, serif";
+
+// Colores de acento más oscuros para que se lean sobre blanco
+const TEXT_ACCENT: Record<string, string> = {
+  "#F5C87A": "#B8892F",
+  "#C17A5C": "#B0644A",
+  "#A8C5A0": "#5E8F63",
+  "#8FBC8F": "#4F8A57",
+};
+const textAccent = (c: string) => TEXT_ACCENT[c] ?? c;
+
 interface Testimonial {
   id: number;
   name: string;
@@ -70,8 +82,9 @@ function TestimonialCard({
     <div
       className="flex-shrink-0 w-full flex flex-col md:flex-row gap-6 rounded-2xl overflow-hidden p-6 md:p-8"
       style={{
-        background: "linear-gradient(135deg, rgba(44,24,16,0.78) 0%, rgba(62,32,12,0.68) 100%)",
-        border: `1px solid ${testimonial.accentColor}28`,
+        background: "#FFFFFF",
+        border: `1px solid ${testimonial.accentColor}55`,
+        boxShadow: "0 14px 40px rgba(42,24,16,0.06)",
         opacity: active ? 1 : 0,
         transform: active ? "translateX(0) scale(1)" : "translateX(24px) scale(0.98)",
         transition: "opacity 0.5s cubic-bezier(0.4,0,0.2,1), transform 0.5s cubic-bezier(0.4,0,0.2,1)",
@@ -100,15 +113,17 @@ function TestimonialCard({
         <div
           className="flex flex-col items-center px-4 py-2 rounded-xl"
           style={{
-            background: `${testimonial.accentColor}14`,
-            border: `1px solid ${testimonial.accentColor}30`,
+            background: `${testimonial.accentColor}22`,
+            border: `1px solid ${testimonial.accentColor}55`,
           }}
         >
           <span
-            className="font-black leading-none"
+            className="leading-none"
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              color: testimonial.accentColor,
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 600,
+              letterSpacing: "-0.02em",
+              color: textAccent(testimonial.accentColor),
               fontSize: "1.6rem",
             }}
           >
@@ -116,7 +131,7 @@ function TestimonialCard({
           </span>
           <span
             className="text-center leading-tight mt-0.5"
-            style={{ color: "rgba(245,230,211,0.55)", fontSize: "9.5px", maxWidth: "80px" }}
+            style={{ color: "rgba(42,24,16,0.6)", fontSize: "9.5px", maxWidth: "80px", fontFamily: "'Inter', sans-serif" }}
           >
             {testimonial.statLabel}
           </span>
@@ -129,11 +144,11 @@ function TestimonialCard({
         <span
           className="leading-none mb-2 block"
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            color: testimonial.accentColor,
+            fontFamily: SERIF,
+            color: textAccent(testimonial.accentColor),
             fontSize: "3.5rem",
             lineHeight: "1",
-            opacity: 0.5,
+            opacity: 0.55,
           }}
         >
           &ldquo;
@@ -141,32 +156,33 @@ function TestimonialCard({
         <p
           className="leading-relaxed mb-4"
           style={{
-            color: "rgba(255,253,249,0.90)",
-            fontSize: "clamp(0.9rem, 1.5vw, 1.05rem)",
+            color: "#2A1810",
+            fontSize: "clamp(1.05rem, 1.7vw, 1.3rem)",
             fontStyle: "italic",
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: SERIF,
+            lineHeight: 1.45,
           }}
         >
           {testimonial.quote}
         </p>
         <div>
           <p
-            className="font-bold"
             style={{
-              color: "#FFFDF9",
+              color: "#2A1810",
               fontSize: "0.95rem",
-              fontFamily: "'Cormorant Garamond', serif",
-              letterSpacing: "0.02em",
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 600,
+              letterSpacing: "-0.01em",
             }}
           >
             {testimonial.name}
           </p>
-          <p className="text-xs" style={{ color: testimonial.accentColor, opacity: 0.85 }}>
+          <p className="text-xs" style={{ color: textAccent(testimonial.accentColor), fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>
             {testimonial.role}
           </p>
           <div className="flex items-center gap-1 mt-1">
-            <i className="ri-map-pin-line" style={{ color: "rgba(245,230,211,0.40)", fontSize: "11px" }} />
-            <span className="text-xs" style={{ color: "rgba(245,230,211,0.40)" }}>
+            <i className="ri-map-pin-line" style={{ color: "rgba(42,24,16,0.4)", fontSize: "11px" }} />
+            <span className="text-xs" style={{ color: "rgba(42,24,16,0.5)", fontFamily: "'Inter', sans-serif" }}>
               {testimonial.origin}
             </span>
           </div>
@@ -201,14 +217,14 @@ export default function ProducerTestimonials() {
     <div className="w-full mb-10">
       {/* Section label */}
       <div className="flex items-center gap-3 mb-5">
-        <span className="w-8 h-px" style={{ background: "rgba(245,200,120,0.4)" }} />
+        <span className="w-8 h-px" style={{ background: "rgba(176,100,74,0.5)" }} />
         <span
-          className="text-xs font-bold tracking-[0.22em] uppercase"
-          style={{ color: "rgba(245,200,120,0.7)" }}
+          className="text-[11px] tracking-[0.3em] uppercase"
+          style={{ color: "#B0644A", fontFamily: "'Inter', sans-serif", fontWeight: 600 }}
         >
           Voces del campo
         </span>
-        <span className="flex-1 h-px" style={{ background: "rgba(245,200,120,0.15)" }} />
+        <span className="flex-1 h-px" style={{ background: "rgba(42,24,16,0.10)" }} />
       </div>
 
       {/* Cards container */}
@@ -228,7 +244,7 @@ export default function ProducerTestimonials() {
             style={{
               width: i === active ? "24px" : "8px",
               height: "8px",
-              background: i === active ? t.accentColor : "rgba(245,200,120,0.22)",
+              background: i === active ? textAccent(t.accentColor) : "rgba(42,24,16,0.18)",
               border: "none",
               padding: 0,
             }}

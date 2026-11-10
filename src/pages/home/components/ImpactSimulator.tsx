@@ -193,7 +193,7 @@ function MetricCard({ icon, value, label, subtext, color, image }: ImpactMetric)
     <div
       className="flex-1 relative rounded-xl overflow-hidden"
       style={{
-        border: "1px solid rgba(245,200,120,0.18)",
+        border: "1px solid rgba(42,24,16,0.10)",
         minWidth: "0",
         height: "160px",
       }}
@@ -225,9 +225,10 @@ function MetricCard({ icon, value, label, subtext, color, image }: ImpactMetric)
       {/* Text bottom */}
       <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center pb-3 px-2 gap-0.5">
         <span
-          className="font-black leading-none"
+          className="leading-none"
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "'Inter', sans-serif",
+            fontWeight: 700,
             color: "#FFFDF9",
             fontSize: "clamp(1.3rem, 2.5vw, 2rem)",
             letterSpacing: "-0.02em",
@@ -399,9 +400,9 @@ export default function ImpactSimulator({ cartItems = [] }: ImpactSimulatorProps
     <div
       className="w-full rounded-2xl mb-10 overflow-hidden relative"
       style={{
-        background: "linear-gradient(135deg, rgba(44,24,16,0.82) 0%, rgba(62,32,12,0.75) 100%)",
-        border: `1px solid ${isCartMode ? "rgba(168,197,160,0.30)" : "rgba(245,200,120,0.18)"}`,
-        backdropFilter: "blur(8px)",
+        background: "#FFFFFF",
+        border: `1px solid ${isCartMode ? "rgba(74,124,89,0.35)" : "rgba(42,24,16,0.08)"}`,
+        boxShadow: "0 18px 50px rgba(42,24,16,0.07)",
         transition: "border-color 0.4s ease",
       }}
     >
@@ -413,13 +414,13 @@ export default function ImpactSimulator({ cartItems = [] }: ImpactSimulatorProps
         <div
           className="absolute top-0 left-0 right-0 flex items-center justify-center gap-2 py-2 z-40"
           style={{
-            background: "linear-gradient(90deg, rgba(168,197,160,0.18), rgba(245,200,120,0.22), rgba(168,197,160,0.18))",
-            borderBottom: "1px solid rgba(245,200,120,0.25)",
+            background: "linear-gradient(90deg, rgba(168,197,160,0.30), rgba(245,200,120,0.38), rgba(168,197,160,0.30))",
+            borderBottom: "1px solid rgba(193,122,92,0.25)",
             animation: "fadeInDown 0.4s ease",
           }}
         >
-          <i className="ri-sparkling-2-fill" style={{ color: "#F5C87A", fontSize: "14px" }} />
-          <span className="text-xs font-bold tracking-wide" style={{ color: "#FFFDF9" }}>
+          <i className="ri-sparkling-2-fill" style={{ color: "#C17A5C", fontSize: "14px" }} />
+          <span className="text-xs font-bold tracking-wide" style={{ color: "#2A1810", fontFamily: "'Inter', sans-serif" }}>
             ¡Tu primer impacto real acaba de comenzar!
           </span>
           <i className="ri-sparkling-2-fill" style={{ color: "#A8C5A0", fontSize: "14px" }} />
@@ -430,12 +431,13 @@ export default function ImpactSimulator({ cartItems = [] }: ImpactSimulatorProps
       <div className={`flex items-center justify-between px-6 pb-3 ${showConfetti ? "pt-10" : "pt-5"}`} style={{ transition: "padding-top 0.3s ease" }}>
         <div>
           <h3
-            className="font-black leading-tight"
+            className="leading-tight"
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              color: "#FFFDF9",
-              fontSize: "clamp(1.1rem, 2vw, 1.4rem)",
-              letterSpacing: "0.01em",
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 600,
+              color: "#2A1810",
+              fontSize: "clamp(1.25rem, 2.2vw, 1.7rem)",
+              letterSpacing: "-0.02em",
             }}
           >
             Tu Impacto Real
@@ -444,29 +446,28 @@ export default function ImpactSimulator({ cartItems = [] }: ImpactSimulatorProps
             <span
               className="relative inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full overflow-hidden"
               style={{
-                background: "linear-gradient(90deg, rgba(193,122,92,0.18) 0%, rgba(245,200,120,0.28) 50%, rgba(193,122,92,0.18) 100%)",
-                border: "1px solid rgba(245,200,120,0.55)",
-                color: "#F5C87A",
-                fontFamily: "'Cormorant Garamond', serif",
+                background: "rgba(193,122,92,0.10)",
+                border: "1px solid rgba(193,122,92,0.45)",
+                color: "#B0644A",
+                fontFamily: "'Inter', sans-serif",
                 fontSize: "12px",
-                letterSpacing: "0.03em",
-                boxShadow: "0 0 14px rgba(245,200,120,0.22), inset 0 0 10px rgba(245,200,120,0.06)",
+                letterSpacing: "0.02em",
               }}
             >
               <span
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  background: "linear-gradient(105deg, transparent 35%, rgba(255,230,140,0.35) 50%, transparent 65%)",
+                  background: "linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.55) 50%, transparent 65%)",
                   animation: "shimmerSweep 2.4s ease-in-out infinite",
                 }}
               />
-              <i className="ri-sparkling-2-fill relative z-10" style={{ fontSize: "13px", color: "#F5C87A" }} />
+              <i className="ri-sparkling-2-fill relative z-10" style={{ fontSize: "13px", color: "#C17A5C" }} />
               <span className="relative z-10">
                 {isCartMode
                   ? "Calculado con tu canasta actual — mueve el slider para explorar"
                   : "Mueve el slider y descubre el impacto de cada producto que eliges"}
               </span>
-              <i className="ri-sparkling-fill relative z-10" style={{ fontSize: "11px", color: "rgba(245,200,120,0.7)" }} />
+              <i className="ri-sparkling-fill relative z-10" style={{ fontSize: "11px", color: "rgba(193,122,92,0.7)" }} />
             </span>
           </div>
         </div>
@@ -475,18 +476,18 @@ export default function ImpactSimulator({ cartItems = [] }: ImpactSimulatorProps
             <button
               onClick={() => setIsManual(false)}
               className="relative overflow-hidden flex items-center gap-1 px-2.5 py-1.5 rounded-full cursor-pointer transition-all"
-              style={{ background: "rgba(168,197,160,0.15)", border: "1px solid rgba(168,197,160,0.35)" }}
+              style={{ background: "rgba(168,197,160,0.22)", border: "1px solid rgba(74,124,89,0.4)" }}
             >
-              <i className="ri-refresh-line" style={{ color: "#A8C5A0", fontSize: "11px" }} />
-              <span className="text-xs font-semibold whitespace-nowrap" style={{ color: "#A8C5A0" }}>Mi canasta</span>
+              <i className="ri-refresh-line" style={{ color: "#3E6B4A", fontSize: "11px" }} />
+              <span className="text-xs font-semibold whitespace-nowrap" style={{ color: "#3E6B4A", fontFamily: "'Inter', sans-serif" }}>Mi canasta</span>
             </button>
           )}
           <div
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full"
-            style={{ background: "rgba(245,200,120,0.10)", border: "1px solid rgba(245,200,120,0.22)" }}
+            style={{ background: "rgba(193,122,92,0.10)", border: "1px solid rgba(193,122,92,0.30)" }}
           >
-            <i className="ri-seedling-line" style={{ color: "#F5C87A", fontSize: "13px" }} />
-            <span className="text-xs font-semibold whitespace-nowrap" style={{ color: "#F5C87A" }}>Cacao Peruano</span>
+            <i className="ri-seedling-line" style={{ color: "#B0644A", fontSize: "13px" }} />
+            <span className="text-xs font-semibold whitespace-nowrap" style={{ color: "#B0644A", fontFamily: "'Inter', sans-serif" }}>Cacao Peruano</span>
           </div>
         </div>
       </div>
@@ -494,37 +495,39 @@ export default function ImpactSimulator({ cartItems = [] }: ImpactSimulatorProps
       {/* Big units display */}
       <div className="text-center py-2">
         <span
-          className="font-black leading-none"
+          className="leading-none"
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            color: "#FFFDF9",
+            fontFamily: "'Inter', sans-serif",
+            fontWeight: 600,
+            color: "#2A1810",
             fontSize: "clamp(3rem, 7vw, 5rem)",
-            letterSpacing: "-0.03em",
+            letterSpacing: "-0.04em",
           }}
         >
           {units}
         </span>
         <span
-          className="font-bold ml-2"
+          className="ml-2"
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            color: isCartMode ? "#A8C5A0" : "#F5C87A",
+            fontFamily: "'Inter', sans-serif",
+            fontWeight: 500,
+            color: isCartMode ? "#3E6B4A" : "#B0644A",
             fontSize: "clamp(1.1rem, 2.2vw, 1.6rem)",
             transition: "color 0.4s ease",
           }}
         >
           {units === 1 ? "producto" : "productos"}
         </span>
-        <p className="text-xs mt-1" style={{ color: "rgba(245,230,211,0.50)", letterSpacing: "0.12em" }}>
+        <p className="text-xs mt-1" style={{ color: "rgba(42,24,16,0.5)", letterSpacing: "0.12em", fontFamily: "'Inter', sans-serif" }}>
           {isCartMode ? "EN TU CANASTA AHORA MISMO" : "UNIDADES SELECCIONADAS"}
         </p>
         {isCartMode && (
           <div className="flex items-center justify-center gap-1.5 mt-1.5">
             <span
               className="inline-block w-1.5 h-1.5 rounded-full"
-              style={{ background: "#A8C5A0" }}
+              style={{ background: "#4A7C59" }}
             />
-            <span className="text-xs" style={{ color: "#A8C5A0" }}>
+            <span className="text-xs" style={{ color: "#3E6B4A", fontFamily: "'Inter', sans-serif" }}>
               Sincronizado · {cartItems.length} tipo{cartItems.length !== 1 ? "s" : ""} de producto
             </span>
           </div>
@@ -536,7 +539,7 @@ export default function ImpactSimulator({ cartItems = [] }: ImpactSimulatorProps
         <div
           ref={trackRef}
           className="relative h-1 rounded-full cursor-pointer select-none"
-          style={{ background: "rgba(245,200,120,0.15)" }}
+          style={{ background: "rgba(42,24,16,0.12)" }}
           onMouseDown={onMouseDown}
           onTouchStart={onTouchStart}
         >
@@ -546,7 +549,7 @@ export default function ImpactSimulator({ cartItems = [] }: ImpactSimulatorProps
               width: `${percent}%`,
               background: isCartMode
                 ? "linear-gradient(90deg, #4A7C59, #A8C5A0)"
-                : "linear-gradient(90deg, #8B5E2A, #F5C87A)",
+                : "linear-gradient(90deg, #A9583D, #C17A5C)",
               transition: dragging ? "none" : "width 0.2s ease, background 0.4s ease",
             }}
           />
@@ -556,11 +559,11 @@ export default function ImpactSimulator({ cartItems = [] }: ImpactSimulatorProps
               left: `${percent}%`,
               width: dragging ? "28px" : "24px",
               height: dragging ? "28px" : "24px",
-              background: isCartMode ? "#A8C5A0" : "#F5C87A",
+              background: isCartMode ? "#4A7C59" : "#C17A5C",
               border: "3px solid #FFFDF9",
               boxShadow: dragging
-                ? "0 0 0 6px rgba(245,200,120,0.25), 0 4px 16px rgba(0,0,0,0.5)"
-                : "0 2px 10px rgba(0,0,0,0.4)",
+                ? "0 0 0 6px rgba(193,122,92,0.22), 0 4px 14px rgba(42,24,16,0.3)"
+                : "0 2px 8px rgba(42,24,16,0.25)",
               cursor: "grab",
               transition: dragging ? "none" : "width 0.15s ease, height 0.15s ease, background 0.4s ease",
               zIndex: 10,
@@ -570,7 +573,7 @@ export default function ImpactSimulator({ cartItems = [] }: ImpactSimulatorProps
         {/* Step markers */}
         <div className="flex justify-between mt-2 px-0.5">
           {[1, 25, 50, 75, 100].map((v) => (
-            <span key={v} className="text-xs" style={{ color: "rgba(245,230,211,0.30)" }}>
+            <span key={v} className="text-xs" style={{ color: "rgba(42,24,16,0.4)", fontFamily: "'Inter', sans-serif" }}>
               {v}
             </span>
           ))}

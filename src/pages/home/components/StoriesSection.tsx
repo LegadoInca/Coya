@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+// Serif cursiva (misma del titular del hero)
+const SERIF = "'Instrument Serif', 'Cormorant Garamond', Georgia, serif";
+
 interface RegionStory {
   id: string;
   name: string;
@@ -157,7 +160,7 @@ function PeruMapImage({
         className="w-full h-full object-contain"
         style={{
           objectPosition: "70% center",
-          filter: "drop-shadow(0 20px 56px rgba(193,122,92,0.45)) brightness(1.08)",
+          filter: "drop-shadow(0 18px 44px rgba(193,122,92,0.35))",
         }}
       />
 
@@ -221,7 +224,7 @@ function PeruMapImage({
                 transform: "translateX(-50%)",
                 background: isActive ? "rgba(193,122,92,0.95)" : "rgba(26,14,8,0.80)",
                 color: isActive ? "#FFFDF9" : "rgba(245,230,211,0.8)",
-                fontFamily: "'Cormorant Garamond', serif",
+                fontFamily: "'Inter', sans-serif",
                 fontSize: "11px",
                 fontWeight: 600,
                 border: isActive ? "1px solid rgba(245,200,120,0.5)" : "1px solid rgba(193,122,92,0.25)",
@@ -293,7 +296,7 @@ function PeruMapImage({
                 style={{
                   background: "rgba(193,122,92,0.92)",
                   color: "#FFFDF9",
-                  fontFamily: "'Cormorant Garamond', serif",
+                  fontFamily: "'Inter', sans-serif",
                   fontSize: "10px",
                   letterSpacing: "0.05em",
                 }}
@@ -304,7 +307,7 @@ function PeruMapImage({
               <span
                 className="absolute bottom-2 left-3 font-bold"
                 style={{
-                  fontFamily: "'Cormorant Garamond', serif",
+                  fontFamily: "'Inter', sans-serif",
                   color: "rgba(245,200,120,0.9)",
                   fontSize: "11px",
                   letterSpacing: "0.08em",
@@ -320,7 +323,7 @@ function PeruMapImage({
               <p
                 className="font-bold leading-tight mb-1.5"
                 style={{
-                  fontFamily: "'Cormorant Garamond', serif",
+                  fontFamily: "'Inter', sans-serif",
                   color: "#F5C87A",
                   fontSize: "13px",
                 }}
@@ -341,7 +344,7 @@ function PeruMapImage({
                       color: activePersonIdx === idx ? "#C17A5C" : "rgba(184,168,152,0.45)",
                       borderTop: activePersonIdx === idx ? "2px solid #C17A5C" : "2px solid transparent",
                       background: "transparent",
-                      fontFamily: "'Cormorant Garamond', serif",
+                      fontFamily: "'Inter', sans-serif",
                       fontSize: "10.5px",
                       fontWeight: 600,
                     }}
@@ -387,12 +390,11 @@ export default function StoriesSection() {
   };
 
   return (
-    <section id="story" className="relative py-2 md:py-4 overflow-hidden">
-      {/* Background */}
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-        <source src="/Coya/videos/hero1.mp4" type="video/mp4" />
-      </video>
-      <div className="absolute inset-0" style={{ background: "rgba(30,18,8,0.74)" }} />
+    <section
+      id="story"
+      className="relative py-12 md:py-16 overflow-hidden"
+      style={{ background: "#F5EFE4", borderTop: "1px solid rgba(42,24,16,0.06)" }}
+    >
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
@@ -404,18 +406,27 @@ export default function StoriesSection() {
             <div style={{ position: "relative", zIndex: 50 }}>
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-8 h-px" style={{ background: "#C17A5C" }} />
-                <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: "#C17A5C" }}>
+                <span className="text-[11px] tracking-[0.3em] uppercase" style={{ color: "#B0644A", fontFamily: "'Inter', sans-serif", fontWeight: 600 }}>
                   {t("stories.badge")}
                 </span>
               </div>
               <h2
-                className="font-bold leading-tight whitespace-nowrap"
-                style={{ fontFamily: "'Cormorant Garamond', serif", color: "#F5E6D3", fontSize: "3rem" }}
+                className="leading-tight"
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 300,
+                  color: "#2A1810",
+                  fontSize: "clamp(2rem, 3.4vw, 3rem)",
+                  letterSpacing: "-0.025em",
+                  lineHeight: 1.05,
+                }}
               >
                 {t("stories.mapTitle")}{" "}
-                <em style={{ color: "#C17A5C", fontStyle: "italic", fontSize: "3.3rem" }}>{t("stories.mapTitleEm")}</em>
+                <em style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 400, color: "#B0644A", letterSpacing: "-0.01em", fontSize: "1.08em" }}>
+                  {t("stories.mapTitleEm")}
+                </em>
               </h2>
-              <p className="text-sm leading-relaxed mt-3" style={{ color: "#B8A898" }}>
+              <p className="text-sm leading-relaxed mt-3" style={{ color: "rgba(42,24,16,0.68)", fontFamily: "'Inter', sans-serif" }}>
                 {t("stories.mapSubtitle")}
               </p>
             </div>
@@ -426,36 +437,34 @@ export default function StoriesSection() {
               <span
                 className="relative inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full font-semibold cursor-default select-none overflow-hidden"
                 style={{
-                  background: "linear-gradient(90deg, rgba(193,122,92,0.18) 0%, rgba(245,200,120,0.28) 50%, rgba(193,122,92,0.18) 100%)",
-                  border: "1px solid rgba(245,200,120,0.55)",
-                  color: "#F5C87A",
-                  fontFamily: "'Cormorant Garamond', serif",
+                  background: "rgba(193,122,92,0.10)",
+                  border: "1px solid rgba(193,122,92,0.45)",
+                  color: "#B0644A",
+                  fontFamily: "'Inter', sans-serif",
                   fontSize: "12px",
-                  letterSpacing: "0.03em",
-                  boxShadow: "0 0 14px rgba(245,200,120,0.22), inset 0 0 10px rgba(245,200,120,0.06)",
+                  letterSpacing: "0.02em",
                 }}
               >
                 {/* Shimmer sweep */}
                 <span
                   className="absolute inset-0 pointer-events-none"
                   style={{
-                    background: "linear-gradient(105deg, transparent 35%, rgba(255,230,140,0.35) 50%, transparent 65%)",
+                    background: "linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.55) 50%, transparent 65%)",
                     animation: "shimmerSweep 2.4s ease-in-out infinite",
                   }}
                 />
-                <i className="ri-sparkling-2-fill relative z-10" style={{ fontSize: "13px", color: "#F5C87A" }} />
+                <i className="ri-sparkling-2-fill relative z-10" style={{ fontSize: "13px", color: "#C17A5C" }} />
                 <span className="relative z-10">Toca un lugar para conocer el nombre detrás</span>
-                <i className="ri-sparkling-fill relative z-10" style={{ fontSize: "11px", color: "rgba(245,200,120,0.7)" }} />
+                <i className="ri-sparkling-fill relative z-10" style={{ fontSize: "11px", color: "rgba(193,122,92,0.7)" }} />
               </span>
             </div>
 
             <div
               className="rounded-2xl px-4 py-4"
               style={{
-                background: "rgba(16,7,2,0.55)",
-                border: "1px solid rgba(193,122,92,0.18)",
-                backdropFilter: "blur(18px)",
-                WebkitBackdropFilter: "blur(18px)",
+                background: "#FFFFFF",
+                border: "1px solid rgba(42,24,16,0.08)",
+                boxShadow: "0 14px 40px rgba(42,24,16,0.07)",
               }}
             >
             {/* Region list */}
@@ -483,14 +492,14 @@ export default function StoriesSection() {
                       <p
                         className="font-bold text-base leading-tight"
                         style={{
-                          fontFamily: "'Cormorant Garamond', serif",
-                          color: isActive ? "#F5E6D3" : "rgba(245,230,211,0.65)",
+                          fontFamily: "'Inter', sans-serif",
+                          color: isActive ? "#2A1810" : "rgba(42,24,16,0.62)",
                           transition: "color 0.3s ease",
                         }}
                       >
                         {r.name}
                       </p>
-                      <p className="text-xs mt-0.5" style={{ color: isActive ? "#C17A5C" : "rgba(184,168,152,0.6)" }}>
+                      <p className="text-xs mt-0.5" style={{ fontFamily: "'Inter', sans-serif", color: isActive ? "#B0644A" : "rgba(42,24,16,0.5)" }}>
                         {r.group} · {r.families} {t("stories.familiesActive")}
                       </p>
                     </div>
@@ -520,7 +529,7 @@ export default function StoriesSection() {
             </div>
 
             {/* Hint */}
-            <p className="text-xs text-center mt-4" style={{ color: "rgba(184,168,152,0.45)" }}>
+            <p className="text-xs text-center mt-4" style={{ fontFamily: "'Inter', sans-serif", color: "rgba(42,24,16,0.5)" }}>
               <i className="ri-cursor-line mr-1" />
               {t("stories.mapHint")}
             </p>
