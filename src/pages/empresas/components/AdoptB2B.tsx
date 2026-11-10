@@ -26,10 +26,10 @@ const cacaotales: Cacaotal[] = [
     id: "junin",
     name: "Cacaotal Selva Central",
     region: "Junín",
-    producer: "Asociación Mamani",
+    producer: "Asociación Fructuoso",
     hectares: 6.8, trees: 2720,
     image: "/Coya/images/empresas2.jpeg",
-    producerImage: "/Coya/images/carmen.jpeg",
+    producerImage: "/Coya/images/fructuoso.png",
     story: "6.8 hectáreas en la Selva Central de Junín. Cacao orgánico certificado con técnicas de agroforestería que preservan la biodiversidad local. 18 familias dependen directamente de este cacaotal.",
     need: "Cajones de fermentación y secadoras solares",
     progress: 28, sponsors: 5,
@@ -38,11 +38,11 @@ const cacaotales: Cacaotal[] = [
     id: "ucayali",
     name: "Cacaotal Ribereño Ucayali",
     region: "Ucayali",
-    producer: "Cooperativa Carmen Flores",
+    producer: "Cooperativa Antonio Quispe",
     hectares: 3.5, trees: 1400,
     image: "/Coya/images/empresas3.jpeg",
-    producerImage: "/Coya/images/elias.jpeg",
-    story: "3.5 hectáreas a orillas del río Ucayali. Manteca de cacao prensada en frío de calidad cosmética. La cooperativa de Carmen Flores ya llevó agua potable a su comunidad. Tu adopción financia la siguiente fase: energía solar.",
+    producerImage: "/Coya/images/antonio.png",
+    story: "3.5 hectáreas a orillas del río Ucayali. Manteca de cacao prensada en frío de calidad cosmética. La cooperativa de Antonio Quispe ya llevó agua potable a su comunidad. Tu adopción financia la siguiente fase: energía solar.",
     need: "Paneles solares y prensa de frío para manteca",
     progress: 65, sponsors: 14,
   },
@@ -151,7 +151,7 @@ function PerkPreview({ index, cacaotalName }: { index: number; cacaotalName: str
             </div>
             <div style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>
               <span className="text-xs font-bold tracking-[0.18em] uppercase" style={{ color: "rgba(139,94,42,0.45)", fontSize: "9px" }}>
-                Qantari · Cacao Peruano
+                COYA · Cacao Peruano
               </span>
             </div>
           </div>
@@ -163,7 +163,7 @@ function PerkPreview({ index, cacaotalName }: { index: number; cacaotalName: str
               <p className="font-bold tracking-[0.28em] uppercase" style={{ color: "#8B5E2A", fontSize: "9px", opacity: 0.75 }}>
                 Certificado de Adopción
               </p>
-              <p style={{ color: "rgba(139,94,42,0.45)", fontSize: "8px" }}>Programa Empresarial Qantari</p>
+              <p style={{ color: "rgba(139,94,42,0.45)", fontSize: "8px" }}>Programa Empresarial COYA</p>
             </div>
 
             {/* Divider */}
@@ -212,13 +212,13 @@ function PerkPreview({ index, cacaotalName }: { index: number; cacaotalName: str
                 <p style={{ color: "rgba(62,32,12,0.45)", fontSize: "8px" }}>Empresa Adoptante</p>
               </div>
 
-              {/* Signature 2 — CEO Qantari */}
+              {/* Signature 2 — CEO COYA */}
               <div className="flex flex-col items-start" style={{ minWidth: "110px" }}>
                 <div className="mb-1" style={{ height: "28px", display: "flex", alignItems: "flex-end" }}>
                   {/* blank line for CEO signature */}
                 </div>
                 <div className="w-full h-px mb-1" style={{ background: "rgba(139,94,42,0.35)" }} />
-                <p style={{ color: "rgba(139,94,42,0.55)", fontSize: "8px" }}>CEO · Qantari Cacao Peruano</p>
+                <p style={{ color: "rgba(139,94,42,0.55)", fontSize: "8px" }}>CEO · COYA Cacao Peruano</p>
               </div>
             </div>
           </div>

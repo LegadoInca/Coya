@@ -73,13 +73,13 @@ const regions: RegionStory[] = [
     y: 50,
     people: [
       {
-        title: "La fuerza de Rosa",
-        subtitle: "Rosa quedó sola con tres hijos en la selva de Junín. Convirtió el tostado artesanal en su sustento y en el orgullo de su comunidad.",
-        tag: "Productora",
-        image: "/Coya/images/rosa.jpeg",
+        title: "La fuerza de Fructuoso",
+        subtitle: "Fructuoso quedó solo con tres hijos en la selva de Junín. Convirtió el tostado artesanal en su sustento y en el orgullo de su comunidad.",
+        tag: "Productor",
+        image: "/Coya/images/fructuoso.png",
       },
       {
-        title: "Los hijos de Rosa",
+        title: "Los hijos de Fructuoso",
         subtitle: "Sus hijos ayudan en la cosecha cada fin de semana. El mayor, Andrés, ya sabe distinguir el cacao maduro solo por el olor.",
         tag: "Su familia",
         image: "/Coya/images/family-rosa.jpeg",
@@ -117,14 +117,14 @@ const regions: RegionStory[] = [
     y: 52,
     people: [
       {
-        title: "Las manos de Carmen",
-        subtitle: "Carmen fundó una cooperativa ribereña en Ucayali. Su manteca de cacao hoy llega a marcas de cosmética en Europa.",
-        tag: "Productora",
-        image: "/Coya/images/carmen.jpeg",
+        title: "Las manos de Antonio",
+        subtitle: "Antonio fundó una cooperativa ribereña en Ucayali. Su manteca de cacao hoy llega a marcas de cosmética en Europa.",
+        tag: "Productor",
+        image: "/Coya/images/antonio.png",
       },
       {
         title: "Los niños del río",
-        subtitle: "Los hijos de las familias de Ucayali crecen junto al río. Gracias a la cooperativa de Carmen, su comunidad tiene agua potable.",
+        subtitle: "Los hijos de las familias de Ucayali crecen junto al río. Gracias a la cooperativa de Antonio, su comunidad tiene agua potable.",
         tag: "Su familia",
         image: "/Coya/images/family-rosa.jpeg",
       },
